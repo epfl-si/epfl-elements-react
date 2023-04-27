@@ -1,4 +1,6 @@
+import React from 'react'
 import { Base } from './epfl-elements/Base.tsx'
+import { Avatar } from './epfl-elements/Avatar.tsx'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
 import BioHazard from './pages/biohazard';
 import HomePage from './pages/homepage';
@@ -23,6 +25,12 @@ function App() {
                          		</ul>
                          	</Base.AsideMenu>
                          	<Base.Breadcrumbs><li className="breadcrumb-item">Laboratory Hazards Directory</li></Base.Breadcrumbs>
+                         	<Base.User>
+                         		<Avatar>
+                         			<Avatar.Image peopleSciper={ "169419" } />
+                         			<p>{ oidc.idToken.given_name } { oidc.idToken.family_name }</p>
+                         		</Avatar>
+                         	</Base.User>
 
                          	<div className="container-full" style={{width: "100%", padding: "1em" }}>
 

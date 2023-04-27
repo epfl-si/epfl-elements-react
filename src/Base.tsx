@@ -11,7 +11,7 @@ interface Children {
 export const Base = ({ children } : Children) => {
   function classify (el : ReactElement) {
     for (let type of [Base.TopMenu, Base.AsideMenu, Base.Drawer,
-                      Base.UserAvatar, Base.Breadcrumbs]) {
+                      Base.User, Base.Breadcrumbs]) {
       if (type === el.type) {
         return type
       }
@@ -22,7 +22,7 @@ export const Base = ({ children } : Children) => {
   const topMenu = pickChildrenOfFirst(children, (el) => classify(el) === Base.TopMenu)
   const asideMenu = pickChildrenOfFirst(children, (el) => classify(el) === Base.AsideMenu)
   const drawer = pickChildrenOfFirst(children, (el) => classify(el) === Base.Drawer)
-  const userAvatar = pickChildrenOfFirst(children, (el) => classify(el) === Base.UserAvatar)
+  const user = pickChildrenOfFirst(children, (el) => classify(el) === Base.User)
   const breadcrumbs = pickChildrenOfFirst(children, (el) => classify(el) === Base.Breadcrumbs)
   const rest =  filterChildren(children, (el) => classify(el) === "other")
 
@@ -33,7 +33,7 @@ export const Base = ({ children } : Children) => {
       <ul id='top-menu' className='nav-header d-none d-xl-flex'>
        {topMenu ? topMenu : defaultTopMenu.map(getMenuItem) }
       </ul>
-       {userAvatar ? userAvatar : <></> }
+       {user ? user : <></> }
     </header>
     <div className='main-container'>
       { breadcrumbs ? <Breadcrumbs>{breadcrumbs}</Breadcrumbs> : <></> }
@@ -58,7 +58,7 @@ export const Base = ({ children } : Children) => {
 Base.TopMenu = () => null
 Base.AsideMenu = () => null
 Base.Drawer = () => null
-Base.UserAvatar = () => null
+Base.User = () => null
 Base.Breadcrumbs = () => null
 
 const defaultTopMenu = [
