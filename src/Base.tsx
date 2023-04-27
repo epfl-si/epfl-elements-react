@@ -2,21 +2,13 @@ import React, { ReactElement }  from 'react'
 import { Logo } from './Logo.tsx'
 import { Drawer } from './Drawer.tsx'
 import { Breadcrumbs } from './Breadcrumbs.tsx'
+import { filterChildren, pickChildrenOfFirst } from './utils/children.ts'
 
 interface Children {
   children?: React.ReactNode
 }
 
 export const Base = ({ children } : Children) => {
-  function filterChildren (predicate : (el: ReactElement) => boolean) {
-    return React.Children.toArray(children).filter(predicate)
-  }
-
-  function pickChildrenOf (predicate : (el: ReactElement) => boolean) {
-    const firstChild = filterChildren(predicate)[0] as ReactElement
-    return firstChild ? firstChild.props.children : undefined
-  }
-
   function classify (el : ReactElement) {
     for (let type of [Base.TopMenu, Base.AsideMenu, Base.Drawer,
                       Base.UserAvatar, Base.Breadcrumbs]) {
@@ -27,12 +19,12 @@ export const Base = ({ children } : Children) => {
     return "other"
   }
 
-  const topMenu = pickChildrenOf((el) => classify(el) === Base.TopMenu)
-  const asideMenu = pickChildrenOf((el) => classify(el) === Base.AsideMenu)
-  const drawer = pickChildrenOf((el) => classify(el) === Base.Drawer)
-  const userAvatar = pickChildrenOf((el) => classify(el) === Base.UserAvatar)
-  const breadcrumbs = pickChildrenOf((el) => classify(el) === Base.Breadcrumbs)
-  const rest =  filterChildren((el) => classify(el) === "other")
+  const topMenu = pickChildrenOfFirst(children, (el) => classify(el) === Base.TopMenu)
+  const asideMenu = pickChildrenOfFirst(children, (el) => classify(el) === Base.AsideMenu)
+  const drawer = pickChildrenOfFirst(children, (el) => classify(el) === Base.Drawer)
+  const userAvatar = pickChildrenOfFirst(children, (el) => classify(el) === Base.UserAvatar)
+  const breadcrumbs = pickChildrenOfFirst(children, (el) => classify(el) === Base.Breadcrumbs)
+  const rest =  filterChildren(children, (el) => classify(el) === "other")
 
   return <>
     <header role='banner' className='header'>
