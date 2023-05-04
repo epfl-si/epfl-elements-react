@@ -1,0 +1,34 @@
+{
+    "socials": [
+        {
+            "name": "Facebook",
+            "link": "https://www.facebook.com/epflcampus",
+            "anchor": "Follow us on Facebook.",
+            "iconclass": "icon-facebook"
+        },
+        {
+            "name": "Twitter",
+            "link": "https://twitter.com/epfl'",
+            "anchor": "Follow us on Twitter.",
+            "iconclass": "icon-twitter"
+        },
+        {
+            "name": "Instagram",
+            "link": "https://instagram.com/epflcampus",
+            "anchor": "Follow us on Instagram.",
+            "iconclass": "icon-instagram"
+        },
+        {
+            "name": "Youtube",
+            "link": "https://www.youtube.com/user/epflnews",
+            "anchor": "Follow us on Youtube.",
+            "iconclass": "icon-youtube"
+        },
+        {
+            "name": "LinkedIn",
+            "link": "https://www.youtube.com/user/epflnews",
+            "anchor": "Follow us on LinkedIn.",
+            "iconclass": "icon-linkedin"
+        }
+    ]
+}

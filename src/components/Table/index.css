@@ -1,0 +1,14 @@
+.table{
+    overflow-y:scroll;
+    height: 600px;
+    display: block;
+}
+.table th {
+    background: white;
+    position: sticky;
+    top: 0;
+}
+
+.table tr:nth-child(even) { 
+    background: #f8f8f8;
+}

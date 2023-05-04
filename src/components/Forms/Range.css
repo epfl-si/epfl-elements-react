@@ -1,0 +1,24 @@
+input[type="range"] {
+    width: 100%;
+    height: 7px;
+
+    /* 
+        Color of range slider
+    */
+    background: rgba(170, 170, 170, 0.6);
+
+    /*
+        Range Slider rounded at the ends
+    */
+    border-radius: 5px;
+
+    /* 
+        Red line in range slider
+    */
+    background-image: linear-gradient(#ff4500, #ff4500);
+
+    /* 
+        Do not repeat the red line after the dot
+    */
+    background-repeat: no-repeat;
+}

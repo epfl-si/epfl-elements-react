@@ -1,0 +1,42 @@
+input[type='checkbox']{
+    filter: saturate(0) opacity(80%) brightness(1.25)
+}
+
+.checkbox-label {
+    font-size: 0.8em;
+    white-space: nowrap;
+}
+
+.checkbox-group-label {
+    margin-bottom: 4px;
+}
+
+.checkbox-container { 
+    max-width: 600px; 
+    max-height: 230px; 
+    overflow-y: auto;
+}
+
+.checkbox-container-no-max-height { 
+    max-width: 600px; 
+}
+
+.checkbox-container-no-max-width { 
+    max-height: 230px; 
+    overflow-y: auto;
+}
+
+.checkboxgroup-wrapper {
+    padding: 2em;
+    line-height: 1.2;
+}
+
+.checkboxgroup-wrapper-small {
+    padding: 1em;
+    line-height: 1.2;
+}
+
+.checkboxgroup-wrapper-no-padding {
+    padding: 0em;
+    line-height: 1.2;
+}

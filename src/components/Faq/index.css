@@ -1,0 +1,48 @@
+.grid {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.link-list-epfl-faq-header {
+    margin-bottom: 2rem;
+}
+
+.ul {
+    padding-left: 1rem;
+    margin-left: 0;
+    margin-top: 0;
+
+}
+
+.faq-item {
+    border-top: 1px solid #c1c1c1;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.faq-item-question {
+    font-weight: bold;
+}
+
+.faq-title {
+    text-decoration : underline;
+    text-decoration-color: #ff0000;
+}
+
+.faq-title:hover {
+    color: #ff0000;
+    text-decoration : underline;
+    text-decoration-color: black;
+    cursor: pointer;
+}
+
+.tlbx-content {
+    padding-top: 1.2rem;
+    padding-right: 2rem;
+    padding-bottom: 1.2rem;
+    padding-left: 2rem;
+    border-color: rgb(242, 242, 244);
+    border-style: solid;
+    border-width: 2px;
+
+}

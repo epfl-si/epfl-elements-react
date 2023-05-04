@@ -1,0 +1,18 @@
+/* Tag override since it has conflicts with the EPFL elements style */
+
+span.tag {
+    display: inline-block;
+    margin: 0 .1em .3em 0;
+    padding: 0em;
+    background: #262626;
+    border: 0px solid #c1c1c1;
+    line-height: 1;
+    font-weight: 400;
+    color: #343a40;
+}
+
+/* code wrapping */
+code[class*="language-"], pre[class*="language-"] {
+    white-space: normal !important;
+    word-break: break-word !important;
+}

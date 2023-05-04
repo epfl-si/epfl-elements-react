@@ -1,0 +1,27 @@
+.tagset-wrapper {
+    background-color: #eee;
+    width: 100%; 
+    min-height: 40px;
+    padding: 0.5em;
+    border: 1px solid #ccc;   
+}
+
+.add-tag {
+    border: 0px;
+    background-color:  #eee;
+}
+
+.add-tag-separator {
+    border-top: 1px solid #ddd;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: 10px;
+
+  }
+  
+  .grid-container > div {
+    text-align: center;
+  }
