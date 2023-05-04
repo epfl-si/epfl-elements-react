@@ -42,7 +42,7 @@ const defaultTopMenuItems = [
 const defaultBreadcrumbItems = [
   { link: 'https://www.epfl.ch/schools/', anchor: 'Schools' },
   { link: 'https://sti.epfl.ch/', anchor: 'School of Engineering' },
-  { link: '', anchor: 'Faculty dashboards', active: true }
+  { link: '', anchor: 'Elements React', active: true }
 ]
 
 const defaultDrawerContents = {
