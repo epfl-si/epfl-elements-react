@@ -1,8 +1,13 @@
 import { useState } from 'react'
 
+interface DropdownInnerProps {
+  option: string;
+  active?: boolean 
+}
+
 type DropdownProps = {
   label?: string;
-  options?: Array<any>;
+  options?: Array<DropdownInnerProps>;
   onChangeFn?: any
 }
 

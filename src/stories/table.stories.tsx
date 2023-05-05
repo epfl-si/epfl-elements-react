@@ -164,8 +164,8 @@ HyperlinkColumnsLabelsWithOnClickAlert.args = {
   ]
 }
 
-export const tagsetColumns: Story = {}
-tagsetColumns.args = {
+export const TagsetColumns: Story = {}
+TagsetColumns.args = {
   columnsLabels: ['EPFL Link', 'EPFL Anchor', 'Tagset1', 'Tagset2'],
   tagColumns: { columns: ['tags1', 'tags2'], separator: ',' },
   data: [
@@ -178,8 +178,8 @@ tagsetColumns.args = {
   ]
 }
 
-export const tagsetColumnsAndHyperLinks: Story = {}
-tagsetColumnsAndHyperLinks.args = {
+export const TagsetColumnsAndHyperLinks: Story = {}
+TagsetColumnsAndHyperLinks.args = {
   columnsLabels: ['EPFL Link', 'EPFL Anchor', 'Tagset1', 'Tagset2'],
   tagColumns: { columns: ['tags1', 'tags2'], separator: ',' },
   hyperLinks: [{ column: 'anchor', link: 'link' }],

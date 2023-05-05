@@ -1,14 +1,21 @@
 import stiLogo from './sti_logo.png'
 import './index.css'
 
+export type userProps = {
+    first_name?: string;
+    last_name?: string;
+    sciper?: string;
+    photo_url?: string;
+}
+
 type AvatarProps = {
-  user?: any;
+  user?: userProps;
   logOutUrl?: string;
   logoUrl?: string;
   logoAltText?: string
 }
 
-export function Avatar ({ user, logOutUrl, logoUrl, logoAltText }: AvatarProps) {
+export function Avatar ({ user = {}, logOutUrl, logoUrl, logoAltText }: AvatarProps) {
   const getBackGroundImage = () => `url('${user.photo_url}')`
   const avatarLogo = logoUrl || stiLogo
   const avatarLogoAltText = logoAltText || 'Logo STI, EPFL school of engineering'

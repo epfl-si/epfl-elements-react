@@ -59,8 +59,8 @@ Default.args = {
   labelButton: 'Action'
 }
 
-export const metaboxWithMissingData: Story = {}
-metaboxWithMissingData.args = {
+export const MetaboxWithMissingData: Story = {}
+MetaboxWithMissingData.args = {
   eventTitle: 'Event Information',
   metaboxDetails: [
       {
@@ -102,8 +102,8 @@ metaboxWithMissingData.args = {
   labelButton: 'Action'
 }
 
-export const metaboxWithoutDetails: Story = {}
-metaboxWithoutDetails.args = {
+export const MetaboxWithoutDetails: Story = {}
+MetaboxWithoutDetails.args = {
   eventTitle: 'Event Information',
   organizer:[
       {

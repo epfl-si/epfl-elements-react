@@ -10,7 +10,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const status404: Story = {
+export const Status404: Story = {
   args: {
     error: {
       status: 404,
@@ -19,7 +19,7 @@ export const status404: Story = {
   }
 }
 
-export const status403: Story = {
+export const Status403: Story = {
   args: {
     error: {
       status: 403,
@@ -28,7 +28,7 @@ export const status403: Story = {
   }
 }
 
-export const status503: Story = {
+export const Status503: Story = {
   args: {
     error: {
       status: 503,
@@ -36,4 +36,3 @@ export const status503: Story = {
     }
   }
 }
-
