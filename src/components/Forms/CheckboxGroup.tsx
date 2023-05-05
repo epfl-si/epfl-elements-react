@@ -35,7 +35,7 @@ export function CheckboxGroup ({ onChangeFn, title, options, unchecked = [], wra
 
   useEffect(() => {
     Object.keys(groupState).filter(x => !groupState[x]).length > 0 ? setAllState(false) : setAllState(true)
-  }, [allState, groupState]) // eslint-disable-line
+  }, [allState, groupState])  
 
   const handleCheckboxChange = (changeEvent: { target: { name: any; }; }) => {
     const { name } = changeEvent.target

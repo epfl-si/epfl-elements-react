@@ -4,10 +4,11 @@ import { Logo } from '../Logo/'
 import { Topmenu } from '../navigations/topmenu'
 
 import '@epfl/epfl-elements-styles/dist/css/combined.css'
+import { DrawerInnerProps } from '../Drawer/'
 
 type HeaderProps = {
   topMenuItems?: Array<any>;
-  drawerContents?: object;
+  drawerContents?: DrawerInnerProps;
   user?: object;
   logOutUrl?: string;
   avatarLogoUrl?: string;

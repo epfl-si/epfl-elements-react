@@ -43,7 +43,7 @@ export const findCurrentItem = (level: any, parent: any, parentMenus: any) => {
     // If not iterate over each menu item and find if it's the next level.
     let foundDeep
    
-    for (let item of level) {
+    for (const item of level) {
         const {menus, link, heading} = item
 
         if(menus) {
@@ -75,7 +75,7 @@ export const findMenuDisplay = (forward: any, getValueClassName: any, labelClass
     // If not iterate over each menu item and find if it's the next level.
     let foundDeep
    
-    for (let item of (level || [])) {
+    for (const item of (level || [])) {
         const {menus, link, heading} = item
 
         if(menus) {

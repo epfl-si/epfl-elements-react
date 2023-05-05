@@ -22,11 +22,11 @@ export function Asidemenu ({ isHome, isLoading, menuItems, homeAnchor, homeLink,
 
   function getMenuItems () {
     return (menuItems || []).map(item =>
-      <li key={item.heading}><a>{item.heading}</a> {/* eslint-disable-line */}
+      <li key={item.heading}><a>{item.heading}</a> { }
         <ul>
           {item.menus && getMenuList(item.menus)}
           {item.submenus && item.submenus.map((submenu: any) =>
-            <li key={submenu.heading}><a>{submenu.heading}</a> {/* eslint-disable-line */}
+            <li key={submenu.heading}><a>{submenu.heading}</a> { }
               <ul>
                 {getMenuList(submenu.menus)}
               </ul>

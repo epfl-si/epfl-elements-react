@@ -4,7 +4,7 @@ type BreadcrumbsProps = {
   items: any;
 };
 
-const getBreadCrumbItem = (item: any, i: Number) =>
+const getBreadCrumbItem = (item: any, i: number) =>
   <li
     key={`li-${i}`}
     style={{ marginRight: '0.4em' }}
@@ -14,7 +14,7 @@ const getBreadCrumbItem = (item: any, i: Number) =>
       ? item.anchor
       : <a key={`a-${i}`} href={item.link} target='_blank' rel='noopener noreferrer'>
         {item.anchor}
-       </a>}{/* eslint-disable-line */}
+       </a>}{ }
   </li>
 
 export function Breadcrumbs ({ items }: BreadcrumbsProps) {
@@ -33,7 +33,7 @@ export function Breadcrumbs ({ items }: BreadcrumbsProps) {
               </svg>
             </a>
           </li>
-          {items && items.map((item: any, x: Number) => getBreadCrumbItem(item, x))}
+          {items && items.map((item: any, x: number) => getBreadCrumbItem(item, x))}
         </ol>
       </nav>
     </div>

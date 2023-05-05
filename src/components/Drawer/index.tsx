@@ -1,8 +1,14 @@
 import { useState } from 'react'
 import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
+export interface DrawerInnerProps {
+  link: string,
+  anchor: string
+}
+
+
 type DrawerProps = {
-  contents: any
+  contents: DrawerInnerProps
 }
 
 export function Drawer ({ contents }: DrawerProps) {

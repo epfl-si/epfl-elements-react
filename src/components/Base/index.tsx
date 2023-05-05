@@ -7,6 +7,7 @@ import { Footer } from '../Footer/Footer'
 import { FooterLight } from '../Footer/FooterLight'
 
 import setPageTitle from '../utils/setPageTitle'
+import { DrawerInnerProps } from '../Drawer'
 
 type BaseProps = {
   feedBackEmail?: string;
@@ -21,7 +22,7 @@ type BaseProps = {
   topMenuItems?: Array<any>;
   showFooter?: boolean;
   useLightFooter?: boolean;
-  drawerContents?: object;
+  drawerContents?: DrawerInnerProps;
   avatarLogoAltText?: string;
   avatarLogoUrl?: string,
   mainContainerClass?: string;

@@ -33,7 +33,7 @@ export function Dropdown ({ label, options, onChangeFn }: DropdownProps) {
         style={{ display: showDropdown ? 'block' : 'none' }}
       >
         {(options || []).map((item, i) =>
-          <a // eslint-disable-line
+          <a  
             key={`option-${i}`}
             className='dropdown-item'
             style={{

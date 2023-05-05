@@ -2,7 +2,7 @@ import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
 import './style.css'
 
-type TagProps = {
+export type TagProps = {
   label?: string;
   href?: string;
   className?: string;
