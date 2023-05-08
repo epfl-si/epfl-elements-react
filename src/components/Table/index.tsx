@@ -18,8 +18,8 @@ type TableProps = {
 }
 
 export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagColumns, showRowTotals, width, height }: TableProps) {
-  const [cols, setCols] = useState<Array<any>>()
-  const [rows, setRows] = useState<Array<any>>()
+  const [cols, setCols] = useState<Array<string>>()
+  const [rows, setRows] = useState<Array<string>>()
   const [asc, setAsc] = useState(false)
 
   function orderByColumn (col: string) {

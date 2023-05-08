@@ -3,6 +3,8 @@ import { FilterBox } from "../components/Filterbox"
 
 import countries from './testData.json'
 
+type Callback = () => void;
+
 const meta = {
   title: "Molecules/FilterBox",
   component: FilterBox,
@@ -16,7 +18,7 @@ export const Default: Story = {}
 Default.args = {
   data: countries,
   filterFields: ['continent', 'iso', 'currencycode'],
-  updateFn: (x: any) => console.log(x) 
+  updateFn: (x: Callback) => console.log(x) 
 }
 
 export const CustomLabels: Story = {}
@@ -24,7 +26,7 @@ CustomLabels.args = {
   data: countries,
   filterFields: ['continent', 'iso', 'currencycode'],
   filterLabels: ['Continent', 'ISO2 Code', 'Currency'],
-  updateFn: (x: any) => console.log(x) 
+  updateFn: (x: Callback) => console.log(x) 
 }
 
 export const DisabledOptions: Story = {}
@@ -33,7 +35,7 @@ DisabledOptions.args = {
   filterFields: ['continent', 'iso', 'currencycode'],
   filterLabels: ['Continent', 'ISO2 Code', 'Currency'],
   disabledOptions: {'continent': ['NA', 'SA']},
-  updateFn: (x: any) => console.log(x) 
+  updateFn: (x: Callback) => console.log(x) 
 }
 
 export const SearchBox: Story = {}
@@ -41,12 +43,12 @@ SearchBox.args = {
   data: countries,
   filterFields: ['continent', 'iso', 'currencycode'],
   searchbox: {label: 'Search', fields: ['continent', 'currencycode']},
-  updateFn: (x: any) => console.log(x) 
+  updateFn: (x: Callback) => console.log(x) 
 }
 
 export const OnlySearchBox: Story = {}
 OnlySearchBox.args = {
   data: countries,
   searchbox: {label: 'Search', fields: ['continent', 'currencycode']},
-  updateFn: (x: any) => console.log(x) 
+  updateFn: (x: Callback) => console.log(x) 
 }

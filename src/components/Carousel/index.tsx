@@ -4,16 +4,25 @@ import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
 import './index.css'
 
-
-
-type CarouselProps = {
-  carouselItems: Array<any>
+type CarouselItemProps = {
+  id?: number;
+  width?: number;
+  height?: number;
+  src?: string;
+  srcset?: string;
+  title?: string;
+  link?: string;
+  content?: string;
+  active?: boolean;
 }
 
+type CarouselProps = {
+  carouselItems: Array<CarouselItemProps>
+}
 
 export function Carousel ({ carouselItems }: CarouselProps) {
-  const [activeId, setActiveId] = useState(carouselItems.filter((item: { active: any }) => item.active)[0].id)
-  const positionIds = carouselItems.reduce((obj: { [x: string]: any }, item: { id: string | number }, i: any) => {
+  const [activeId, setActiveId] = useState(carouselItems.filter((item) => item.active)[0].id)
+  const positionIds = carouselItems.reduce((obj, item, i) => {
     obj[item.id] = i
     return obj
   }, {})
