@@ -6,7 +6,7 @@ type AsidemenuProps = {
   isHome?: boolean;
   isLoading?: boolean;
   menuItems?: Array<any>;
-  homeLink: string;
+  homeLink?: string;
   homeAnchor?: string;
   feedBackEmail?: string;
 }

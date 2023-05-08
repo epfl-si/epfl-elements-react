@@ -2,7 +2,7 @@ import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
 import { ReactNode } from 'react';
 
-type CardProps = {
+export type CardProps = {
   picture?: any;
   children?: ReactNode;
   link?: string
