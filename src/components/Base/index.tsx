@@ -16,7 +16,7 @@ type BaseProps = {
   isHome?: boolean;
   isBeta?: boolean;
   isLoading?: boolean;
-  children?: any;
+  children?: JSX.Element;
   user?: object;
   breadcrumbItems?: Array<any>;
   topMenuItems?: Array<any>;

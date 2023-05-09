@@ -2,12 +2,15 @@ import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
 import './style.css'
 
+type Callback = (label: string) => void;
+
+
 export type TagProps = {
   label?: string;
   href?: string;
   className?: string;
   removable?: boolean, 
-  removeCallback?: any
+  removeCallback?: Callback
 }
 
 export function Tag ({ label, href, className, removable, removeCallback }: TagProps) {

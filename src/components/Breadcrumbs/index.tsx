@@ -1,10 +1,16 @@
 import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
+type BreadcrumbsItemProps = {
+  active?: boolean;
+  link?: string;
+  anchor?: string;
+}; 
+
 type BreadcrumbsProps = {
-  items: any;
+  items: Array<BreadcrumbsItemProps>;
 };
 
-const getBreadCrumbItem = (item: any, i: number) =>
+const getBreadCrumbItem = (item: BreadcrumbsItemProps, i: number) =>
   <li
     key={`li-${i}`}
     style={{ marginRight: '0.4em' }}
@@ -33,7 +39,7 @@ export function Breadcrumbs ({ items }: BreadcrumbsProps) {
               </svg>
             </a>
           </li>
-          {items && items.map((item: any, x: number) => getBreadCrumbItem(item, x))}
+          {items && items.map((item, x: number) => getBreadCrumbItem(item, x))}
         </ol>
       </nav>
     </div>

@@ -5,6 +5,14 @@ import { Tag } from '../Tag/index'
 import '@epfl/epfl-elements-styles/dist/css/combined.css'
 import './index.css'
 
+type CallbackProps = {
+  column: string;
+  order: string;
+  data: Array<any>;
+}
+
+type Callback = ({}: CallbackProps) => void;
+
 type TableProps = {
   data?: Array<any>;
   columns?: Array<any>;
@@ -15,9 +23,10 @@ type TableProps = {
   showRowTotals?: boolean;
   height?: number | string;
   width?: number | string;
+  orderCallbackFn?: Callback;
 }
 
-export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagColumns, showRowTotals, width, height }: TableProps) {
+export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagColumns, showRowTotals, width, height, orderCallbackFn }: TableProps) {
   const [cols, setCols] = useState<Array<string>>()
   const [rows, setRows] = useState<Array<string>>()
   const [asc, setAsc] = useState(false)
@@ -28,6 +37,9 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
     const sortedData = soa(data, col, direction)
     setRows(sortedData)
     setAsc(!asc)
+    if (orderCallbackFn) {
+      orderCallbackFn({column: col, order: asc ? 'ascend' : 'descend', data: rows})
+    }
   }
 
   useEffect(() => {
