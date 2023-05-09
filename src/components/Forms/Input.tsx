@@ -1,6 +1,9 @@
+
+type Callback = (e: React.ChangeEvent<HTMLInputElement>) => void;
+
 type InputProps = {
   placeholder?: string;
-  onChangeFn?: any;
+  onChangeFn?: Callback;
   type?: string
 }
 

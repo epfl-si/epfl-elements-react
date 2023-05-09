@@ -23,11 +23,13 @@ type CarouselProps = {
 export function Carousel ({ carouselItems }: CarouselProps) {
   const [activeId, setActiveId] = useState(carouselItems.filter((item) => item.active)[0].id)
   const positionIds = carouselItems.reduce((obj, item, i) => {
+    // @ts-ignore
     obj[item.id] = i
     return obj
   }, {})
 
   function switchNextItem () {
+    // @ts-ignore
     const currentPosition = positionIds[activeId]
     const nextPosition = currentPosition + 1
     const nextId = (carouselItems[nextPosition] || carouselItems[0]).id
@@ -35,6 +37,7 @@ export function Carousel ({ carouselItems }: CarouselProps) {
   }
 
   function switchPreviousItem () {
+    // @ts-ignore
     const currentPosition = positionIds[activeId]
     const previousPosition = currentPosition - 1
     const previousId = (carouselItems[previousPosition] || carouselItems[carouselItems.length - 1]).id
@@ -79,7 +82,7 @@ export function Carousel ({ carouselItems }: CarouselProps) {
   </div>
 
   const getCarouselIndicators = () => <ol className="carousel-indicators">
-    {carouselItems && carouselItems.map((item: { id: any }, i: any) => 
+    {carouselItems && carouselItems.map((item: any, i: any) => 
       <li 
         key={`carInd${i}`}
         data-target="#carouselNews"
