@@ -11,7 +11,6 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  // @ts-ignore
   args: {
     isHome: true,
     isLoading: false,
@@ -28,7 +27,6 @@ export const Default: Story = {
 }
 
 export const UsingLinks: Story = {
-    // @ts-ignore
     args: {
       isHome: true,
       isLoading: false,
@@ -45,7 +43,6 @@ export const UsingLinks: Story = {
 }
 
 export const WithFeedbackLink: Story = {
-      // @ts-ignore
   args: {
     isHome: true,
     isLoading: false,

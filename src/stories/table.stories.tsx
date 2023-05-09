@@ -192,3 +192,19 @@ TagsetColumnsAndHyperLinks.args = {
     { link: 'https://www.epfl.ch/campus/', anchor: 'Campus' }
   ]
 }
+
+export const OrderCallBack: Story = {}
+OrderCallBack.args = {
+  showRowTotals: true,
+  columnsLabels: ['EPFL Link', 'EPFL Anchor'],
+  orderCallbackFn: (obj) => window.alert(JSON.stringify(obj)),
+  data: [
+    { link: 'https://www.epfl.ch/about/', anchor: 'About' },
+    { link: 'https://www.epfl.ch/education', anchor: 'Education' },
+    { link: 'https://www.epfl.ch/research', anchor: 'Research' },
+    { link: 'https://www.epfl.ch/innovation/', anchor: 'Innovation' },
+    { link: 'https://www.epfl.ch/schools/', anchor: 'Schools' },
+    { link: 'https://www.epfl.ch/campus/', anchor: 'Campus' }
+  ]
+}
+

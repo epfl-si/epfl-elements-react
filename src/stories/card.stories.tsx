@@ -1,5 +1,6 @@
 import type { StoryObj } from "@storybook/react";
 import { Card } from "../components/Card"
+import { CardProps } from "../components/Card";
 
 const meta = {
   title: "Molecules/Card",
@@ -13,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 const MultipleCardsTemplate: Story = {
   render: ({ items, wrapperClass }: any) =>  
     <div className={wrapperClass}>
-    {items.map((args: any) => <Card {...args} />)}
+    {items.map((args: CardProps) => <Card {...args} />)}
   </div>
 }
 
