@@ -1,4 +1,4 @@
-type upateContensProps = {
+type updateContensProps = {
   tabs?: any;
   tabId?: any;
   tabContents?: any;
@@ -12,7 +12,7 @@ type upateContensSingleProps = {
 }
 
 
-export function updateTabContents ({ tabs, tabId, tabContents, setTabsFn }: upateContensProps) {
+export function updateTabContents ({ tabs, tabId, tabContents, setTabsFn }: updateContensProps) {
   const updatedTabs = {
     ...tabs,
     [tabId]: {

@@ -1,8 +1,9 @@
+type Callback = (e: React.MouseEvent) => void;
+
 type ButtonProps = {
   label?: string;
-  onClickFn?: any
+  onClickFn?: Callback
 }
-
 
 export function Button ({ label, onClickFn }: ButtonProps) {
   return (

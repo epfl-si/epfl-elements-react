@@ -2,10 +2,21 @@ import { Loader } from '../Loader'
 
 import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
-type AsidemenuProps = {
+export type AsindeMenuSingleItemProps = {
+  link?: string;
+  anchor?: string;
+}
+
+export type AsidemenuItemsProps = {
+  heading?: string;
+  menus?: Array<AsindeMenuSingleItemProps>;
+  submenus?: Array<AsidemenuItemsProps>;
+}
+
+export type AsidemenuProps = {
   isHome?: boolean;
   isLoading?: boolean;
-  menuItems?: Array<any>;
+  menuItems?: Array<AsidemenuItemsProps>;
   homeLink?: string;
   homeAnchor?: string;
   feedBackEmail?: string;

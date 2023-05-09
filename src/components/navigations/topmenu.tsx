@@ -6,7 +6,7 @@ export interface TopmenuInnerProps {
  anchor?: string;
 }
 
-type TopmenuProps = {
+export type TopmenuProps = {
   menuItems?: Array<TopmenuInnerProps>
 }
 

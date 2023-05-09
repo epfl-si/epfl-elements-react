@@ -7,7 +7,12 @@ import { Footer } from '../Footer/Footer'
 import { FooterLight } from '../Footer/FooterLight'
 
 import setPageTitle from '../utils/setPageTitle'
+
+// Props import
 import { DrawerInnerProps } from '../Drawer'
+import { BreadcrumbsItemProps } from '../Breadcrumbs'
+import { TopmenuInnerProps } from '../navigations/topmenu'
+import { AsidemenuItemsProps } from '../navigations/asidemenu'
 
 type BaseProps = {
   feedBackEmail?: string;
@@ -18,8 +23,8 @@ type BaseProps = {
   isLoading?: boolean;
   children?: JSX.Element;
   user?: object;
-  breadcrumbItems?: Array<any>;
-  topMenuItems?: Array<any>;
+  breadcrumbItems?: Array<BreadcrumbsItemProps>;
+  topMenuItems?: Array<TopmenuInnerProps>;
   showFooter?: boolean;
   useLightFooter?: boolean;
   drawerContents?: DrawerInnerProps;
@@ -28,7 +33,7 @@ type BaseProps = {
   mainContainerClass?: string;
   title?: string;
   baseTitle?: string;
-  asideMenuItems?: Array<any>;
+  asideMenuItems?: Array<AsidemenuItemsProps>;
 }
 
 const defaultTopMenuItems = [

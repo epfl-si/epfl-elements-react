@@ -1,12 +1,12 @@
 import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
-type BreadcrumbsItemProps = {
+export type BreadcrumbsItemProps = {
   active?: boolean;
   link?: string;
   anchor?: string;
 }; 
 
-type BreadcrumbsProps = {
+export type BreadcrumbsProps = {
   items: Array<BreadcrumbsItemProps>;
 };
 
