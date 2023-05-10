@@ -3,6 +3,7 @@ import { Checkbox } from './Checkbox'
 import './index.css'
 
 type CheckboxGroupProps = {
+  id?: string;
   onChangeFn?: any;
   title?: string;
   options?: Array<any>;
@@ -31,11 +32,12 @@ export function CheckboxGroup ({ onChangeFn, title, options, unchecked = [], wra
       ? ['ALL', ...Object.keys(groupState)]
       : Object.keys(groupState).filter(x => groupState[x] === true)
     onChangeFn(currentSelected)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allState, groupState])
 
   useEffect(() => {
     Object.keys(groupState).filter(x => !groupState[x]).length > 0 ? setAllState(false) : setAllState(true)
-  }, [allState, groupState]) // eslint-disable-line
+  }, [allState, groupState])  
 
   const handleCheckboxChange = (changeEvent: { target: { name: any; }; }) => {
     const { name } = changeEvent.target

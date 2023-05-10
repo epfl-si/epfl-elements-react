@@ -1,4 +1,3 @@
-import React from 'react'
 import type { StoryObj } from "@storybook/react";
 import { Base } from "../components/Base";
 
@@ -44,8 +43,8 @@ export const WithFeedback: Story = {
   };
 
 
-export const lightFooter: Story = {}
-  lightFooter.args = {
+export const LightFooter: Story = {
+  args: {
     breadcrumbItems,
     baseTitle,
     useLightFooter: true,
@@ -54,18 +53,20 @@ export const lightFooter: Story = {}
     user,
     children: <h4>Test Application (light footer)</h4>
   }
-  
-  export const noAsideMenu: Story = {}
-  noAsideMenu.args = {
+}
+
+export const NoAsideMenu: Story = {
+  args: {
     breadcrumbItems,
     baseTitle,
     user,
     title: 'Base Component - No aside Menu',
     children: <h4>Test Application (No aside Menu)</h4>
   }
-  
-  export const noAsideMenuNoFooter: Story = {}
-  noAsideMenuNoFooter.args = {
+}
+
+  export const NoAsideMenuNoFooter: Story = {
+   args: {
     breadcrumbItems,
     showFooter: false,
     baseTitle,
@@ -73,8 +74,9 @@ export const lightFooter: Story = {}
     title: 'Base Component - No aside Menu & no footer',
     children: <h4>Test Application (No aside Menu & no footer)</h4>
   }
+}
   
-  export const containerFull: Story = {}
+  export const ContainerFull: Story = {}
   const containerFullChildren = (
     <div className='container-full'>
       <h4>Test container full</h4>
@@ -84,7 +86,7 @@ export const lightFooter: Story = {}
       </p>
     </div>
   )
-  containerFull.args = {
+  ContainerFull.args = {
     breadcrumbItems,
     baseTitle,
     user,
@@ -92,7 +94,7 @@ export const lightFooter: Story = {}
     children: containerFullChildren
   }
   
-  export const containerFullPadding: Story = {}
+  export const ContainerFullPadding: Story = {}
   const containerFullPaddingChildren = (
     <div className='container-full' style={{ padding: '1em' }}>
       <h4>Test container full</h4>
@@ -102,7 +104,7 @@ export const lightFooter: Story = {}
       </p>
     </div>
   )
-  containerFullPadding.args = {
+  ContainerFullPadding.args = {
     breadcrumbItems,
     baseTitle,
     user,
@@ -110,7 +112,7 @@ export const lightFooter: Story = {}
     children: containerFullPaddingChildren
   }
   
-  export const containerFluid: Story = {}
+  export const ContainerFluid: Story = {}
   const containerFluidChildren = (
     <div className='container-fluid'>
       <h4>Test container fluid</h4>
@@ -119,7 +121,7 @@ export const lightFooter: Story = {}
       </p>
     </div>
   )
-  containerFluid.args = {
+  ContainerFluid.args = {
     breadcrumbItems,
     baseTitle,
     user,
@@ -127,8 +129,8 @@ export const lightFooter: Story = {}
     children: containerFluidChildren
   }
   
-  export const BetaView: Story = {}
-  BetaView.args = {
+  export const BetaView: Story = {
+    args: {
     breadcrumbItems,
     baseTitle,
     feedBackEmail: 'mykompas_administrators@groupes.epfl.ch',
@@ -138,9 +140,10 @@ export const lightFooter: Story = {}
     user,
     children: <h4>Test Application</h4>
   }
+}
   
-  export const CustomAvatarLogo: Story = {}
-  CustomAvatarLogo.args = {
+  export const CustomAvatarLogo: Story = {
+    args: {
     breadcrumbItems,
     baseTitle,
     title: 'Base Component - Default',
@@ -151,9 +154,10 @@ export const lightFooter: Story = {}
     avatarLogoAltText: 'white space placeholder',
     children: <h4>Test Application</h4>
   }
+}
   
-  export const CustomMainContainerClass: Story = {}
-  CustomMainContainerClass.args = {
+  export const CustomMainContainerClass: Story = {
+    args: {
     breadcrumbItems,
     baseTitle,
     mainContainerClass: 'customClass',
@@ -165,3 +169,4 @@ export const lightFooter: Story = {}
     avatarLogoAltText: 'white space placeholder',
     children: <h4>Test Application</h4>
   }
+}

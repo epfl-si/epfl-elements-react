@@ -18,8 +18,8 @@ Default.args = {
   onClickFn: () => console.log("Collapse Button")
 }
 
-export const headerCollapseButton: Story = {}
-headerCollapseButton.args = {
+export const HeaderCollapseButton: Story = {}
+HeaderCollapseButton.args = {
   complexHeader: true,
   headerTitle: 'Lorem ipsum dolor sit amet, consectetur adipising elit',
   headerListValues: ['Lorem ipsum', 'Dolor sit amet', 'Consectetur', 'Adipsing elit'],
@@ -31,8 +31,8 @@ headerCollapseButton.args = {
   onClickFn: () => console.log("Collapse Header Button")
 }
 
-export const partialCollapseButton: Story = {}
-partialCollapseButton.args = {
+export const PartialCollapseButton: Story = {}
+PartialCollapseButton.args = {
   partialCollapse:true,
   text: [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut magna facilisis, mollis sapien vel, consectetur sem. Curabitur dignissim sem nisl, at convallis tellus mollis at. Cras accumsan dui maximus mi suscipit faucibus.',

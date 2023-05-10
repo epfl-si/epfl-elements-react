@@ -39,8 +39,8 @@ Default.args = {
   alt: "Image"
 }
 
-export const mediaSourcesWithoutMediaAndSrcSet: Story = {}
-mediaSourcesWithoutMediaAndSrcSet.args = {
+export const MediaSourcesWithoutMediaAndSrcSet: Story = {}
+MediaSourcesWithoutMediaAndSrcSet.args = {
   figCaption: "Figure Caption",
   src: "https://via.placeholder.com/380x214.jpg",
   mediaSources: [

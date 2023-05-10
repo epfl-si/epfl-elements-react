@@ -1,5 +1,4 @@
 import type { StoryObj } from "@storybook/react";
-// @ts-ignore
 import { CsfrToken } from "../components/Forms/Csfrtoken"
 
 const meta = {

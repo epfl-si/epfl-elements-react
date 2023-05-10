@@ -5,6 +5,14 @@ import { Tag } from '../Tag/index'
 import '@epfl/epfl-elements-styles/dist/css/combined.css'
 import './index.css'
 
+type CallbackProps = {
+  column: string;
+  order: string;
+  data: Array<any>;
+}
+
+type Callback = ({column, order, data}: CallbackProps) => any;
+
 type TableProps = {
   data?: Array<any>;
   columns?: Array<any>;
@@ -15,11 +23,12 @@ type TableProps = {
   showRowTotals?: boolean;
   height?: number | string;
   width?: number | string;
+  orderCallbackFn?: Callback;
 }
 
-export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagColumns, showRowTotals, width, height }: TableProps) {
-  const [cols, setCols] = useState<Array<any>>()
-  const [rows, setRows] = useState<Array<any>>()
+export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagColumns, showRowTotals, width, height, orderCallbackFn }: TableProps) {
+  const [cols, setCols] = useState<Array<string>>()
+  const [rows, setRows] = useState<Array<string>>()
   const [asc, setAsc] = useState(false)
 
   function orderByColumn (col: string) {
@@ -28,6 +37,9 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
     const sortedData = soa(data, col, direction)
     setRows(sortedData)
     setAsc(!asc)
+    if (orderCallbackFn) {
+      orderCallbackFn({column: col, order: asc ? 'ascend' : 'descend', data: rows})
+    }
   }
 
   useEffect(() => {
@@ -36,8 +48,7 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
     setAsc(true)
   }, []) // eslint-disable-line
 
-  const getColumnLabel = (col: any, i: string | number) =>
-    // @ts-ignore
+  const getColumnLabel = (col: string, i: number) =>
     columnsLabels && columnsLabels[i] ? columnsLabels[i] : col
 
   const getHyperLinkRowValue = (col: string | number, row: { [x: string]: any }) => {
@@ -50,14 +61,11 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
   }
 
   const getTagValue = (col: any, row: { [x: string]: any }) => {
-    // @ts-ignore
     const filtered = tagColumns.columns.filter((x: any) => x === col)
     if (filtered.length > 0) {
-      // @ts-ignore
       const tags = (row[filtered[0]] || '').split(tagColumns.separator)
       return <div>
-        {/* @ts-ignore */}
-        {tags.map((tag: string | undefined, i: any) => <Tag id={i} label={tag} />)}
+        {tags.map((tag: string | undefined, i: number) => <Tag id={i} label={tag} />)}
       </div>
     }
   }

@@ -1,10 +1,12 @@
 import './index.css'
 import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
+type Callback = () => void;
+
 type MetaboxProps = {
     eventTitle?: string;
     metaboxDetails?: Array<any>;
-    onClickFn?: any;
+    onClickFn?: Callback;
     labelButton?: string;
     organizer?: Array<any>;
 }
@@ -34,23 +36,17 @@ export function Metabox ({
             </div>
         )
 
-    const getButtonAction = (): any => 
-
-        { 
-            /*  
-                Add a button and onClick option
-            */
-        }
+    // Add a button and onClick option
+    const getButtonAction = () => 
         <div className="mt-auto align-self-end">
-            <button className="btn btn-primary" onClick={() => onClickFn()}>{labelButton}</button>
+            <button className="btn btn-primary" onClick={() => onClickFn && onClickFn()}>{labelButton}</button>
         </div>
-    
+
     const getMetaboxDetails = () => 
 
         //Get Content of Metabox Table
         <>
             <div className="border col-md-5 bg-gray-100">
-                {/* @ts-ignore */}
                 <div className="d-flex flex-column py-3 bg-gray-20">
                     <h4>{eventTitle}</h4>
                     <table className="table h-100 metabox">

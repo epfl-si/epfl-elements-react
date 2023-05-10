@@ -4,16 +4,29 @@ import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
 import './index.css'
 
-
-
-type CarouselProps = {
-  carouselItems: Array<any>
+type CarouselItemProps = {
+  id?: number;
+  width?: number;
+  height?: number;
+  src?: string;
+  srcset?: string;
+  title?: string;
+  link?: string;
+  content?: string;
+  active?: boolean;
 }
 
+type CarouselProps = {
+  carouselItems: Array<CarouselItemProps>
+}
+
+interface GenericObjectProps {
+  [key: string]: any;
+}
 
 export function Carousel ({ carouselItems }: CarouselProps) {
-  const [activeId, setActiveId] = useState(carouselItems.filter((item: { active: any }) => item.active)[0].id)
-  const positionIds = carouselItems.reduce((obj: { [x: string]: any }, item: { id: string | number }, i: any) => {
+  const [activeId, setActiveId] = useState(carouselItems.filter((item) => item.active)[0].id)
+  const positionIds = carouselItems.reduce((obj: GenericObjectProps, item, i) => {
     obj[item.id] = i
     return obj
   }, {})
@@ -70,7 +83,7 @@ export function Carousel ({ carouselItems }: CarouselProps) {
   </div>
 
   const getCarouselIndicators = () => <ol className="carousel-indicators">
-    {carouselItems && carouselItems.map((item: { id: any }, i: any) => 
+    {carouselItems && carouselItems.map((item: any, i: any) => 
       <li 
         key={`carInd${i}`}
         data-target="#carouselNews"

@@ -164,8 +164,8 @@ HyperlinkColumnsLabelsWithOnClickAlert.args = {
   ]
 }
 
-export const tagsetColumns: Story = {}
-tagsetColumns.args = {
+export const TagsetColumns: Story = {}
+TagsetColumns.args = {
   columnsLabels: ['EPFL Link', 'EPFL Anchor', 'Tagset1', 'Tagset2'],
   tagColumns: { columns: ['tags1', 'tags2'], separator: ',' },
   data: [
@@ -178,8 +178,8 @@ tagsetColumns.args = {
   ]
 }
 
-export const tagsetColumnsAndHyperLinks: Story = {}
-tagsetColumnsAndHyperLinks.args = {
+export const TagsetColumnsAndHyperLinks: Story = {}
+TagsetColumnsAndHyperLinks.args = {
   columnsLabels: ['EPFL Link', 'EPFL Anchor', 'Tagset1', 'Tagset2'],
   tagColumns: { columns: ['tags1', 'tags2'], separator: ',' },
   hyperLinks: [{ column: 'anchor', link: 'link' }],
@@ -192,3 +192,19 @@ tagsetColumnsAndHyperLinks.args = {
     { link: 'https://www.epfl.ch/campus/', anchor: 'Campus' }
   ]
 }
+
+export const OrderCallBack: Story = {}
+OrderCallBack.args = {
+  showRowTotals: true,
+  columnsLabels: ['EPFL Link', 'EPFL Anchor'],
+  orderCallbackFn: (obj) => window.alert(JSON.stringify(obj)),
+  data: [
+    { link: 'https://www.epfl.ch/about/', anchor: 'About' },
+    { link: 'https://www.epfl.ch/education', anchor: 'Education' },
+    { link: 'https://www.epfl.ch/research', anchor: 'Research' },
+    { link: 'https://www.epfl.ch/innovation/', anchor: 'Innovation' },
+    { link: 'https://www.epfl.ch/schools/', anchor: 'Schools' },
+    { link: 'https://www.epfl.ch/campus/', anchor: 'Campus' }
+  ]
+}
+

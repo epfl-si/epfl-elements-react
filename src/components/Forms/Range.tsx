@@ -21,8 +21,7 @@ export function Range ({
 }: RangeProps) {
 
     //Function to calculate style range slider (red part and grey part)
-    // @ts-ignore
-    const calculateRangeStyle = (value: number | undefined, minInput: number | undefined, maxInput: number | undefined) => `${String(value - minInput) * 100 / (maxInput - minInput)}% 100%`
+    const calculateRangeStyle = (value: number, minInput: number, maxInput: number) => `${(value - minInput) * 100 / (maxInput - minInput)}% 100%`
 
     //State for showing dynamic value 
     const [currentValue, setCurrentValue] = useState(defaultValue)
@@ -31,16 +30,16 @@ export function Range ({
     const [rangeStyle, setRangeStyle] = useState(calculateRangeStyle(defaultValue, minInput, maxInput))
 
     //Function to get the input value
-    const onInputValue = (event: { target: { value: any; max: any; min: any; }; }) => {
+    const onInputValue = (event: React.ChangeEvent<HTMLInputElement>) => {
         
         //Get input value
-        const valueOnInput = event.target.value;
+        const valueOnInput = Number(event.target.value);
 
         //Get max range value
-        const maxOnInput = event.target.max;
+        const maxOnInput = Number(event.target.max);
 
         //Get min range value
-        const minOnInput = event.target.min;
+        const minOnInput = Number(event.target.min);
 
         //Transform dynamically the red part and the white part of the range slider 
         const currentStyleValue = calculateRangeStyle(valueOnInput, minOnInput, maxOnInput)
@@ -53,15 +52,12 @@ export function Range ({
     //Range slider function
     const rangeSlider = () =>   
         <div className="form-group custom-control">
-            {/* @ts-ignore */}
-            <label for="rangeInput">{label}</label>
-            {/* @ts-ignore */}
+            <label htmlFor="rangeInput">{label}</label>
             <input type="range" name="range" className="form-control-range custom-range" min={minInput} max={maxInput} value={currentValue} step={setInput} style={{backgroundSize:rangeStyle}} id="rangeInput" onInput={onInputValue}/>
             <span className="output">
                 {labelValue}
                 <strong>
-                    {/* @ts-ignore */}
-                    <output for="rangeInput" id="rangeOutput" aria-hidden="true">{currentValue}</output>
+                    <output htmlFor="rangeInput" id="rangeOutput" aria-hidden="true">{currentValue}</output>
                 </strong>
             </span>
         </div>

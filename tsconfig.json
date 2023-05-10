@@ -3,7 +3,10 @@
     "target": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
+    "ignoreDeprecations": "5.0",
     "skipLibCheck": true,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",

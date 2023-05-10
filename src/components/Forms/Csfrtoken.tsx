@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-// @ts-ignore
 import Cookies from 'js-cookie'
 
 type CsfrToken = {
@@ -13,6 +12,7 @@ export function CsfrToken ({ tokenName = 'csrftoken', inputName = 'csrfmiddlewar
   useEffect(() => {
     const cookietoken = Cookies.get(tokenName)
     setToken(cookietoken)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getTokenInput = () =>

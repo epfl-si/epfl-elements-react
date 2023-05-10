@@ -37,7 +37,7 @@ export function Tabset ({ tabs }: TabsetProps) {
 
   const getTabHeader = (tab: any) =>
     <li key={`${tab.id}-tab-li`} className='nav-item'>
-      <a // eslint-disable-line
+      <a  
         className={getHeaderClass(tab)}
         id={`${tab.id}-tab`}
         key={`${tab.id}-tab`}

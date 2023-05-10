@@ -2,18 +2,29 @@ import { Loader } from '../Loader'
 
 import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
-type AsidemenuProps = {
+export type AsindeMenuSingleItemProps = {
+  link?: string;
+  anchor?: string;
+}
+
+export type AsidemenuItemsProps = {
+  heading?: string;
+  menus?: Array<AsindeMenuSingleItemProps>;
+  submenus?: Array<AsidemenuItemsProps>;
+}
+
+export type AsidemenuProps = {
   isHome?: boolean;
   isLoading?: boolean;
-  menuItems?: Array<any>;
-  homeLink: string;
+  menuItems?: Array<AsidemenuItemsProps>;
+  homeLink?: string;
   homeAnchor?: string;
   feedBackEmail?: string;
 }
 
 
 export function Asidemenu ({ isHome, isLoading, menuItems, homeAnchor, homeLink, feedBackEmail }: AsidemenuProps) {
-  const getMenuList = (menus: any[]) =>
+  const getMenuList = (menus: Array<AsindeMenuSingleItemProps>) =>
     menus.map(menu =>
       <li className={menu.link === document.location.pathname ? 'active' : undefined} key={menu.link}>
         <a href={menu.link}>{menu.anchor}</a>
@@ -22,11 +33,11 @@ export function Asidemenu ({ isHome, isLoading, menuItems, homeAnchor, homeLink,
 
   function getMenuItems () {
     return (menuItems || []).map(item =>
-      <li key={item.heading}><a>{item.heading}</a> {/* eslint-disable-line */}
+      <li key={item.heading}><a>{item.heading}</a> { }
         <ul>
           {item.menus && getMenuList(item.menus)}
-          {item.submenus && item.submenus.map((submenu: any) =>
-            <li key={submenu.heading}><a>{submenu.heading}</a> {/* eslint-disable-line */}
+          {item.submenus && item.submenus.map((submenu: AsidemenuItemsProps) =>
+            <li key={submenu.heading}><a>{submenu.heading}</a> { }
               <ul>
                 {getMenuList(submenu.menus)}
               </ul>
@@ -59,4 +70,3 @@ export function Asidemenu ({ isHome, isLoading, menuItems, homeAnchor, homeLink,
     </aside>
   )
 }
-

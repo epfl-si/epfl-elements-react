@@ -87,8 +87,8 @@ Default.args = {
   ] 
 }
 
-export const menuWithoutCurrentItem: Story = {}
-menuWithoutCurrentItem.args = {
+export const MenuWithoutCurrentItem: Story = {}
+MenuWithoutCurrentItem.args = {
   mainMenuStructure : [
       {
           heading:'À propos',
@@ -163,8 +163,8 @@ menuWithoutCurrentItem.args = {
   ] 
 }
 
-export const menuWithTwoCurrentItems: Story = {}
-menuWithTwoCurrentItems.args = {
+export const MenuWithTwoCurrentItems: Story = {}
+MenuWithTwoCurrentItems.args = {
   mainMenuStructure : [
       {
           heading:'À propos',

@@ -1,10 +1,16 @@
 import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
-type TopmenuProps = {
-  menuItems?: Array<any>
+export interface TopmenuInnerProps {
+ active?: boolean;
+ link?: string;
+ anchor?: string;
 }
 
-const getMenuItem = (item: any, i: number) =>
+export type TopmenuProps = {
+  menuItems?: Array<TopmenuInnerProps>
+}
+
+const getMenuItem = (item: TopmenuInnerProps, i: number) =>
   <li
     key={`li-${i}`}
     id={`menu-item--${i}`}
@@ -20,4 +26,3 @@ export function Topmenu ({ menuItems }: TopmenuProps) {
     </ul>
   )
 }
-

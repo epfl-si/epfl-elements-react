@@ -4,8 +4,10 @@ import { Tag } from '../Tag'
 import '@epfl/epfl-elements-styles/dist/css/combined.css'
 import './styles.css'
 
-type TagsetProps = {
-  tags?: Array<any>;
+import { TagProps } from '../Tag'
+
+export type TagsetProps = {
+  tags?: Array<TagProps>;
   callbackFn?: any;
   addLabel?: string;
   className?: string;
@@ -41,7 +43,6 @@ export function Tagset ({
   function handleChange (event: any) {
     if (event.key === 'Enter') {
       handleUpdate(event.target.value)
-      // @ts-ignore
       inputRef.current.value = ''
     }
   }
@@ -76,7 +77,7 @@ export function Tagset ({
     placeholder={addLabel}
     onKeyDown={handleChange} />
 
-  const getTag = (tag: { label: string | undefined }, i: Key | null | undefined) => {
+  const getTag = (tag: TagProps, i: Key | null | undefined) => {
     if (showInColumns) {
       return <div key={`span-${i}`}>
     {disableEdit

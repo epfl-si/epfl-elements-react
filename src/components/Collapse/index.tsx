@@ -9,7 +9,6 @@ type CollapseProps = {
     text?: Array<any>;
     textTitles?: Array<any>;
     label?: string;
-    onClickFn?: any
 }
 
 export function Collapse ({
@@ -68,8 +67,7 @@ export function Collapse ({
         <>
             <button
                 className={classNameFn}
-                // @ts-ignore
-                label={label}
+                data-label={label}
                 data-target={`#${idCollapse}`}
                 data-toogle="collapse"
                 aria-controls={idCollapse}

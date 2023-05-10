@@ -1,8 +1,13 @@
 import { useState } from 'react'
 
+interface DropdownInnerProps {
+  option: string;
+  active?: boolean 
+}
+
 type DropdownProps = {
   label?: string;
-  options?: Array<any>;
+  options?: Array<DropdownInnerProps>;
   onChangeFn?: any
 }
 
@@ -33,7 +38,7 @@ export function Dropdown ({ label, options, onChangeFn }: DropdownProps) {
         style={{ display: showDropdown ? 'block' : 'none' }}
       >
         {(options || []).map((item, i) =>
-          <a // eslint-disable-line
+          <a  
             key={`option-${i}`}
             className='dropdown-item'
             style={{

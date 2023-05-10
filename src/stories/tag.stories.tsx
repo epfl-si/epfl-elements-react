@@ -1,6 +1,8 @@
 import type { StoryObj } from "@storybook/react";
 import { Tag } from "../components/Tag"
 
+import { TagProps } from "../components/Tag";
+
 const meta = {
   title: "Atoms/Tag",
   component: Tag,
@@ -63,5 +65,5 @@ export const RemovableWithCallback : Story = {}
 RemovableWithCallback.args = {
   label: 'Wikipedia',
   removable: true,
-  removeCallback: (e: any) => window.alert(`${e} tag removed`)
+  removeCallback: (e: TagProps) => window.alert(`${e} tag removed`)
 }
