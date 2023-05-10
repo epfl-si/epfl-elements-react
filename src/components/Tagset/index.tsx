@@ -43,7 +43,6 @@ export function Tagset ({
   function handleChange (event: any) {
     if (event.key === 'Enter') {
       handleUpdate(event.target.value)
-      // @ts-ignore
       inputRef.current.value = ''
     }
   }

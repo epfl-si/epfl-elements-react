@@ -6,6 +6,7 @@ type Callback = (label: string) => void;
 
 
 export type TagProps = {
+  id?: number;
   label?: string;
   href?: string;
   className?: string;
@@ -13,7 +14,7 @@ export type TagProps = {
   removeCallback?: Callback
 }
 
-export function Tag ({ label, href, className, removable, removeCallback }: TagProps) {
+export function Tag ({ id, label, href, className, removable, removeCallback }: TagProps) {
 
   const classNameToUse = className 
     ? `tag ${className}`
@@ -26,7 +27,7 @@ export function Tag ({ label, href, className, removable, removeCallback }: TagP
   }
 
   const getTag = () =>
-    <a href={href || 'javascript:void(0)'} className={classNameToUse}>{label}
+    <a id={String(id)} href={href || 'javascript:void(0)'} className={classNameToUse}>{label}
     {removable && <a href="javascript:void(0)" onClick={() => removeTag()} className="remove" tabIndex={-1} title="Remove">×</a>}
     </a>
 

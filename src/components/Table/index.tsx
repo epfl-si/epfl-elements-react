@@ -48,8 +48,7 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
     setAsc(true)
   }, []) // eslint-disable-line
 
-  const getColumnLabel = (col: any, i: string | number) =>
-    // @ts-ignore
+  const getColumnLabel = (col: string, i: number) =>
     columnsLabels && columnsLabels[i] ? columnsLabels[i] : col
 
   const getHyperLinkRowValue = (col: string | number, row: { [x: string]: any }) => {
@@ -62,14 +61,11 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
   }
 
   const getTagValue = (col: any, row: { [x: string]: any }) => {
-    // @ts-ignore
     const filtered = tagColumns.columns.filter((x: any) => x === col)
     if (filtered.length > 0) {
-      // @ts-ignore
       const tags = (row[filtered[0]] || '').split(tagColumns.separator)
       return <div>
-        {/* @ts-ignore */}
-        {tags.map((tag: string | undefined, i: any) => <Tag id={i} label={tag} />)}
+        {tags.map((tag: string | undefined, i: number) => <Tag id={i} label={tag} />)}
       </div>
     }
   }

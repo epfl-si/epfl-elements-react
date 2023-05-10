@@ -96,10 +96,9 @@ export function MainMenu ({
                <div className="overlay"></div>
                     <nav className="nav-main" id="main-navigation" role="navigation">
                         <div className="nav-wrapper">
-                            {/* @ts-ignore */}
                             <div className={`nav-container ${navContainerMenu}`} onClick={clickHandler} >
                                 <ul className="nav-menu">
-                                    {  
+                                    { 
                                         //Condition to display the menu with parent or without parent if parent exist
                                         parent ? renderWithParent(parent, ancestorOrParentClass, allChildren) : renderWithoutParent(allChildren)
                                     }

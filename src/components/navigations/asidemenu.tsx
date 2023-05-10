@@ -24,7 +24,7 @@ export type AsidemenuProps = {
 
 
 export function Asidemenu ({ isHome, isLoading, menuItems, homeAnchor, homeLink, feedBackEmail }: AsidemenuProps) {
-  const getMenuList = (menus: any[]) =>
+  const getMenuList = (menus: Array<AsindeMenuSingleItemProps>) =>
     menus.map(menu =>
       <li className={menu.link === document.location.pathname ? 'active' : undefined} key={menu.link}>
         <a href={menu.link}>{menu.anchor}</a>
@@ -36,7 +36,7 @@ export function Asidemenu ({ isHome, isLoading, menuItems, homeAnchor, homeLink,
       <li key={item.heading}><a>{item.heading}</a> { }
         <ul>
           {item.menus && getMenuList(item.menus)}
-          {item.submenus && item.submenus.map((submenu: any) =>
+          {item.submenus && item.submenus.map((submenu: AsidemenuItemsProps) =>
             <li key={submenu.heading}><a>{submenu.heading}</a> { }
               <ul>
                 {getMenuList(submenu.menus)}
@@ -70,4 +70,3 @@ export function Asidemenu ({ isHome, isLoading, menuItems, homeAnchor, homeLink,
     </aside>
   )
 }
-

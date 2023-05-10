@@ -68,8 +68,7 @@ export function Collapse ({
         <>
             <button
                 className={classNameFn}
-                // @ts-ignore
-                label={label}
+                data-label={label}
                 data-target={`#${idCollapse}`}
                 data-toogle="collapse"
                 aria-controls={idCollapse}

@@ -47,7 +47,6 @@ export function Metabox ({
         //Get Content of Metabox Table
         <>
             <div className="border col-md-5 bg-gray-100">
-                {/* @ts-ignore */}
                 <div className="d-flex flex-column py-3 bg-gray-20">
                     <h4>{eventTitle}</h4>
                     <table className="table h-100 metabox">
