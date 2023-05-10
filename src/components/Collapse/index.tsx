@@ -9,7 +9,6 @@ type CollapseProps = {
     text?: Array<any>;
     textTitles?: Array<any>;
     label?: string;
-    onClickFn?: any
 }
 
 export function Collapse ({

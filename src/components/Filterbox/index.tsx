@@ -3,12 +3,14 @@ import { useState, useEffect } from 'react'
 import { Input } from '../Forms/Input'
 import { CheckboxGroup } from '../Forms/CheckboxGroup'
 
+type Callback = (data: Array<any>) => any;
+
 type FilterBoxProps = {
   data?: Array<any>;
-  updateFn?: any;
-  filterFields?: Array<any>;
-  filterLabels?: Array<any>;
-  disabledOptions?: any;
+  updateFn?: Callback;
+  filterFields?: Array<string>;
+  filterLabels?: Array<string>;
+  disabledOptions?: object;
   searchbox?: any
 }
 

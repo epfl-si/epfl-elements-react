@@ -1,8 +1,10 @@
 import './index.css'
 
+type Callback = (e: React.ChangeEvent<HTMLInputElement>) => void;
+
 type CheckboxProps = {
   label?: string;
-  onCheckboxChange?: any;
+  onCheckboxChange?: Callback;
   isSelected?: boolean
 }
 

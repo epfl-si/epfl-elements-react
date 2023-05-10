@@ -3,7 +3,6 @@ import { FilterBox } from "../components/Filterbox"
 
 import countries from './testData.json'
 
-type Callback = () => void;
 
 const meta = {
   title: "Molecules/FilterBox",
@@ -18,7 +17,7 @@ export const Default: Story = {}
 Default.args = {
   data: countries,
   filterFields: ['continent', 'iso', 'currencycode'],
-  updateFn: (x: Callback) => console.log(x) 
+  updateFn: (x) => console.log(x) 
 }
 
 export const CustomLabels: Story = {}
@@ -35,7 +34,7 @@ DisabledOptions.args = {
   filterFields: ['continent', 'iso', 'currencycode'],
   filterLabels: ['Continent', 'ISO2 Code', 'Currency'],
   disabledOptions: {'continent': ['NA', 'SA']},
-  updateFn: (x: Callback) => console.log(x) 
+  updateFn: (x) => console.log(x) 
 }
 
 export const SearchBox: Story = {}
@@ -43,12 +42,12 @@ SearchBox.args = {
   data: countries,
   filterFields: ['continent', 'iso', 'currencycode'],
   searchbox: {label: 'Search', fields: ['continent', 'currencycode']},
-  updateFn: (x: Callback) => console.log(x) 
+  updateFn: (x) => console.log(x) 
 }
 
 export const OnlySearchBox: Story = {}
 OnlySearchBox.args = {
   data: countries,
   searchbox: {label: 'Search', fields: ['continent', 'currencycode']},
-  updateFn: (x: Callback) => console.log(x) 
+  updateFn: (x) => console.log(x) 
 }
