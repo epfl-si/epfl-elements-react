@@ -3,6 +3,7 @@ import { Checkbox } from './Checkbox'
 import './index.css'
 
 type CheckboxGroupProps = {
+  id?: string;
   onChangeFn?: any;
   title?: string;
   options?: Array<any>;
