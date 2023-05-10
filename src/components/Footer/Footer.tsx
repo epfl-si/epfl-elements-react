@@ -52,7 +52,7 @@ const getSchools = (schools: any[]) =>
     </div>
   </div>
 
-export const getServicesInfo = () =>
+const getServicesInfo = () =>
   <div className='footer-group footer-buttons'>
     <p className='footer-title footer-title-no-underline'>Practical</p>
     <a href='https://www.epfl.ch/campus/services/en/homepage/' className='btn btn-secondary btn-sm'>Services and resources</a>

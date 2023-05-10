@@ -32,6 +32,7 @@ export function CheckboxGroup ({ onChangeFn, title, options, unchecked = [], wra
       ? ['ALL', ...Object.keys(groupState)]
       : Object.keys(groupState).filter(x => groupState[x] === true)
     onChangeFn(currentSelected)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allState, groupState])
 
   useEffect(() => {

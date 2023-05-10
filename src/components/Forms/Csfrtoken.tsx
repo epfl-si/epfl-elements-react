@@ -12,6 +12,7 @@ export function CsfrToken ({ tokenName = 'csrftoken', inputName = 'csrfmiddlewar
   useEffect(() => {
     const cookietoken = Cookies.get(tokenName)
     setToken(cookietoken)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const getTokenInput = () =>

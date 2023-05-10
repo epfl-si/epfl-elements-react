@@ -83,7 +83,7 @@ export function MainMenu ({
     /*
         Variables to get the menu data to display it
         If found doesn't exist (current item doesn't exist) so the first level will be displayed to the user
-        If found exist the menu is displayed normaly
+        If found exist the menu is displayed normally
     */
     const found = changeMenu
         ? changeMenu
@@ -100,7 +100,8 @@ export function MainMenu ({
             setNavContainerMenu('current-menu-parent')
             setAncestorOrParentClass('')
         }
-    })        
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])        
 
     //Put menu together
     const getMainMenu = () => {

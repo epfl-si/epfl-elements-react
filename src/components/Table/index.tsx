@@ -11,7 +11,7 @@ type CallbackProps = {
   data: Array<any>;
 }
 
-type Callback = ({}: CallbackProps) => void;
+type Callback = ({column, order, data}: CallbackProps) => any;
 
 type TableProps = {
   data?: Array<any>;
