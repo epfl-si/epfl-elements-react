@@ -12,7 +12,6 @@ type FilterBoxProps = {
   searchbox?: any
 }
 
-
 // Reusih lodash filter
 function filter(array: any, predicate: any) {
   let index = -1
@@ -39,28 +38,24 @@ export function FilterBox ({
   updateFn
 }: FilterBoxProps) {
   const [boxfilters, setboxFilters] = useState({})
-  const [filteredCopy, setFilteredCopy] = useState()
+  const [filteredCopy, setFilteredCopy] = useState<Array<any> | null>(null)
 
   function setLocalData () {
     if (Object.keys(boxfilters).length === 0) {
       return
     }
     const filters = filter(filterFields,
-      // @ts-ignore
-      x => boxfilters[x])
+      (x: string) => boxfilters[x])
       .map(field =>
         (        val: { [x: string]: any; }) => {
-          // @ts-ignore
           return boxfilters[`${field}`].includes('ALL') || boxfilters[`${field}`].includes(val[`${field}`])
         }
       )
-    // @ts-ignore
-    const filteredData = filter(data, item => {
+    const filteredData = filter(data, (item: { [x: string]: any; }) => {
       const testResults = filters.map(fn => fn(item))
       return !testResults.includes(false)
     })
     updateFn(filteredData)
-    // @ts-ignore
     setFilteredCopy(filteredData)
   }
 
@@ -72,8 +67,7 @@ export function FilterBox ({
   function searchLocal (value: string) {
     const dataToSearch = filteredCopy || data
     const lowerValue = value.toLowerCase()
-    // @ts-ignore
-    const filteredData = filter(dataToSearch, item => filterCheck(searchbox.fields, item, lowerValue))
+    const filteredData = filter(dataToSearch, (item: { [x: string]: any; }) => filterCheck(searchbox.fields, item, lowerValue))
     updateFn(filteredData)
   }
 
@@ -90,7 +84,6 @@ export function FilterBox ({
       {filterFields.map((field, i) =>
         <CheckboxGroup
           key={field}
-            // @ts-ignore
           id={field}
           title={filterLabels[i] || field}
           onChangeFn={(vals: any) => setboxFilters({
@@ -98,7 +91,6 @@ export function FilterBox ({
             [field]: vals
           })}
           options={getFilterOptions(field)}
-          // @ts-ignore
           unchecked={disabledOptions[field]}
         />
       )}

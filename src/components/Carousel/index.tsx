@@ -20,16 +20,18 @@ type CarouselProps = {
   carouselItems: Array<CarouselItemProps>
 }
 
+interface GenericObjectProps {
+  [key: string]: any;
+}
+
 export function Carousel ({ carouselItems }: CarouselProps) {
   const [activeId, setActiveId] = useState(carouselItems.filter((item) => item.active)[0].id)
-  const positionIds = carouselItems.reduce((obj, item, i) => {
-    // @ts-ignore
+  const positionIds = carouselItems.reduce((obj: GenericObjectProps, item, i) => {
     obj[item.id] = i
     return obj
   }, {})
 
   function switchNextItem () {
-    // @ts-ignore
     const currentPosition = positionIds[activeId]
     const nextPosition = currentPosition + 1
     const nextId = (carouselItems[nextPosition] || carouselItems[0]).id
@@ -37,7 +39,6 @@ export function Carousel ({ carouselItems }: CarouselProps) {
   }
 
   function switchPreviousItem () {
-    // @ts-ignore
     const currentPosition = positionIds[activeId]
     const previousPosition = currentPosition - 1
     const previousId = (carouselItems[previousPosition] || carouselItems[carouselItems.length - 1]).id

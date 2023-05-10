@@ -1,12 +1,11 @@
-import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal, Key } from 'react'
 import arrowLeft from './arrow-left.svg'
 import chevronRight from './chevron-right.svg'
+import { MenuItemProps } from './mainMenu'
 
 //Put arrow to go forward in menu  
-const childParametersForward = (href: string | undefined, heading: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | null | undefined) =>
+const childParametersForward = (href: string, heading: string) =>
     <>
         <a href={href} className="forward">{heading}</a>
-        {/* @ts-ignore */}
         <a role="button" aria-hidden="true" id={heading} className={`forward nav-arrow`}>
             <div className="icon-container">
                 <img className="icon" aria-hidden="true" src={chevronRight}></img>
@@ -14,9 +13,8 @@ const childParametersForward = (href: string | undefined, heading: string | numb
         </a>
     </>
 
-
 //Put arrow to go backwards in menu
-const childParametersBackwards= (href: string | undefined, heading: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined) => 
+const childParametersBackwards= (href: string, heading: string) => 
     <>
         <a href={href} className="back">
             <img className="icon" aria-hidden="true" src={arrowLeft}></img>
@@ -25,16 +23,19 @@ const childParametersBackwards= (href: string | undefined, heading: string | num
     </>
 
 //Entries that don't have other levels
-const itemMenuWithoutChildren = (href: string | undefined, heading: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | ReactFragment | ReactPortal | null | undefined) => 
+const itemMenuWithoutChildren = (href: string, heading: string) => 
     <>
         <a href={href}>{heading}</a>
     </>
 
 //Get currentItem bool to highlight the entry and begin the menu with the current item
-// @ts-ignore
-export const findCurrentItem = (level: any, parent: any, parentMenus: any) => {
+export const findCurrentItem = (
+    level: Array<MenuItemProps>, 
+    parent: MenuItemProps | undefined, 
+    parentMenus: Array<MenuItemProps> | undefined
+): any => {
 
-    const found = level.filter((x: { currentItem: boolean }) => x.currentItem === true)
+    const found = level.filter(x => x.currentItem === true)
 
     if(found.length > 0) {
         return {found: found[0], items: level, parent, parentMenus}
@@ -56,10 +57,16 @@ export const findCurrentItem = (level: any, parent: any, parentMenus: any) => {
 }
 
 //Find menu entries when click in menu
-// @ts-ignore
-export const findMenuDisplay = (forward: any, getValueClassName: any, labelClassName: any, level: any, parent: any, parentMenus: any) =>{
+export const findMenuDisplay = (
+    forward: boolean, 
+    backwardsClassName: string, 
+    labelClassName: string, 
+    level: Array<MenuItemProps>, 
+    parent: MenuItemProps | undefined, 
+    parentMenus: Array<MenuItemProps> | undefined
+): any => {
 
-    const found = (level || []).filter((x: { heading: any }) => x.heading === labelClassName)
+    const found = level.filter(x => x.heading === labelClassName)
 
     //get data of menu if user goes forward in the menu
     if(forward && found.length > 0) {
@@ -75,11 +82,11 @@ export const findMenuDisplay = (forward: any, getValueClassName: any, labelClass
     // If not iterate over each menu item and find if it's the next level.
     let foundDeep
    
-    for (const item of (level || [])) {
+    for (const item of level) {
         const {menus, link, heading} = item
 
         if(menus) {
-            foundDeep = findMenuDisplay(forward, getValueClassName, labelClassName, menus, {heading, link, menus}, level)
+            foundDeep = findMenuDisplay(forward, backwardsClassName, labelClassName, menus, {heading, link, menus}, level)
             if(foundDeep) {
                 return foundDeep
             }    
@@ -88,7 +95,7 @@ export const findMenuDisplay = (forward: any, getValueClassName: any, labelClass
 }
 
 //Render the menu if there are menus
-export const renderWithParentWithMenus = (values: { currentItem: any; link: any; heading: any }, i: Key | null | undefined) =>{
+export const renderWithParentWithMenus = (values: MenuItemProps, i: number) =>{
     return (
         values.currentItem
         ? 
@@ -99,7 +106,7 @@ export const renderWithParentWithMenus = (values: { currentItem: any; link: any;
 } 
 
 //Render the menu if there aren't menus
-export const renderWithParentWithoutMenus = (values: { currentItem: any; link: any; heading: any }, i: Key | null | undefined) =>{
+export const renderWithParentWithoutMenus = (values: MenuItemProps, i: number) =>{
     return (
         values.currentItem
         ?
@@ -110,10 +117,14 @@ export const renderWithParentWithoutMenus = (values: { currentItem: any; link: a
 } 
 
 //Render the menu if parent exist
-export const renderWithParent = (parent: { link: any; heading: any }, isParent: string, allChildren: any[]) => {
+export const renderWithParent = (
+    parent: MenuItemProps, 
+    ancestorOrParentClass: string,
+    allChildren: Array<MenuItemProps>
+) => {
     return (
         //Parent Menu
-        <li className={`${isParent} menu-has-item-children`}>{childParametersForward(parent.link, parent.heading)}
+        <li className={`${ancestorOrParentClass} menu-has-item-children`}>{childParametersForward(parent.link, parent.heading)}
             <ul>
                 {
                     //Nav back
@@ -124,8 +135,7 @@ export const renderWithParent = (parent: { link: any; heading: any }, isParent: 
                         If children have menus, add property to class
                         Same if currentItem is true
                     */
-                    allChildren.map((values: { menus: any }, i: any) => 
-                        // @ts-ignore
+                    allChildren.map((values, i) => 
                         values.menus ? renderWithParentWithMenus(values, i) : renderWithParentWithoutMenus(values, i)
                     )
                 }
@@ -135,9 +145,9 @@ export const renderWithParent = (parent: { link: any; heading: any }, isParent: 
 }
 
 //Render the menu if the parent doesn't exist (first level menu)
-export const renderWithoutParent = (allChildren: any) => {
+export const renderWithoutParent = (allChildren: Array<MenuItemProps>) => {
     return (
-        allChildren.map((values: { menus: any; link: any; heading: any }, i: Key | null | undefined) =>
+        allChildren.map((values, i) =>
         values.menus 
             ?
                 <li key={i} className={`menu-item-has-children`}>{childParametersForward(values.link, values.heading)}</li>
@@ -146,5 +156,3 @@ export const renderWithoutParent = (allChildren: any) => {
         ) 
     )
 }
-
-

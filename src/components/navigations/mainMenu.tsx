@@ -1,7 +1,14 @@
 import { useState, useEffect } from 'react'
 
+export type MenuItemProps = {
+    heading: string;
+    link: string;
+    currentItem?: boolean;
+    menus?: Array<MenuItemProps>; 
+}
+
 type MainMenuProps = {
-    mainMenuStructure?: Array<any>
+    mainMenuStructure?: Array<MenuItemProps>
 }
 
 // Import helpers functions.
@@ -33,16 +40,19 @@ export function MainMenu ({
         const forward = event.target.offsetParent.className.includes("forward")
 
         //Get value of class when user move backwards
-        const getValueClassName = event.target.className.includes("icon") || event.target.className.includes("icon-container") ? event.target.offsetParent.id : event.target.className 
+        const backwardsClassName = 
+            event.target.className.includes("icon") || 
+            event.target.className.includes("icon-container") ? 
+                event.target.offsetParent.id : event.target.className 
 
         //Condition to get label of class if the user move forwards or backwards
         const labelClassName = event.target.textContent ? event.target.textContent : event.target.offsetParent.id
 
         //Call function to get menu data to display it
-        const foundMenuDisplay = findMenuDisplay(forward, getValueClassName, labelClassName, mainMenuStructure, undefined, undefined)
+        const foundMenuDisplay = findMenuDisplay(forward, backwardsClassName, labelClassName, mainMenuStructure, undefined, undefined)
 
         //Change menu if user goes back in menu
-        if(getValueClassName === "back") {
+        if(backwardsClassName === "back") {
 
             //Change state to change display menu
             setChangeMenu(foundMenuDisplay)
@@ -75,9 +85,13 @@ export function MainMenu ({
         If found doesn't exist (current item doesn't exist) so the first level will be displayed to the user
         If found exist the menu is displayed normaly
     */
-    const found = changeMenu ? changeMenu : findCurrentItem(mainMenuStructure, undefined, undefined)
-    const allChildren = found ? found.items.map(({heading, link, currentItem, menus}: any) => ({heading, link, currentItem, menus})) : (mainMenuStructure || []).map(values => values)
-    const parent = found ? found.parent : ""
+    const found = changeMenu
+        ? changeMenu
+        : findCurrentItem(mainMenuStructure, undefined, undefined)
+    const allChildren = found
+        ? found.items.map(({heading, link, currentItem, menus}: any) => ({heading, link, currentItem, menus}))
+        : (mainMenuStructure || []).map(values => values);
+    const parent = found ? found.parent : '';
 
 
     //Change state if current item doesn't exist (found)
@@ -100,7 +114,9 @@ export function MainMenu ({
                                 <ul className="nav-menu">
                                     { 
                                         //Condition to display the menu with parent or without parent if parent exist
-                                        parent ? renderWithParent(parent, ancestorOrParentClass, allChildren) : renderWithoutParent(allChildren)
+                                        parent 
+                                            ? renderWithParent(parent, ancestorOrParentClass, allChildren)
+                                            : renderWithoutParent(allChildren)
                                     }
                                 </ul>
                             </div>
