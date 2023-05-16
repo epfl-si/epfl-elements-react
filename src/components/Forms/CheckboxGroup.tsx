@@ -6,13 +6,14 @@ type CheckboxGroupProps = {
   id?: string;
   onChangeFn?: any;
   title?: string;
-  options?: Array<any>;
+  options?: Array<string>;
+  labels?: Array<string>;
   unchecked?:  Array<any>;
   wrapperClass?: string;
   containerClass?: string
 }
 
-export function CheckboxGroup ({ onChangeFn, title, options, unchecked = [], wrapperClass, containerClass }: CheckboxGroupProps) {
+export function CheckboxGroup ({ onChangeFn, title, options, labels, unchecked = [], wrapperClass, containerClass }: CheckboxGroupProps) {
   const [allState, setAllState] = useState(true)
   const [groupState, setGroupState] = useState((options || []).reduce(
     (options, option) => ({
@@ -41,9 +42,10 @@ export function CheckboxGroup ({ onChangeFn, title, options, unchecked = [], wra
 
   const handleCheckboxChange = (changeEvent: { target: { name: any; }; }) => {
     const { name } = changeEvent.target
+    const realName = labels && labels.includes(name) ? options[labels.indexOf(name)] : name
     setGroupState({
       ...groupState,
-      [name]: !groupState[name]
+      [realName]: !groupState[realName]
     })
   }
 
@@ -61,6 +63,16 @@ export function CheckboxGroup ({ onChangeFn, title, options, unchecked = [], wra
     setAllState(!allState)
   }
 
+  const getOptionLabel = (option: string, i: number) => {
+    if (!labels || !Array.isArray(labels)) {
+      return option
+    }
+    if (labels[i]) {
+      return labels[i];
+    }
+    return option
+  }
+
   return (
     <div className={wrapperClass || 'checkboxgroup-wrapper'}>
       <div className='checkbox-group-label'>
@@ -73,7 +85,7 @@ export function CheckboxGroup ({ onChangeFn, title, options, unchecked = [], wra
             key={`option-${i}`}
             isSelected={allState ? true : groupState[option]}
             onCheckboxChange={handleCheckboxChange}
-            label={option}
+            label={getOptionLabel(option, i)}
           />
         )}
       </div>

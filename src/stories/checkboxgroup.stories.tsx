@@ -58,3 +58,15 @@ LongHorizontalGroup.args = {
 }
 
 
+export const CustomLabels: Story = {}
+CustomLabels.args = {
+  title: 'Test Checkbox Group',
+  options: Array.from(Array(10).keys()).map((x, i) => `Checkbox with custom label ${i}`),
+  labels: Array.from(Array(10).keys()).map((x, i) => `Custom label ${i}`),
+  containerClass: 'checkbox-container-no-max-height',
+  onChangeFn: (e: string) => { console.log(e) }
+}
+
+
+
+
