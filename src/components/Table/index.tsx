@@ -46,7 +46,7 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
     setCols(columns || Object.keys((data || [])[0]))
     setRows(data)
     setAsc(true)
-  }, []) // eslint-disable-line
+  }, [data]) // eslint-disable-line
 
   const getColumnLabel = (col: string, i: number) =>
     columnsLabels && columnsLabels[i] ? columnsLabels[i] : col
@@ -104,15 +104,21 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
         </tr>)}
     </tbody>
 
+const getTable = () => <div>
+  {title && <><hr /><h4>{title}</h4><hr /></>}
+  {rows && showRowTotals && <h5>Total Records: {rows.length}</h5>}
+  <table className='table table-sortable' style={{ width, height }}>
+    {cols && getHeader()}
+    {cols && rows && getRows()}
+  </table>
+  </div>
+
+
   return (
-    <div>
-      {title && <><hr /><h4>{title}</h4><hr /></>}
-      {rows && showRowTotals && <h5>Total Records: {rows.length}</h5>}
-      <table className='table table-sortable' style={{ width, height }}>
-        {cols && getHeader()}
-        {cols && rows && getRows()}
-      </table>
-    </div>
+    <>
+    {data && getTable()}
+    </>
+  
 
   )
 }
