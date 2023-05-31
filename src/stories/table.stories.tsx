@@ -1,4 +1,4 @@
-import type { StoryObj, storiesOf } from "@storybook/react";
+import type { StoryObj } from "@storybook/react";
 import { Table } from "../components/Table"
 
 const meta = {
