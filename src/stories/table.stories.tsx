@@ -1,4 +1,4 @@
-import type { StoryObj } from "@storybook/react";
+import type { StoryObj, storiesOf } from "@storybook/react";
 import { Table } from "../components/Table"
 
 const meta = {
@@ -206,5 +206,20 @@ OrderCallBack.args = {
     { link: 'https://www.epfl.ch/schools/', anchor: 'Schools' },
     { link: 'https://www.epfl.ch/campus/', anchor: 'Campus' }
   ]
+}
+
+export const reallyLongColumnName: Story = {
+  args: {
+    showRowTotals: true,
+    columnsLabels: ['EPFL Link', 'EPFL Anchor with an absolutely and insanely loooooooooooooooooooooooong text with a lot of unnecessary and absolutely gibberish text with no real purpose besides testing the length on it '],
+    data: [
+      { link: 'https://www.epfl.ch/about/', anchor: 'About' },
+      { link: 'https://www.epfl.ch/education', anchor: 'Education' },
+      { link: 'https://www.epfl.ch/research', anchor: 'Research' },
+      { link: 'https://www.epfl.ch/innovation/', anchor: 'Innovation' },
+      { link: 'https://www.epfl.ch/schools/', anchor: 'Schools' },
+      { link: 'https://www.epfl.ch/campus/', anchor: 'Campus' }
+    ]
+  }
 }
 
