@@ -42,9 +42,18 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
     }
   }
 
+  function getColumns () {
+    if (columns) {
+      return columns
+    }
+    if (data && data.length > 0) {
+      return Object.keys((data)[0])
+    }
+  }
+
   useEffect(() => {
     setRows([])
-    setCols(columns || data && data.length > 0 ? Object.keys((data)[0]) : [])
+    setCols(getColumns())
     setRows(data)
     setAsc(true)
   }, [data]) // eslint-disable-line
@@ -124,7 +133,7 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
 
   return (
     <>
-      {rows && getTable()}
+      {rows && cols && getTable()}
     </>
   )
 }
