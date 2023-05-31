@@ -43,10 +43,11 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
   }
 
   useEffect(() => {
-    setCols(columns || Object.keys((data || [])[0]))
+    setRows([])
+    setCols(columns || data && data.length > 0 ? Object.keys((data)[0]) : [])
     setRows(data)
     setAsc(true)
-  }, []) // eslint-disable-line
+  }, [data]) // eslint-disable-line
 
   const getColumnLabel = (col: string, i: number) =>
     columnsLabels && columnsLabels[i] ? columnsLabels[i] : col
@@ -91,7 +92,15 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
       <tr>
         {(cols || []).map((col: string, i: any) =>
           <th key={`col-${i}`} onClick={() => orderByColumn(col)}>
-            <button className='tablesaw-sortable-btn'>{getColumnLabel(col, i)}<span className='tablesaw-sortable-arrow' /></button>
+            <div className='aligner'>
+              <div>
+                <span className='tablesaw-sortable-arrow' />
+              </div>
+              <div>
+                <button className='tablesaw-sortable-btn'>{getColumnLabel(col, i)}
+              </button>
+            </div>
+            </div>
           </th>)}
       </tr>
     </thead>
@@ -104,15 +113,18 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
         </tr>)}
     </tbody>
 
-  return (
-    <div>
+    const getTable = () => <div>
       {title && <><hr /><h4>{title}</h4><hr /></>}
       {rows && showRowTotals && <h5>Total Records: {rows.length}</h5>}
       <table className='table table-sortable' style={{ width, height }}>
         {cols && getHeader()}
         {cols && rows && getRows()}
       </table>
-    </div>
+  </div>
 
+  return (
+    <>
+      {rows && getTable()}
+    </>
   )
 }

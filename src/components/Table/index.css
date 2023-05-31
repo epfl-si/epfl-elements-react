@@ -12,3 +12,46 @@
 .table tr:nth-child(even) { 
     background: #f8f8f8;
 }
+
+.table th .aligner {
+  display: flex;
+  align-items: center;
+}
+
+/* The next 3 rules are meant to support the .tablesaw-sortable-arrow icons not included in 
+the elements base style they only support it associated a button element */
+.table-sortable thead th .tablesaw-sortable-arrow {
+    display: block;
+    float: left;
+    height: 1rem;
+    position: relative;
+    width: 1rem;
+}
+
+.table-sortable thead th .tablesaw-sortable-arrow:before {
+    content: " ";
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 0.29rem solid transparent;
+    border-right: 0.29rem solid transparent;
+    border-top: 0.35rem solid #d5d5d5;
+    margin: 0;
+}
+
+.table-sortable thead th .tablesaw-sortable-arrow:after {
+    content: " ";
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 0.29rem solid transparent;
+    border-right: 0.29rem solid transparent;
+    border-bottom: 0.35rem solid #d5d5d5;
+    margin: 0;
+}
