@@ -32,6 +32,7 @@ export { Dropdown } from './components/Forms/Dropdown'
 export { Input } from './components/Forms/Input'
 export { FilterBox } from './components/Filterbox'
 export { Range } from './components/Forms/Range'
+export { Switch } from './components/Forms/Switch'
 
 // Navigations
 export { Asidemenu } from './components/navigations/asidemenu'
