@@ -1,5 +1,6 @@
 import type { StoryObj } from "@storybook/react";
 import { Switch } from "../components/Forms/Switch"
+import { Base } from "../components/Base";
 
 const meta = {
   title: "Atoms/Switch",
@@ -9,6 +10,13 @@ const meta = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
+
+const withBaseTemplate: Story = {
+  render: (args) =>  
+    <Base asideMenuItems={[]}>
+    <Switch {...args} />
+  </Base>
+}
 
 export const Default: Story = {}
 Default.args = {
@@ -53,3 +61,14 @@ WithLeftMargin.args = {
   label: 'Test Checkbox',
   marginLeft: '10em'
 }
+
+export const withBaseComponent = {
+  ...withBaseTemplate,
+  args: {
+    id: 'testId7',
+    label: 'Test Checkbox',
+    onChangeCallback: () => {
+      console.log('State should Change.')
+    }
+  }
+};

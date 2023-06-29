@@ -1,9 +1,10 @@
 
 import './index.css'
+import { useState } from 'react';
 type Callback = (e: React.ChangeEvent<HTMLInputElement>) => void;
 
 type SwitchProps = {
-  id: string;
+  id?: string;
   label?: string;
   marginLeft?: string;
   onChangeCallback?: Callback;
@@ -11,11 +12,14 @@ type SwitchProps = {
 }
 
 export function Switch ({ id, label, isChecked, marginLeft, onChangeCallback }: SwitchProps) {
+  const [isCheckedLocal, setIsCheckedLocal] = useState(Boolean(isChecked))
+  const idToUse = id ? id : Date.now().toString(30);
 
   function localChangeCallback (e: any) {
     if (onChangeCallback) {
       onChangeCallback(e.target.checked)
     }
+    setIsCheckedLocal(!isCheckedLocal)
   }
 
   return (
@@ -23,8 +27,8 @@ export function Switch ({ id, label, isChecked, marginLeft, onChangeCallback }: 
       <input 
         type="checkbox"
         className="custom-control-input"
-        id={id}
-        checked={isChecked}
+        id={idToUse}
+        checked={isCheckedLocal}
         onChange={localChangeCallback}
         />
       <label className="custom-control-label" htmlFor={id}>{label}</label>
