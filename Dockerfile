@@ -3,7 +3,7 @@ RUN apk add --no-cache \
   git \
   openssh
 WORKDIR /app
-RUN git clone https://gitlab+token-epfl-elements-react-storybook:glpat-TgR--3jseUXksDnN8ALg@gitlab.epfl.ch/sti-nodejs/epfl-elements-react.git && npm install && npm run build-storybook
+RUN git clone https://gitlab+token-epfl-elements-react-storybook:glpat-TgR--3jseUXksDnN8ALg@gitlab.epfl.ch/sti-nodejs/epfl-elements-react.git . && npm ci && npm run build-storybook
 
 # server environment
 FROM nginx:stable-alpine
