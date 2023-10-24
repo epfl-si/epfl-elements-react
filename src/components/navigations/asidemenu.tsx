@@ -1,4 +1,5 @@
 import { Loader } from '../Loader'
+import { Link } from 'react-router-dom'
 
 import '@epfl/epfl-elements-styles/dist/css/combined.css'
 
@@ -20,14 +21,18 @@ export type AsidemenuProps = {
   homeLink?: string;
   homeAnchor?: string;
   feedBackEmail?: string;
+  useReactRouterLinks?: boolean;
 }
 
 
-export function Asidemenu ({ isHome, isLoading, menuItems, homeAnchor, homeLink, feedBackEmail }: AsidemenuProps) {
+export function Asidemenu ({ isHome, isLoading, menuItems, homeAnchor, homeLink, feedBackEmail, useReactRouterLinks }: AsidemenuProps) {
   const getMenuList = (menus: Array<AsindeMenuSingleItemProps>) =>
     menus.map(menu =>
       <li className={menu.link === document.location.pathname ? 'active' : undefined} key={menu.link}>
-        <a href={menu.link}>{menu.anchor}</a>
+        {
+          useReactRouterLinks ? <Link to={menu.link}>{menu.anchor}</Link>
+          : <a href={menu.link}>{menu.anchor}</a>}
+        
       </li>
     )
 
@@ -57,7 +62,9 @@ export function Asidemenu ({ isHome, isLoading, menuItems, homeAnchor, homeLink,
         <ul>
           {!isLoading &&
             <li className={isHome ? 'active' : ''}>
-              <a href={homeLink}>{homeAnchor}</a>
+              {
+          useReactRouterLinks ? <Link to={homeLink}>{homeAnchor}</Link>
+          : <a href={homeLink}>{homeAnchor}</a>}
             </li>}
           {isLoading ? <Loader /> : getMenuItems()}
         </ul>

@@ -9,6 +9,7 @@ export type MenuItemProps = {
 
 type MainMenuProps = {
     mainMenuStructure?: Array<MenuItemProps>
+    useReactRouterLinks?: boolean
 }
 
 // Import helpers functions.
@@ -21,6 +22,7 @@ import {
 
 export function MainMenu ({
     mainMenuStructure,
+    useReactRouterLinks
 }: MainMenuProps) {      
      
     //States to change properties of the menu
@@ -116,8 +118,8 @@ export function MainMenu ({
                                     { 
                                         //Condition to display the menu with parent or without parent if parent exist
                                         parent 
-                                            ? renderWithParent(parent, ancestorOrParentClass, allChildren)
-                                            : renderWithoutParent(allChildren)
+                                            ? renderWithParent(parent, ancestorOrParentClass, allChildren, useReactRouterLinks)
+                                            : renderWithoutParent(allChildren, useReactRouterLinks)
                                     }
                                 </ul>
                             </div>

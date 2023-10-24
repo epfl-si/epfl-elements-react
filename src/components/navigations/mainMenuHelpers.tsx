@@ -1,11 +1,16 @@
 import arrowLeft from './arrow-left.svg'
 import chevronRight from './chevron-right.svg'
 import { MenuItemProps } from './mainMenu'
+import { Link } from 'react-router-dom'
 
 //Put arrow to go forward in menu  
-const childParametersForward = (href: string, heading: string) =>
+const childParametersForward = (href: string, heading: string, useReactRouterLinks: boolean) =>
     <>
-        <a href={href} className="forward">{heading}</a>
+        {
+            useReactRouterLinks 
+            ? <Link to={href}>{heading}</Link>
+            : <a href={href}>{heading}</a>
+        }
         <a role="button" aria-hidden="true" id={heading} className={`forward nav-arrow`}>
             <div className="icon-container">
                 <img className="icon" aria-hidden="true" src={chevronRight}></img>
@@ -14,18 +19,27 @@ const childParametersForward = (href: string, heading: string) =>
     </>
 
 //Put arrow to go backwards in menu
-const childParametersBackwards= (href: string, heading: string) => 
+const childParametersBackwards= (href: string, heading: string, useReactRouterLinks: boolean) => 
     <>
-        <a href={href} className="back">
+        {
+            useReactRouterLinks 
+            ? <Link to={href} className="back"><img className="icon" aria-hidden="true" src={arrowLeft}></img>
+            {heading}</Link>
+            : <a href={href} className="back">
             <img className="icon" aria-hidden="true" src={arrowLeft}></img>
             {heading}
-        </a>
+            </a>
+        }
     </>
 
 //Entries that don't have other levels
-const itemMenuWithoutChildren = (href: string, heading: string) => 
+const itemMenuWithoutChildren = (href: string, heading: string, useReactRouterLinks: boolean) => 
     <>
-        <a href={href}>{heading}</a>
+        {
+            useReactRouterLinks 
+            ? <Link to={href}>{heading}</Link>
+            : <a href={href}>{heading}</a>
+        }
     </>
 
 //Get currentItem bool to highlight the entry and begin the menu with the current item
@@ -95,24 +109,24 @@ export const findMenuDisplay = (
 }
 
 //Render the menu if there are menus
-export const renderWithParentWithMenus = (values: MenuItemProps, i: number) =>{
+export const renderWithParentWithMenus = (values: MenuItemProps, i: number, useReactRouterLinks: boolean) =>{
     return (
         values.currentItem
         ? 
-            <li key={i} className={`current-menu-item menu-item-has-children`}>{childParametersForward(values.link, values.heading)}</li>
+            <li key={i} className={`current-menu-item menu-item-has-children`}>{childParametersForward(values.link, values.heading, useReactRouterLinks)}</li>
         : 
-            <li key={i} className={`menu-item-has-children`}>{childParametersForward(values.link, values.heading)}</li>
+            <li key={i} className={`menu-item-has-children`}>{childParametersForward(values.link, values.heading, useReactRouterLinks)}</li>
     )
 } 
 
 //Render the menu if there aren't menus
-export const renderWithParentWithoutMenus = (values: MenuItemProps, i: number) =>{
+export const renderWithParentWithoutMenus = (values: MenuItemProps, i: number, useReactRouterLinks: boolean) =>{
     return (
         values.currentItem
         ?
-            <li key={i} className={`current-menu-item`}>{itemMenuWithoutChildren(values.link, values.heading)}</li>
+            <li key={i} className={`current-menu-item`}>{itemMenuWithoutChildren(values.link, values.heading, useReactRouterLinks)}</li>
         :
-            <li key={i} className={``}>{itemMenuWithoutChildren(values.link, values.heading)}</li>
+            <li key={i} className={``}>{itemMenuWithoutChildren(values.link, values.heading, useReactRouterLinks)}</li>
     )
 } 
 
@@ -120,15 +134,16 @@ export const renderWithParentWithoutMenus = (values: MenuItemProps, i: number) =
 export const renderWithParent = (
     parent: MenuItemProps, 
     ancestorOrParentClass: string,
-    allChildren: Array<MenuItemProps>
+    allChildren: Array<MenuItemProps>,
+    useReactRouterLinks: boolean
 ) => {
     return (
         //Parent Menu
-        <li className={`${ancestorOrParentClass} menu-has-item-children`}>{childParametersForward(parent.link, parent.heading)}
+        <li className={`${ancestorOrParentClass} menu-has-item-children`}>{childParametersForward(parent.link, parent.heading, useReactRouterLinks)}
             <ul>
                 {
                     //Nav back
-                    <li className="nav-back">{childParametersBackwards(parent.link, parent.heading)}</li>
+                    <li className="nav-back">{childParametersBackwards(parent.link, parent.heading, useReactRouterLinks)}</li>
                 }
                 {
                     /*
@@ -136,7 +151,7 @@ export const renderWithParent = (
                         Same if currentItem is true
                     */
                     allChildren.map((values, i) => 
-                        values.menus ? renderWithParentWithMenus(values, i) : renderWithParentWithoutMenus(values, i)
+                        values.menus ? renderWithParentWithMenus(values, i, useReactRouterLinks) : renderWithParentWithoutMenus(values, i, useReactRouterLinks)
                     )
                 }
             </ul>
@@ -145,14 +160,14 @@ export const renderWithParent = (
 }
 
 //Render the menu if the parent doesn't exist (first level menu)
-export const renderWithoutParent = (allChildren: Array<MenuItemProps>) => {
+export const renderWithoutParent = (allChildren: Array<MenuItemProps>, useReactRouterLinks: boolean) => {
     return (
         allChildren.map((values, i) =>
         values.menus 
             ?
-                <li key={i} className={`menu-item-has-children`}>{childParametersForward(values.link, values.heading)}</li>
+                <li key={i} className={`menu-item-has-children`}>{childParametersForward(values.link, values.heading, useReactRouterLinks)}</li>
             :
-                <li key={i} className={``}>{itemMenuWithoutChildren(values.link, values.heading)}</li>
+                <li key={i} className={``}>{itemMenuWithoutChildren(values.link, values.heading, useReactRouterLinks)}</li>
         ) 
     )
 }

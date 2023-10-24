@@ -1,5 +1,17 @@
 import type { Preview } from "@storybook/react";
 
+import React from "react";
+import { MemoryRouter } from "react-router-dom";
+    
+export const decorators = [
+  (Story: any) => (
+    <MemoryRouter initialEntries={['/']}>
+      <Story />
+    </MemoryRouter>
+  ),
+];
+
+
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
