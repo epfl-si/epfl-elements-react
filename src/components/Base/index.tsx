@@ -1,6 +1,7 @@
 import { Alert }from '../Alert'
 import { Header } from '../Header'
 import { Asidemenu } from '../navigations/asidemenu'
+// import { MainMenu } from '../navigations/mainMenu'
 import { Breadcrumbs } from '../Breadcrumbs'
 import { Content } from '../Content'
 import { Footer } from '../Footer/Footer'
@@ -13,6 +14,7 @@ import { DrawerInnerProps } from '../Drawer'
 import { BreadcrumbsItemProps } from '../Breadcrumbs'
 import { TopmenuInnerProps } from '../navigations/topmenu'
 import { AsidemenuItemsProps } from '../navigations/asidemenu'
+// import { MenuItemProps } from '../navigations/mainMenu'
 
 type BaseProps = {
   feedBackEmail?: string;
@@ -34,6 +36,8 @@ type BaseProps = {
   title?: string;
   baseTitle?: string;
   asideMenuItems?: Array<AsidemenuItemsProps>;
+  // mainMenuItems?: Array<MenuItemProps>;
+  useReactRouterLinks?: boolean;
 }
 
 const defaultTopMenuItems = [
@@ -76,6 +80,7 @@ export function Base ({
   isLoading = false,
   isBeta = false,
   asideMenuItems,
+  // mainMenuItems,
   topMenuItems = defaultTopMenuItems,
   breadcrumbItems = defaultBreadcrumbItems,
   drawerContents = defaultDrawerContents,
@@ -85,7 +90,8 @@ export function Base ({
   baseTitle,
   title,
   avatarLogoUrl,
-  avatarLogoAltText
+  avatarLogoAltText,
+  useReactRouterLinks
 }: BaseProps) {
   baseTitle && title && setPageTitle(baseTitle, title)
 
@@ -121,7 +127,14 @@ export function Base ({
                 menuItems={asideMenuItems}
                 homeLink={homeLink}
                 homeAnchor={homeAnchor}
+                useReactRouterLinks={useReactRouterLinks}
               />}
+            {/* {mainMenuItems &&
+              <MainMenu 
+                TODO: This menu is not usable yet. pending to be implemented. needs some button / modal associated to it. check issue-3
+                mainMenuStructure={mainMenuItems}
+                useReactRouterLinks={useReactRouterLinks}
+              />} */}
           </div>
         </div>
       </div>

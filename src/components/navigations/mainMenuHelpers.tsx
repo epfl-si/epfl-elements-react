@@ -1,7 +1,8 @@
-import arrowLeft from './arrow-left.svg'
-import chevronRight from './chevron-right.svg'
 import { MenuItemProps } from './mainMenu'
 import { Link } from 'react-router-dom'
+
+const arrowLeft = 'data:image/svg+xml,%0A%3Csvg%20viewBox%3D%220%200%2016%2016%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%20%20%3Cpath%20d%3D%22M4.414%209l5.293%205.293-1.414%201.414L.586%208%208.293.293l1.414%201.414L4.414%207H16v2z%22%20fill-rule%3D%22nonzero%22%2F%3E%0A%3C%2Fsvg%3E%0A';
+const chevronRight = 'data:image/svg+xml,%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%0A%20%20%3Cpath%20fill%3D%22currentColor%22%20d%3D%22M7.1%2017.9l1.9%202%207.9-7.9L9%204.1l-1.9%202L13%2012z%22%2F%3E%0A%3C%2Fsvg%3E%0A';
 
 //Put arrow to go forward in menu  
 const childParametersForward = (href: string, heading: string, useReactRouterLinks: boolean) =>

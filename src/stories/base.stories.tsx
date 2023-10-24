@@ -55,6 +55,29 @@ export const LightFooter: Story = {
   }
 }
 
+export const WithReactLinks: Story = {
+  args: {
+    breadcrumbItems,
+    baseTitle,
+    useLightFooter: true,
+    title: 'Base Component - Light footer',
+    asideMenuItems: [
+      {
+        heading: 'Test Section',
+        menus: [
+            { anchor: 'Test Item 1', link: `#` },
+            { anchor: 'Test Item 2', link: `#` }
+        ],
+        submenus: []
+    }
+    ],
+    user,
+    useReactRouterLinks: true,
+    children: <h4>Test Application (light footer)</h4>
+  }
+}
+
+
 export const NoAsideMenu: Story = {
   args: {
     breadcrumbItems,
