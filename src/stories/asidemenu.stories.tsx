@@ -42,6 +42,23 @@ export const UsingLinks: Story = {
     }
 }
 
+export const UsingReactRouterLinks: Story = {
+  args: {
+    isHome: true,
+    isLoading: false,
+    useReactRouterLinks: true,
+    menuItems: [{
+      heading: 'Mock Main Section',
+      menus: [
+        { anchor: 'Hello', link: '/' },
+        { anchor: 'HelloTabs', link: '/hellotabs' },
+        { anchor: 'HelloVisualizations', link: '/hellovisualizations' }
+      ]
+    }],
+    homeAnchor: 'Home'
+  }
+}
+
 export const WithFeedbackLink: Story = {
   args: {
     isHome: true,
