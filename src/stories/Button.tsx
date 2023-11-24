@@ -1,48 +1,53 @@
 import React from 'react';
-import './button.css';
+import featherIcons from "epfl-elements/dist/icons/feather-sprite.svg";
 
 interface ButtonProps {
-  /**
-   * Is this the principal call to action on the page?
-   */
   primary?: boolean;
-  /**
-   * What background color to use
-   */
-  backgroundColor?: string;
-  /**
-   * How large should the button be?
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * Button contents
-   */
-  label: string;
-  /**
-   * Optional click handler
-   */
+  size?: 'icon' | 'small' | 'medium' | 'large';
+  isDisabled?: boolean;
   onClick?: () => void;
+  children?: React.ReactNode;
+  iconName?: string;
 }
 
-/**
- * Primary UI component for user interaction
- */
 export const Button = ({
-  primary = false,
-  size = 'medium',
-  backgroundColor,
-  label,
-  ...props
-}: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-  return (
-    <button
+                         primary = true,
+                         size = 'medium',
+                         isDisabled = false,
+                         children,
+                         iconName,
+                         ...props
+                       }: ButtonProps) => {
+  let mode = primary ? 'btn btn-primary' : 'btn btn-secondary';
+
+  switch (size) {
+    case 'small':
+      mode = mode.concat(' btn-sm');
+      break;
+    case 'large':
+      mode = mode.concat(' btn-lg');
+      break;
+  }
+
+  if (size === 'icon') {
+    return <svg key="icon" className="icon" aria-hidden="true">
+      <use xlinkHref={`${featherIcons}${iconName}`}/>
+    </svg>
+  } else {
+    return <button
       type="button"
-      className={['storybook-button', `storybook-button--${size}`, mode].join(' ')}
-      style={{ backgroundColor }}
+      className={mode}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }}
+      disabled={isDisabled}
       {...props}
     >
-      {label}
+      <div className="text-center" style={{display: 'flex', alignItems: 'center'}}>
+        {children}
+      </div>
     </button>
-  );
+  }
 };
