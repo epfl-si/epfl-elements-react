@@ -18,7 +18,8 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     name: 'test_Name',
-    id: 'test_primary'
+    id: 'test_primary',
+    labelAndvalue: 'test:test'
   }
 };
 
@@ -26,7 +27,8 @@ export const Required: Story = {
   args: {
     name: 'test_Name',
     id: 'test_primary',
-    isRequired: true
+    isRequired: true,
+    labelAndvalue: 'test:test'
   }
 };
 
@@ -34,7 +36,8 @@ export const Checked: Story = {
   args: {
     name: 'test_Name',
     id: 'test_primary',
-    isChecked: true
+    isChecked: true,
+    labelAndvalue: 'test:test'
   }
 };
 
@@ -42,14 +45,23 @@ export const Readonly: Story = {
   args: {
     name: 'test_Name',
     id: 'test_primary',
-    isReadonly: true
+    isReadonly: true,
+    labelAndvalue: 'test:test'
   }
 };
 
-export const Label: Story = {
+export const NoLabel: Story = {
   args: {
     name: 'test_Name',
     id: 'test_primary',
-    label: 'Test Help'
+    labelAndvalue: ':test'
+  }
+};
+
+export const NoValue: Story = {
+  args: {
+    name: 'test_Name',
+    id: 'test_primary',
+    labelAndvalue: 'test'
   }
 };

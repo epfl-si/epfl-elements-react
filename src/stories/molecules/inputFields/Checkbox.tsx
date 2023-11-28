@@ -4,7 +4,7 @@ import '../../assets/custumStyles.css';
 interface CheckboxProps {
   isReadonly?: boolean;
   isChecked?: boolean;
-  label?: string;
+  labelAndvalue: string;
   isRequired?: boolean;
   id: string;
   name: string;
@@ -15,13 +15,16 @@ interface CheckboxProps {
 export const Checkbox = ({
     isReadonly = false,
     isChecked,
-    label,
+    labelAndvalue,
     isRequired = false,
     id,
     name,
     validationErrorMessage,
     onChange
   }: CheckboxProps) => {
+
+
+  const couple = labelAndvalue.split(':');
 
   return (
         <div className="form-check">
@@ -33,9 +36,9 @@ export const Checkbox = ({
             checked={isChecked}
             disabled={isReadonly}
             required={isRequired}
+            value={couple[1] ? couple[1] : couple[0]}
           />
-          {label ? <label className='form-check-label' htmlFor={id}>{label}</label>
-            : <></>}
+          <label className='form-check-label' htmlFor={id}>{couple[0]}</label>
           <div className="invalid-feedback">
             {validationErrorMessage}
           </div>

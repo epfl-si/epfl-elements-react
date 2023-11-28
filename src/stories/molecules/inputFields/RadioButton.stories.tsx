@@ -19,7 +19,8 @@ export const Default: Story = {
   args: {
     name: 'test_Name',
     id: 'test_primary',
-    isRequired: false
+    isRequired: false,
+    labelAndvalue: 'test1:test1v'
   }
 };
 
@@ -27,7 +28,8 @@ export const Required: Story = {
   args: {
     name: 'test_Name',
     id: 'test_primary',
-    isRequired: true
+    isRequired: true,
+    labelAndvalue: 'test1:test1v'
   }
 };
 
@@ -35,7 +37,8 @@ export const Checked: Story = {
   args: {
     name: 'test_Name',
     id: 'test_primary',
-    isChecked: true
+    isChecked: true,
+    labelAndvalue: 'test1:test1v'
   }
 };
 
@@ -43,15 +46,24 @@ export const Readonly: Story = {
   args: {
     name: 'test_Name',
     id: 'test_primary',
-    isReadonly: true
+    isReadonly: true,
+    labelAndvalue: 'test1:test1v'
   }
 };
 
-export const Label: Story = {
+export const NoLabel: Story = {
   args: {
     name: 'test_Name',
     id: 'test_primary',
-    label_s: 'test1;test2;test3',
+    labelAndvalue: ':test1v'
+  }
+};
+
+export const NoValue: Story = {
+  args: {
+    name: 'test_Name',
+    id: 'test_primary',
+    labelAndvalue: 'test1'
   }
 };
 
@@ -59,7 +71,7 @@ export const inLine: Story = {
   args: {
     name: 'test_Name',
     id: 'test_primary',
-    label_s: 'test1;test2;test3',
+    labelAndvalue: 'test1:test1v;test2:test2v;test3:test3v',
     inLine: true
   }
 };
