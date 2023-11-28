@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../assets/custumStyles.css';
 
-interface NumericFieldProps {
+interface NumericProps {
   size?: 'small' | 'medium' | 'large';
   isReadonly?: boolean;
   value?: number;
@@ -31,7 +31,7 @@ export const Numeric = ({
   help,
   validationErrorMessage,
   onChange
-  }: NumericFieldProps) => {
+  }: NumericProps) => {
 
   let formControlStyle: string = 'form-control';
   switch (size) {
