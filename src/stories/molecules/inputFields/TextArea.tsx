@@ -65,6 +65,7 @@ export const TextArea = ({
           required={isRequired}
           rows={rows}
           cols={cols}
+          style={{resize: 'both'}}
         />
         <div className="invalid-feedback">
           {validationErrorMessage}
