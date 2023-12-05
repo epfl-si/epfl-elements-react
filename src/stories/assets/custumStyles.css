@@ -1,21 +1,26 @@
-.card-dashed{
+.card-dashed {
     border: 1px dashed #000000;
 }
 
-.card-solid{
+.card-solid {
     border: 1px solid #000000;
 }
 
-.card-dotted{
+.card-dotted {
     border: 1px dotted #000000;
 }
 
-.card{
+.card {
     background-color: #f3f3f3;
     border-radius: 5px;
     padding: 10px;
     display: flex;
     flex-direction: row;
+}
+
+.card-margin {
+    margin: 10px;
+    padding: 10px;
 }
 
 .flex-item-left {
@@ -35,4 +40,22 @@
 .text-wrapper-enabled {
     font-weight: bold;
     color: #000000;
+}
+
+@media (min-width: 768px) {
+    .tabs {
+        display: none;
+    }
+    .cards {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .tabs {
+        display: flex;
+    }
+    .cards {
+        display: none;
+    }
 }
