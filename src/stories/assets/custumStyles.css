@@ -26,3 +26,13 @@
     flex: 10%;
     text-align: right;
 }
+
+.text-wrapper-disabled {
+    font-weight: bold;
+    color: #8b8b8b;
+}
+
+.text-wrapper-enabled {
+    font-weight: bold;
+    color: #000000;
+}
