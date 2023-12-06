@@ -42,7 +42,7 @@ export const Button = ({
         alignItems: 'center',
         justifyContent: 'center'
       }}
-      disabled={isDisabled}
+      disabled={isDisabled ? isDisabled : false}
       {...props}
     >
       <div className="text-center" style={{display: 'flex', alignItems: 'center'}}>
