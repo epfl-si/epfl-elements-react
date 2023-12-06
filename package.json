@@ -37,5 +37,9 @@
     "typescript": "^5.2.2",
     "vite": "^5.0.0"
   },
-  "packageManager": "yarn@4.0.2"
+  "packageManager": "yarn@4.0.2",
+  "resolutions": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "__explanations__": "can be had with `git blame`. Once https://github.com/storybookjs/storybook/pull/24953 is merged and released, upgrade `@storybook/react-vite` devDependency, and delete this whole `resolutions` section (or un-rebase the commit that added it)"
+  }
 }
