@@ -1,16 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { ResponsiveTabs } from './ResponsiveTabs';
 import React from "react";
-import {Tabs} from "./Tabs";
-import featherIcons from "../assets/elements-dist-frontend/icons/feather-sprite.svg";
 
 const meta = {
-  title: 'Molecules/Tabs',
-  component: Tabs,
+  title: 'Molecules/ResponsiveTabs',
+  component: ResponsiveTabs,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Tabs>;
+} satisfies Meta<typeof ResponsiveTabs>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -18,37 +17,21 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     items: [
-      { title: "1",
-        tabContent: <div>
-          <svg key="icon" className="icon" aria-hidden="true">
-            <use xlinkHref={`${featherIcons}#save`} />
-          </svg>
-          <svg key="icon" className="icon" aria-hidden="true">
-            <use xlinkHref={`${featherIcons}#save`} />
-          </svg>
-          <svg key="icon" className="icon" aria-hidden="true">
-            <use xlinkHref={`${featherIcons}#save`} />
-          </svg>
-        </div>,
-        content: <div>
+      { title: "1", content: <div>
           <strong>VPO-SI 1</strong>
           <br />
           <small className="text-muted">Caval, Ivo Steiner 1</small>
           <br />
           <small className="text-muted">Mauro Rossi 1</small>
         </div> },
-      { title: "2",
-        tabContent: <div></div>,
-        content: <div>
+      { title: "2", content: <div>
           <strong>VPO-SI 2</strong>
           <br />
           <small className="text-muted">Caval, Ivo Steiner 2</small>
           <br />
           <small className="text-muted">Mauro Rossi 2</small>
         </div> },
-      { title: "3",
-        tabContent: <div></div>,
-        content: <div>
+      { title: "3", content: <div>
           <strong>VPO-SI 3</strong>
           <br />
           <small className="text-muted">Caval, Ivo Steiner 3</small>
