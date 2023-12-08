@@ -5,19 +5,20 @@ interface ButtonProps {
   primary?: boolean;
   size?: 'icon' | 'small' | 'medium' | 'large';
   isDisabled?: boolean;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent) => void;
   children?: React.ReactNode;
   iconName?: string;
 }
 
 export const Button = ({
-                         primary = true,
-                         size = 'medium',
-                         isDisabled = false,
-                         children,
-                         iconName,
-                         ...props
-                       }: ButtonProps) => {
+  primary = true,
+  size = 'medium',
+  isDisabled = false,
+  children,
+  iconName,
+  onClick,
+  ...props
+  }: ButtonProps) => {
   let mode = primary ? 'btn btn-primary' : 'btn btn-secondary';
 
   switch (size) {
@@ -30,7 +31,8 @@ export const Button = ({
   }
 
   if (size === 'icon') {
-    return <svg key="icon" className="icon" aria-hidden="true">
+    return <svg key="icon" className="icon" aria-hidden="true" style={{ cursor: 'pointer' }}
+                onClick={(e) => { if (onClick) onClick(e) }}>
       <use xlinkHref={`${featherIcons}${iconName}`}/>
     </svg>
   } else {
@@ -42,6 +44,7 @@ export const Button = ({
         alignItems: 'center',
         justifyContent: 'center'
       }}
+      onClick={(e) => { if (onClick) onClick(e) }}
       disabled={isDisabled ? isDisabled : false}
       {...props}
     >
