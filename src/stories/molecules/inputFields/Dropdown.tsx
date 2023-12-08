@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../../assets/custumStyles.css';
 
 type Item = {
@@ -10,21 +10,27 @@ interface DropdownProps {
   sizeDropDown?: 'small' | 'medium' | 'large';
   isReadonly?: boolean;
   label?: string;
+  id: string;
   multiple?: boolean;
   visibleItems?: number;
   items: Item[];
+  selected?: Item[];
+  onChange?: (selectedItems: Item[]) => void;
 }
 
 export const Dropdown = ({
     visibleItems,
-    sizeDropDown,
+    sizeDropDown = 'medium',
     isReadonly = false,
-    multiple,
+    selected = [],
+    multiple = false,
     label,
-    items
+    id,
+    items,
+    onChange
   }: DropdownProps) => {
+  const [selectedOptions, setselectedOptions] = useState<Item[]>(selected ? selected : []);
 
-  const id = label?.trim().replace(/\s/g, '_');
   let formControlStyle: string = 'form-control';
   switch (sizeDropDown) {
     case 'small':
@@ -34,14 +40,40 @@ export const Dropdown = ({
       formControlStyle = formControlStyle.concat(' form-control-lg')
       break;
   }
+
+  const addSelected = (value: Item) => {
+    if (multiple) {
+      setselectedOptions([...selectedOptions, value]);
+    } else {
+      setselectedOptions([value]);
+    }
+  };
+
+  const removeSelected = (value: Item) => {
+    const updatedSelections = selectedOptions.filter(
+      (selection) => selection !== value
+    );
+    setselectedOptions(updatedSelections);
+  };
+
   return (
     <div className="form-group">
       <label className="control-label" htmlFor={id}>{label}</label>
-      <select className={formControlStyle} id={id} name={id} placeholder={label} multiple={multiple}
-              size={visibleItems} disabled={isReadonly} style={{minWidth: '130px'}}>
+      <select className={formControlStyle}
+              id={id}
+              name={id}
+              placeholder={label ? label : ''}
+              multiple={multiple ? multiple : false}
+              size={visibleItems ? visibleItems : 1}
+              disabled={isReadonly ? isReadonly : false}
+              style={{minWidth: '130px'}}>
         <option value=""></option>
-        {items.map((c, index) => (
-          <option value={c.value}>{c.label}</option>
+        {items.map((c) => (
+          <option value={c.value}
+                  selected={selectedOptions.includes(c)}
+                  onClick={() => {selectedOptions.includes(c) ? removeSelected(c) : addSelected(c); if (onChange) onChange(selectedOptions);}}>
+            {c.label}
+          </option>
         ))}
       </select>
     </div>
