@@ -1,47 +1,49 @@
 import React from 'react';
 import '../../assets/custumStyles.css';
 
+type Item = {
+  label?: string;
+  value: string;
+  id: string;
+};
+
 interface CheckboxProps {
   isReadonly?: boolean;
   isChecked?: boolean;
-  labelAndvalue: string;
+  items: Item[];
   isRequired?: boolean;
-  id: string;
-  name: string;
   validationErrorMessage?: string;
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent, newVal: string) => void;
 }
 
 export const Checkbox = ({
     isReadonly = false,
-    isChecked,
-    labelAndvalue,
+    isChecked = false,
+    items,
     isRequired = false,
-    id,
-    name,
     validationErrorMessage,
     onChange
   }: CheckboxProps) => {
 
-
-  const couple = labelAndvalue.split(':');
-
   return (
+    items.map(i => (
         <div className="form-check">
           <input
             className="form-check-input"
             type="checkbox"
-            id={id}
-            name={name}
-            checked={isChecked}
-            disabled={isReadonly}
-            required={isRequired}
-            value={couple[1] ? couple[1] : couple[0]}
+            id={i.id}
+            name={i.id}
+            checked={isChecked ? isChecked : false}
+            disabled={isReadonly ? isReadonly : false}
+            required={isRequired ? isRequired : false}
+            value={i.value}
+            onChange={(e) => { if (onChange) onChange(e, i.value) }}
           />
-          <label className='form-check-label' htmlFor={id}>{couple[0]}</label>
+          <label className='form-check-label' htmlFor={i.id}>{i.label}</label>
           <div className="invalid-feedback">
             {validationErrorMessage}
           </div>
         </div>
+      ))
   )
 };
