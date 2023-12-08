@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../assets/custumStyles.css';
 
 type Item = {
@@ -33,7 +33,7 @@ export const ResponsiveTabs = ({
         ))}
       </div>
       <div className="flex-row justify-content-between box-container">
-        {items.map((c, index) => (
+        {items.map((c) => (
           <div className='tab-pane fade show active box' id={c.title} role="tabpanel" aria-labelledby={c.title.concat("-tab")} key={c.title}>
             <p>{c.title}</p>
             {c.content}

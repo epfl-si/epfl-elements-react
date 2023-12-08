@@ -1,9 +1,7 @@
 import React from 'react';
 import {Button} from "./Button";
 import '../assets/custumStyles.css';
-import featherIcons from "../assets/elements-dist-frontend/icons/feather-sprite.svg";
-import * as colorette from "colorette";
-import {ColorProps, ColorValue} from "@storybook/blocks";
+import {ColorValue} from "@storybook/blocks";
 
 interface BadgeProps {
   title?: string;
