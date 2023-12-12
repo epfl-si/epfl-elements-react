@@ -1,5 +1,6 @@
 import React from 'react';
 import featherIcons from "epfl-elements/dist/icons/feather-sprite.svg";
+import './button.css';
 
 interface ButtonProps {
   primary?: boolean;
@@ -19,7 +20,7 @@ export const Button = ({
   onClick,
   ...props
   }: ButtonProps) => {
-  let mode = primary ? 'btn btn-primary' : 'btn btn-secondary';
+  let mode = primary ? 'storybook-button btn btn-primary' : 'storybook-button btn btn-secondary';
 
   switch (size) {
     case 'small':
@@ -39,16 +40,11 @@ export const Button = ({
     return <button
       type="button"
       className={mode}
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
       onClick={(e) => { if (onClick) onClick(e) }}
       disabled={isDisabled ? isDisabled : false}
       {...props}
     >
-      <div className="text-center" style={{display: 'flex', alignItems: 'center'}}>
+      <div className="text-center button-text">
         {children}
       </div>
     </button>
