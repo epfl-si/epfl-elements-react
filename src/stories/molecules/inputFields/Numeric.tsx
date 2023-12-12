@@ -1,10 +1,9 @@
 import React from 'react';
-import '../../assets/custumStyles.css';
 
 interface NumericProps {
   size?: 'small' | 'medium' | 'large';
   isReadonly?: boolean;
-  value?: number;
+  val?: number;
   placeholder?: string;
   min?: number;
   max?: number;
@@ -14,13 +13,13 @@ interface NumericProps {
   name: string;
   help?: string;
   validationErrorMessage?: string;
-  onChange?: () => void;
+  onChange?: (newValue: number) => void;
 }
 
 export const Numeric = ({
   size = 'medium',
   isReadonly = false,
-  value,
+  val,
   placeholder,
   min,
   max,
@@ -57,9 +56,12 @@ export const Numeric = ({
           min={min}
           max={max}
           placeholder={placeholder}
-          value={value}
+          value={val}
           readOnly={isReadonly}
           required={isRequired}
+          onChange={(event) => {
+            if (onChange) onChange(parseInt(event.target.value, 10));
+          }}
         />
         <div className="invalid-feedback">
           {validationErrorMessage}
