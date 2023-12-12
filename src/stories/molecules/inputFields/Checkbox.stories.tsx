@@ -10,7 +10,6 @@ const meta: Meta<typeof Checkbox> = {
     layout: 'centered',
   },
   tags: ['autodocs'],
-  argTypes: {onChange: {action: 'changed'}}
 };
 
 export default meta;
@@ -21,8 +20,9 @@ export const Default: Story = {
     items: [{
       label: 'label 1',
       value: 'value 1',
-      id: 'test_primary',
-    }]
+      id: 'test_primary'
+    }],
+    name: 'test',
   }
 };
 
@@ -32,19 +32,21 @@ export const Required: Story = {
     items: [{
       label: 'label 1',
       value: 'value 1',
-      id: 'test_primary',
-    }]
+      id: 'test_primary'
+    }],
+    name: 'test',
   }
 };
 
 export const Checked: Story = {
   args: {
-    isChecked: true,
     items: [{
       label: 'label 1',
       value: 'value 1',
       id: 'test_primary',
-    }]
+      isChecked: true
+    }],
+    name: 'test',
   }
 };
 
@@ -55,7 +57,8 @@ export const Readonly: Story = {
       label: 'label 1',
       value: 'value 1',
       id: 'test_primary',
-    }]
+    }],
+    name: 'test',
   }
 };
 
@@ -64,7 +67,8 @@ export const NoLabel: Story = {
     items: [{
       value: 'value 1',
       id: 'test_primary',
-    }]
+    }],
+    name: 'test',
   }
 };
 
@@ -74,10 +78,12 @@ export const Miltiple: Story = {
       label: 'label 1',
       value: 'value 1',
       id: 'test_primary',
+      isChecked : true
     },{
       label: 'label 2',
       value: 'value 2',
       id: 'test_primary',
-    }]
+    }],
+    name: 'test',
   }
 };
