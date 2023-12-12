@@ -2,14 +2,14 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { ResponsiveTabs } from './ResponsiveTabs';
 import React from "react";
 
-const meta = {
+const meta: Meta<typeof ResponsiveTabs> = {
   title: 'Molecules/ResponsiveTabs',
   component: ResponsiveTabs,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof ResponsiveTabs>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../assets/custumStyles.css';
+import './responsiveTabs.css';
 
 type Item = {
   title: string;
@@ -16,7 +16,7 @@ export const ResponsiveTabs = ({
   const [activeTab, setActiveTab] = useState(0); // State to track the active tab index
 
   return (
-    <div style={{width: '100%', verticalAlign: "top", display: "inline"}}>
+    <div className="responsive-tabs-div">
       <ul className="nav nav-tabs tabs" role="tablist">
         {items.map((c, index) => (
           <li className="nav-item">
