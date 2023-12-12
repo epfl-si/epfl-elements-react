@@ -13,6 +13,7 @@ interface CheckboxProps {
   isRequired?: boolean;
   validationErrorMessage?: string;
   name: string;
+  inLine?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>, checkboxName: string, isChecked: boolean) => void;
 }
 
@@ -22,8 +23,10 @@ export const Checkbox = ({
     isRequired = false,
     validationErrorMessage,
     name,
+    inLine = false,
     onChange
   }: CheckboxProps) => {
+  const inLineStyle = inLine ? 'form-check form-check-inline' : 'form-check';
 
   const checkBoxes: React.ReactNode[] = [];
   items.map(i => {
@@ -50,5 +53,5 @@ export const Checkbox = ({
       </div>)
   })
 
-  return <div>{checkBoxes}</div>;
+  return <div className={inLineStyle}>{checkBoxes}</div>;
 };
