@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/custumStyles.css';
 
 interface RadioButtonProps {
   isReadonly?: boolean;
@@ -9,7 +8,7 @@ interface RadioButtonProps {
   id: string;
   name: string;
   inLine?: boolean;
-  onChange?: () => void;
+  onChange?: (e: React.ChangeEvent, newVal: string) => void;
 }
 
 export const RadioButton = ({
@@ -29,6 +28,7 @@ export const RadioButton = ({
   const labels = labelAndvalue.split(';');
   labels.forEach(s => {
     const couple = s.split(':');
+    const val = couple[1] ? couple[1] : couple[0];
     result.push(
           <div className="form-check"><input
             className="form-check-input"
@@ -38,7 +38,8 @@ export const RadioButton = ({
             checked={isChecked}
             disabled={isReadonly}
             required={isRequired}
-            value={couple[1] ? couple[1] : couple[0]}
+            value={val}
+            onChange={(e) => { if (onChange) onChange(e, val) }}
           />
           <label className='form-check-label' htmlFor={id}>{couple[0]}</label></div>);
   });

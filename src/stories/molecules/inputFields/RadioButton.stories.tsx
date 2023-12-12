@@ -3,14 +3,15 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { RadioButton } from './RadioButton';
 import React from "react";
 
-const meta = {
+const meta: Meta<typeof RadioButton> = {
   title: 'Molecules/Inputs/RadioButton',
   component: RadioButton,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof RadioButton>;
+  argTypes: {onChange: {action: 'changed'}}
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
