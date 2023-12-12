@@ -1,7 +1,7 @@
 import React from 'react';
 import {Button} from "./Button";
-import '../assets/custumStyles.css';
 import {ColorValue} from "@storybook/blocks";
+import './badge.css';
 
 interface BadgeProps {
   title?: string;
@@ -42,7 +42,7 @@ export const Badge = ({
   return (
     <div className={cardStyle}>
       <div className="d-flex flex-row justify-content-between" style={{alignItems: 'center'}} >
-        <img src={image} style={{width: '50px', marginRight: '5px'}}/>
+        <img src={image} className="image"/>
         <span style={{ fontWeight: fontWeight, fontSize: "smaller", color: textColor}}>{title}</span>
         <div className="d-flex justify-content-center">
           <span className="badge">9</span>
