@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import '../assets/custumStyles.css';
+import React, { useState } from 'react';
+import './tabs.css';
 
 type Item = {
   title: string;

@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from "react";
 import {Tabs} from "./Tabs";
-import featherIcons from "../assets/elements-dist-frontend/icons/feather-sprite.svg";
+import featherIcons from "epfl-elements/dist/icons/feather-sprite.svg";
 
-const meta = {
+const meta: Meta<typeof Tabs> = {
   title: 'Molecules/Tabs',
   component: Tabs,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Tabs>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
