@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import '../../assets/custumStyles.css';
 
 type Item = {
   value: string;
@@ -13,7 +12,7 @@ interface DropdownProps {
   id: string;
   multiple?: boolean;
   visibleItems?: number;
-  items: Item[];
+  suggestions: Item[];
   selected?: Item[];
   onChange?: (selectedItems: Item[]) => void;
 }
@@ -26,10 +25,10 @@ export const Dropdown = ({
     multiple = false,
     label,
     id,
-    items,
+    suggestions,
     onChange
   }: DropdownProps) => {
-  const [selectedOptions, setselectedOptions] = useState<Item[]>(selected ? selected : []);
+  const [selectedOptions, setSelectedOptions] = useState<Item[]>(selected ? selected : []);
 
   let formControlStyle: string = 'form-control';
   switch (sizeDropDown) {
@@ -39,21 +38,20 @@ export const Dropdown = ({
     case 'large':
       formControlStyle = formControlStyle.concat(' form-control-lg')
       break;
+    default:
+      break;
   }
 
-  const addSelected = (value: Item) => {
-    if (multiple) {
-      setselectedOptions([...selectedOptions, value]);
-    } else {
-      setselectedOptions([value]);
-    }
-  };
+  const handleSelectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValues: Item[] = Array.from(e.target.selectedOptions, (option) =>
+      suggestions.find((item) => item.value === option.value)
+    ) as Item[];
 
-  const removeSelected = (value: Item) => {
-    const updatedSelections = selectedOptions.filter(
-      (selection) => selection !== value
-    );
-    setselectedOptions(updatedSelections);
+    setSelectedOptions(selectedValues);
+
+    if (onChange) {
+      onChange(selectedValues);
+    }
   };
 
   return (
@@ -66,12 +64,12 @@ export const Dropdown = ({
               multiple={multiple ? multiple : false}
               size={visibleItems ? visibleItems : 1}
               disabled={isReadonly ? isReadonly : false}
-              style={{minWidth: '130px'}}>
+              style={{minWidth: '130px'}}
+              value={selectedOptions.map((option) => option.value)}
+              onChange={handleSelectionChange}>
         <option value=""></option>
-        {items.map((c) => (
-          <option value={c.value}
-                  selected={selectedOptions.includes(c)}
-                  onClick={() => {selectedOptions.includes(c) ? removeSelected(c) : addSelected(c); if (onChange) onChange(selectedOptions);}}>
+        {suggestions.map((c) => (
+          <option value={c.value} key={c.value}>
             {c.label}
           </option>
         ))}

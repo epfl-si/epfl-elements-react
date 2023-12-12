@@ -9,8 +9,7 @@ const meta: Meta<typeof Dropdown> = {
   parameters: {
     layout: 'centered',
   },
-  tags: ['autodocs'],
-  argTypes: {onChange: {action: 'changed'}}
+  tags: ['autodocs']
 };
 
 export default meta;
@@ -20,7 +19,7 @@ export const Default: Story = {
   args: {
     label: 'Click me',
     id: 'dropdown',
-    items: [
+    suggestions: [
       {
         value: '1',
         label: 'label 1'
@@ -40,7 +39,7 @@ export const Default: Story = {
 export const NoLabel: Story = {
   args: {
     id: 'dropdown',
-    items: [
+    suggestions: [
       {
         value: '1',
         label: 'label 1'
@@ -63,7 +62,7 @@ export const Multiple: Story = {
     id: 'dropdown',
     multiple: true,
     visibleItems: 4,
-    items: [
+    suggestions: [
       {
         value: '1',
         label: 'label 1'
@@ -85,7 +84,7 @@ export const ReadOnly: Story = {
     isReadonly: true,
     label: 'Click me',
     id: 'dropdown',
-    items: [
+    suggestions: [
       {
         value: '1',
         label: 'label 1'
