@@ -10,7 +10,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
-    "epfl-elements": "^4.6.1"
+    "epfl-elements": "^4.6.1",
+    "react-bootstrap": "^2.9.1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.3",
