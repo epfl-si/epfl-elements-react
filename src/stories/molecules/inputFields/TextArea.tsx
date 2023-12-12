@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/custumStyles.css';
 
 interface TextAreaProps {
   size?: 'small' | 'medium' | 'large';
@@ -16,7 +15,7 @@ interface TextAreaProps {
   rows?: number;
   cols?: number;
   validationErrorMessage?: string;
-  onChange?: () => void;
+  onChange?: (newValue: string) => void;
 }
 
 export const TextArea = ({
@@ -66,6 +65,9 @@ export const TextArea = ({
           rows={rows}
           cols={cols}
           style={{resize: 'both'}}
+          onChange={(event) => {
+            if (onChange) onChange(event.target.value);
+          }}
         />
         <div className="invalid-feedback">
           {validationErrorMessage}
