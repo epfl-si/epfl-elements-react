@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FormControlProps, Form } from 'react-bootstrap';
-import featherIcons from "../../assets/elements-dist-frontend/icons/feather-sprite.svg";
+import featherIcons from "epfl-elements/dist/icons/feather-sprite.svg";
+import './autocomplete.css';
 
 type Item = {
   label: string;
@@ -11,18 +12,23 @@ interface AutocompleteProps {
   suggestions: Item[];
   selected?: Item[];
   multiple?: boolean;
+  itemValue?: Item;
+  placeholder?: string;
+  onChange?: (selectedItems: Item[]) => void;
 }
 
 export const Autocomplete: React.FC<AutocompleteProps & FormControlProps> = ({
    suggestions,
-   selected,
+   selected = [],
    multiple = false,
-   ...rest
+   itemValue,
+   placeholder = '',
+  onChange
   }: AutocompleteProps & FormControlProps) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState<Item[]>([]);
-  const [inputValue, setInputValue] = useState('');
-  const [selectedSuggestions, setSelectedSuggestions] = useState<Item[]>(selected? selected : []);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const [inputValue, setInputValue] = useState(itemValue ? itemValue.label : '');
+  const [selectedSuggestions, setSelectedSuggestions] = useState<Item[]>(selected ? selected : []);
+  const inputRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -53,7 +59,11 @@ export const Autocomplete: React.FC<AutocompleteProps & FormControlProps> = ({
       setSelectedSuggestions([...selectedSuggestions, value]);
     } else {
       setInputValue(value.label);
+      setSelectedSuggestions([value]);
       setFilteredSuggestions([]);
+    }
+    if (onChange) {
+      onChange(selectedSuggestions)
     }
   };
 
@@ -68,20 +78,20 @@ export const Autocomplete: React.FC<AutocompleteProps & FormControlProps> = ({
     <div ref={inputRef}>
       <div style={{ position: 'relative' }}>
         <Form.Control
-          {...rest}
           value={inputValue}
           onChange={handleInputChange}
           type="text"
-          placeholder="Type something..."
+          placeholder={placeholder}
         />
         {filteredSuggestions.length > 0 && (
-          <ul className="list-group" style={{ position: 'absolute', zIndex: 1 }}>
+          <ul className="list-group dropdown-list">
             {filteredSuggestions.map((suggestion, index) => (
               <li
                 key={index}
                 className="list-group-item"
-                onClick={() => handleSuggestionClick(suggestion)}
-                style={{ cursor: 'pointer', display: selectedSuggestions.find(s => (s.value === suggestion.value)) ? 'none' : 'block',}}
+                onClick={() => {handleSuggestionClick(suggestion);
+                  }}
+                style={{ cursor: 'pointer', display: selectedSuggestions.find(s => s.value === suggestion.value) ? 'none' : 'block',}}
               >
                 {suggestion.label}
               </li>
@@ -90,24 +100,20 @@ export const Autocomplete: React.FC<AutocompleteProps & FormControlProps> = ({
         )}
       </div>
       {multiple && selectedSuggestions.length > 0 && (
-        <div>
+        <div className="selected-items">
           <ul className="list-group">
             {selectedSuggestions.map((selected, index) => (
               <li
                 key={index}
                 className="list-group-item"
               >
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
+                <div style={{ width: '100%' }} >
                   {selected.label}
-                  <svg className="icon feather" aria-hidden="true"
-                       style={{ cursor: 'pointer' }}
-                       onClick={() => removeSelected(selected)}>
+                  <svg className="icon feather icon-right" aria-hidden="true"
+                       onClick={() => {removeSelected(selected);
+                         if (onChange) {
+                           onChange(selectedSuggestions)
+                         }}}>
                     <use xlinkHref={`${featherIcons}#trash-2`}></use>
                   </svg>
                 </div>
