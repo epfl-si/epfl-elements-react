@@ -19,60 +19,77 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     name: 'test_Name',
-    id: 'test_primary',
     isRequired: false,
-    labelAndvalue: 'test1:test1v'
+    items: [{
+      label: 'label 1',
+      value: 'value 1',
+      id: 'test_primary'
+    }],
   }
 };
 
 export const Required: Story = {
   args: {
     name: 'test_Name',
-    id: 'test_primary',
     isRequired: true,
-    labelAndvalue: 'test1:test1v'
+    items: [{
+      label: 'label 1',
+      value: 'value 1',
+      id: 'test_primary'
+    }],
   }
 };
 
 export const Checked: Story = {
   args: {
     name: 'test_Name',
-    id: 'test_primary',
-    isChecked: true,
-    labelAndvalue: 'test1:test1v'
+    items: [{
+      label: 'label 1',
+      value: 'value 1',
+      id: 'test_primary',
+      isChecked: true
+    }],
   }
 };
 
 export const Readonly: Story = {
   args: {
     name: 'test_Name',
-    id: 'test_primary',
     isReadonly: true,
-    labelAndvalue: 'test1:test1v'
+    items: [{
+      label: 'label 1',
+      value: 'value 1',
+      id: 'test_primary'
+    }],
   }
 };
 
 export const NoLabel: Story = {
   args: {
     name: 'test_Name',
-    id: 'test_primary',
-    labelAndvalue: ':test1v'
-  }
-};
-
-export const NoValue: Story = {
-  args: {
-    name: 'test_Name',
-    id: 'test_primary',
-    labelAndvalue: 'test1'
+    items: [{
+      value: 'value 1',
+      id: 'test_primary'
+    }],
   }
 };
 
 export const inLine: Story = {
   args: {
     name: 'test_Name',
-    id: 'test_primary',
-    labelAndvalue: 'test1:test1v;test2:test2v;test3:test3v',
-    inLine: true
+    inLine: true,
+    items: [{
+      label: 'label 1',
+      value: 'value 1',
+      id: 'test_primary 1'
+    },{
+      label: 'label 2',
+      value: 'value 2',
+      id: 'test_primary 2'
+    },{
+      label: 'label 3',
+      value: 'value 3',
+      id: 'test_primary 3'
+    }],
   }
 };
