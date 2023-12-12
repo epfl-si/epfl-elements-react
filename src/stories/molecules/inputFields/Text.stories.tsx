@@ -3,14 +3,14 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Text } from './Text';
 import React from "react";
 
-const meta = {
+const meta: Meta<typeof Text> = {
   title: 'Molecules/Inputs/Text',
   component: Text,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Text>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;

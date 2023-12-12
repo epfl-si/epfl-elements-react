@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../assets/custumStyles.css';
 
 interface TextProps {
   size?: 'small' | 'medium' | 'large';
@@ -16,7 +15,7 @@ interface TextProps {
   maxlength?: number;
   pattern?: string;
   validationErrorMessage?: string;
-  onChange?: () => void;
+  onChange?: (newValue: string) => void;
 }
 
 export const Text = ({
@@ -65,6 +64,9 @@ export const Text = ({
           value={value}
           readOnly={isReadonly}
           required={isRequired}
+          onChange={(event) => {
+            if (onChange) onChange(event.target.value);
+          }}
         />
         <div className="invalid-feedback">
           {validationErrorMessage}
