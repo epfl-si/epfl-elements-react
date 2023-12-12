@@ -1,6 +1,5 @@
 import React from 'react';
 import {Button} from "./Button";
-import '../assets/custumStyles.css';
 
 interface TeaserProps {
   rightIcon?: string;
