@@ -1,6 +1,7 @@
 import type { Preview } from "@storybook/react";
 import 'epfl-elements/dist/css/elements.css';
 import 'epfl-elements/dist/css/vendors.css';
+import './storybook.css';
 
 const preview: Preview = {
   parameters: {
