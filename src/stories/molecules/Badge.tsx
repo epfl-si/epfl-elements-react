@@ -14,7 +14,7 @@ interface BadgeProps {
 }
 
 /**
- * Primary UI component for user interaction
+ * A clickable user badge
  */
 export const Badge = ({
     title,

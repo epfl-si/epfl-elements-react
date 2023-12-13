@@ -17,6 +17,10 @@ interface CheckboxProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>, checkboxName: string, isChecked: boolean) => void;
 }
 
+/**
+ * A checkbox element.
+ * The "items" array contains all the checkboxes details (label, value, id, isChecked).
+ */
 export const Checkbox = ({
     isReadonly = false,
     items,

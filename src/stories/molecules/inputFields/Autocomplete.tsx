@@ -18,6 +18,13 @@ interface AutocompleteProps {
   onChange?: (selectedItems: Item[]) => void;
 }
 
+/**
+ * An autocomplete list.
+ * If single selection: the selected element is shown directly in the input field. The "itemValue" could be the
+ * initialization of this field.
+ * For multiple selections: selected elements are shown above the input list and it is possible to delete them.
+ * The "selected" prop contains all selected items.
+ */
 export const Autocomplete: React.FC<AutocompleteProps & FormControlProps> = ({
    suggestions,
    selected = [],

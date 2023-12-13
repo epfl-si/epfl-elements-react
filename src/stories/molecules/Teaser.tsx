@@ -12,7 +12,7 @@ interface TeaserProps {
 }
 
 /**
- * Primary UI component for user interaction
+ * A teaser where the teaser icon and the right icon are clickable with different href
  */
 export const Teaser = ({
   rightIcon,

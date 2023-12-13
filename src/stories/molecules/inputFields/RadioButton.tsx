@@ -16,6 +16,10 @@ interface RadioButtonProps {
   onChange?: (e: React.ChangeEvent, newVal: string) => void;
 }
 
+/**
+ * A radio button element.
+ * The "items" array contains all the checkboxes details (label, value, id, isChecked).
+ */
 export const RadioButton = ({
   isReadonly = false,
   isRequired = false,

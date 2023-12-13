@@ -18,6 +18,10 @@ interface TextProps {
   onChange?: (newValue: string) => void;
 }
 
+/**
+ * An text field.
+ * It could be a simple text, a telephone number, an email address, a password, an url
+ */
 export const Text = ({
                           size = 'medium',
                           isReadonly = false,

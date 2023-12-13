@@ -18,6 +18,9 @@ interface TextAreaProps {
   onChange?: (newValue: string) => void;
 }
 
+/**
+ * An textarea field.
+ */
 export const TextArea = ({
                        size = 'medium',
                        isReadonly = false,

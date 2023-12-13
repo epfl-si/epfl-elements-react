@@ -11,6 +11,10 @@ interface ButtonProps {
   iconName?: string;
 }
 
+/**
+ * A button.
+ * It is also possible to have just an icon by giving the icon name
+ */
 export const Button = ({
   primary = true,
   size = 'medium',

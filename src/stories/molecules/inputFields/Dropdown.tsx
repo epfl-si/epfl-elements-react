@@ -17,6 +17,13 @@ interface DropdownProps {
   onChange?: (selectedItems: Item[]) => void;
 }
 
+/**
+ * An dropdown list.
+ * If single selection: the selected element is shown directly in the input field. The "itemValue" could be the
+ * initialization of this field.
+ * For multiple selections: the field is bigger.
+ * The "selected" prop contains all selected items.
+ */
 export const Dropdown = ({
     visibleItems,
     size = 'medium',

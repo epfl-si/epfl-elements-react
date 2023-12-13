@@ -16,6 +16,9 @@ interface NumericProps {
   onChange?: (newValue: number) => void;
 }
 
+/**
+ * An numeric field.
+ */
 export const Numeric = ({
   size = 'medium',
   isReadonly = false,
