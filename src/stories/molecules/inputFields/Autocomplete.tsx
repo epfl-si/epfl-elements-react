@@ -14,6 +14,7 @@ interface AutocompleteProps {
   multiple?: boolean;
   itemValue?: Item;
   placeholder?: string;
+  isReadonly?: boolean;
   onChange?: (selectedItems: Item[]) => void;
 }
 
@@ -23,6 +24,7 @@ export const Autocomplete: React.FC<AutocompleteProps & FormControlProps> = ({
    multiple = false,
    itemValue,
    placeholder = '',
+   isReadonly = false,
   onChange
   }: AutocompleteProps & FormControlProps) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState<Item[]>([]);
@@ -81,6 +83,7 @@ export const Autocomplete: React.FC<AutocompleteProps & FormControlProps> = ({
           value={inputValue}
           onChange={handleInputChange}
           type="text"
+          disabled={isReadonly}
           placeholder={placeholder}
         />
         {filteredSuggestions.length > 0 && (
@@ -109,13 +112,18 @@ export const Autocomplete: React.FC<AutocompleteProps & FormControlProps> = ({
               >
                 <div style={{ width: '100%' }} >
                   {selected.label}
-                  <svg className="icon feather icon-right" aria-hidden="true"
-                       onClick={() => {removeSelected(selected);
-                         if (onChange) {
-                           onChange(selectedSuggestions)
-                         }}}>
+                  {isReadonly ?
+                    <svg className="icon feather icon-right-disabled" aria-hidden="true">
+                      <use xlinkHref={`${featherIcons}#trash-2`}></use>
+                    </svg>
+                    :
+                    <svg className="icon feather icon-right" aria-hidden="true"
+                                        onClick={() => {removeSelected(selected);
+                                          if (onChange) {
+                                            onChange(selectedSuggestions)
+                                          }}}>
                     <use xlinkHref={`${featherIcons}#trash-2`}></use>
-                  </svg>
+                  </svg>}
                 </div>
               </li>
             ))}

@@ -10,6 +10,11 @@
     float: right;
 }
 
+.icon-right-disabled {
+    float: right;
+    color: #8B8B8B;
+}
+
 .selected-items {
     margin-top: 20px;
 }
