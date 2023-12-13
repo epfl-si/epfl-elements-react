@@ -10,7 +10,7 @@ interface BadgeProps {
   icon?: string;
   textColor?: ColorValue;
   fontWeight: 'normal' | 'bold';
-  onClickIcon?: () => void;
+  onClick?: (e: React.MouseEvent) => void;
 }
 
 /**
@@ -23,7 +23,7 @@ export const Badge = ({
     image,
     fontWeight = 'normal',
     textColor,
-    onClickIcon
+    onClick
   }: BadgeProps) => {
 
   let cardStyle: string = 'card';
@@ -40,15 +40,15 @@ export const Badge = ({
   }
 
   return (
-    <div className={cardStyle}>
-      <div className="d-flex flex-row justify-content-between" style={{alignItems: 'center'}} >
+    <div className={cardStyle}
+         onClick={(e) => { if (onClick) onClick(e) }}>
+      <div className="d-flex flex-row justify-content-between clickable-center" >
         <img src={image} className="image"/>
         <span style={{ fontWeight: fontWeight, fontSize: "smaller", color: textColor}}>{title}</span>
         <div className="d-flex justify-content-center">
           <span className="badge">9</span>
           {icon ? <Button size="icon"
-                             iconName={icon}
-                             onClick={onClickIcon}/> : <></>}</div>
+                             iconName={icon}/> : <></>}</div>
       </div>
     </div>
   );

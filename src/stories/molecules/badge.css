@@ -36,6 +36,11 @@
     flex-direction: row;
 }
 
+.clickable-center {
+    align-items: center;
+    cursor: pointer;
+}
+
 @media (min-width: 768px) {
     .cards {
         display: flex;
