@@ -1,45 +1,92 @@
-import React, { useState } from 'react';
+import React, { Children, useState } from 'react';
 import './responsiveTabs.css';
 
-type Item = {
-  title: string;
-  content: React.ReactNode;
+export interface ResponsiveTabsProps {
+  children?: React.ReactNode
 }
 
-interface ResponsiveTabsProps {
-  items: Item[]
-}
+type TabTitleProps = { children: React.ReactNode };
+type TabContentProps = { children: React.ReactNode };
+type TabProps = { id: string, children: React.ReactNode };
 
-export const ResponsiveTabs = ({
-    items
-  }: ResponsiveTabsProps) => {
+const ResponsiveTabsFC = ({ children }: ResponsiveTabsProps) => {
+  const tabArray = (Children.toArray(children || []).filter(
+    (child : React.ReactElement) => child.type === ResponsiveTabs.Tab)) as React.ReactElement<TabProps>[];
   const [activeTab, setActiveTab] = useState(0); // State to track the active tab index
+
+  function c_id(child: React.ReactElement<TabProps>) {
+    return child.props.id;
+  }
+
+  function c_title(children: React.ReactNode) {
+    const title = (Children.toArray(children || []).find(
+      (child : React.ReactElement) => child.type === ResponsiveTabs.Tab.Title)) as React.ReactElement<TabTitleProps>;
+    return title.props.children;
+  }
+
+  function c_content(children: React.ReactNode) {
+    const content = (Children.toArray(children || []).find(
+      (child : React.ReactElement) => child.type === ResponsiveTabs.Tab.Content)) as React.ReactElement<TabContentProps>;
+    return content.props.children;
+  }
 
   return (
     <div className="responsive-tabs-div">
       <ul className="nav nav-tabs tabs" role="tablist">
-        {items.map((c, index) => (
-          <li className="nav-item">
-            <a className={`nav-link ${index === activeTab ? 'active' : ''}`} id={c.title.concat("-tab")} data-toggle="tab" href={"#".concat(c.title)} role="tab" aria-controls={c.title}
-               aria-selected="true" onClick={(event) => { event.preventDefault(); setActiveTab(index); } }>{c.title}</a>
+        {tabArray.map((child, index) => {
+          return <li className="nav-item">
+            <a className={`nav-link ${index === activeTab ? 'active' : ''}`} id={c_id(child).concat("-tab")}
+               data-toggle="tab" href={"#".concat(c_id(child))} role="tab"
+               aria-controls={c_id(child)}
+               aria-selected="true" onClick={(event) => {
+              event.preventDefault();
+              setActiveTab(index);
+            }}>{c_title(child.props.children)}</a>
           </li>
-        ))}
+        })}
       </ul>
       <div className="tab-content p-3 tabs">
-        {items.map((c, index) => (
-          <div className={`tab-pane fade ${index === activeTab ? 'show active' : ''}`} id={c.title} role="tabpanel" aria-labelledby={c.title.concat("-tab")} key={c.title}>
-            {c.content}
+        {tabArray.map((child, index) => {
+          return <div className={`tab-pane fade ${index === activeTab ? 'show active' : ''}`}
+                      id={c_id(child)} role="tabpanel"
+                      aria-labelledby={c_id(child).concat("-tab")} key={c_id(child)}>
+            {c_content(child.props.children)}
           </div>
-        ))}
+        })}
       </div>
       <div className="flex-row justify-content-between box-container">
-        {items.map((c) => (
-          <div className='tab-pane fade show active box' id={c.title} role="tabpanel" aria-labelledby={c.title.concat("-tab")} key={c.title}>
-            <p>{c.title}</p>
-            {c.content}
+        {tabArray.map((child) => {
+          return <div className='box card col-lg-4 d-flex align-items-stretch' id={c_id(child)}
+                      aria-labelledby={c_id(child).concat("-tab")} key={c_id(child)}>
+            <div className="card-body">
+              <div  class="card-title">
+                {c_title(child.props.children)}
+              </div>
+              <div className="card-text">
+                <hr/>
+                {c_content(child.props.children)}
+              </div>
+            </div>
           </div>
-        ))}
+        })}
       </div>
     </div>
   );
-};
+}
+
+/**
+ * A responsive tabs group.
+ * For small devices, tabs are shown, otherwise tabs content is shown in cards on the same page.
+ * For each tab it is possible to define a “Title” and a “Content”, both with children
+ */
+export const ResponsiveTabs =
+    Object.assign(
+      ResponsiveTabsFC,
+      {
+        Tab: Object.assign(() => <></> as React.FC<TabProps>,
+          {
+            Title: (() => <></>) as React.FC<TabTitleProps>,
+            Content: (() => <></>) as React.FC<TabContentProps>
+          })
+      }
+    );

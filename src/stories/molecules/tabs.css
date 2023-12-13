@@ -1,3 +1,9 @@
 .nav-link {
     height: 100%;
 }
+
+.tabs-div {
+    width: 100%;
+    vertical-align: top;
+    display: inline;
+}

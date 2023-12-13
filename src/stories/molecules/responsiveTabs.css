@@ -13,13 +13,18 @@
     border: 1px solid #c4c4c4;
     border-radius: 10px;
     margin: 10px;
-    padding: 10px;
 }
 
-.box-container{
-    display: flex;
-    flex-direction: row;
-}
+
+ .card-body {
+     padding: 1rem;
+ }
+
+ .card-title {
+     height: 30%;
+     overflow: hidden;
+ }
+
 
 @media (min-width: 768px) {
     .tabs {
@@ -27,6 +32,10 @@
     }
     .box {
         display: unset;
+    }
+    .box-container{
+        display: flex;
+        flex-direction: row;
     }
 }
 
@@ -36,6 +45,9 @@
         display: flex;
     }
     .box {
-        display: unset;
+        display: none;
+    }
+    .box-container{
+        display: none;
     }
 }

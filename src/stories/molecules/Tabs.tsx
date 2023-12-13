@@ -1,41 +1,70 @@
-import React, { useState } from 'react';
+import React, { Children, useState } from 'react';
 import './tabs.css';
 
-type Item = {
-  title: string;
-  tabContent?: React.ReactNode;
-  content: React.ReactNode;
+export interface TabsProps {
+  children?: React.ReactNode[];
 }
 
-interface TabsProps {
-  items: Item[]
-}
+type TabTitleProps = { children: React.ReactNode };
+type TabContentProps = { children: React.ReactNode };
+type TabProps = { id: string, children: React.ReactNode };
 
-export const Tabs = ({
-    items
-  }: TabsProps) => {
+const TabsFC = ({children}: TabsProps) => {
+  const tabArray = (Children.toArray(children || []).filter(
+    (child : React.ReactElement) => child.type === Tabs.Tab)) as React.ReactElement<TabProps>[];
   const [activeTab, setActiveTab] = useState(0);
 
+  function c_id(child: React.ReactElement<TabProps>) {
+    return child.props.id;
+  }
+
+  function c_title(children: React.ReactNode) {
+    const title = (Children.toArray(children || []).find(
+      (child : React.ReactElement) => child.type === Tabs.Tab.Title)) as React.ReactElement<TabTitleProps>;
+    return title.props.children;
+  }
+
+  function c_content(children: React.ReactNode) {
+    const content = (Children.toArray(children || []).find(
+      (child : React.ReactElement) => child.type === Tabs.Tab.Content)) as React.ReactElement<TabContentProps>;
+    return content.props.children;
+  }
+
   return (
-    <div style={{width: '100%', verticalAlign: "top", display: "inline"}}>
+    <div className="tabs-div">
       <ul className="nav nav-tabs" role="tablist">
-        {items.map((c, index) => (
+        {tabArray.map((child, index) => (
           <li className="nav-item">
-            <a className={`text-center nav-link ${index === activeTab ? 'active' : ''}`} id={c.title.concat("-tab")} data-toggle="tab" href={"#".concat(c.title)} role="tab" aria-controls={c.title}
+            <a className={`text-center nav-link ${index === activeTab ? 'active' : ''}`} id={c_id(child).concat("-tab")} data-toggle="tab" href={"#".concat(c_id(child))} role="tab" aria-controls={c_id(child)}
                aria-selected="true" onClick={(event) => { event.preventDefault(); setActiveTab(index); } }>
-                {c.title}
-                {c.tabContent}
+              {c_title(child.props.children)}
             </a>
           </li>
         ))}
       </ul>
       <div className="tab-content p-3">
-        {items.map((c, index) => (
-          <div className={`tab-pane fade ${index === activeTab ? 'show active' : ''}`} id={c.title} role="tabpanel" aria-labelledby={c.title.concat("-tab")} key={c.title}>
-            {c.content}
+        {tabArray.map((child, index) => (
+          <div className={`tab-pane fade ${index === activeTab ? 'show active' : ''}`} id={c_id(child)} role="tabpanel" aria-labelledby={c_id(child).concat("-tab")} key={c_id(child)}>
+            {c_content(child.props.children)}
           </div>
         ))}
       </div>
     </div>
   );
-};
+}
+
+/**
+ * A tabs group.
+ * For each tab it is possible to define a “Title” and a “Content”, both with children
+ */
+export const Tabs =
+  Object.assign(
+    TabsFC,
+    {
+      Tab: Object.assign(() => <></> as React.FC<TabProps>,
+      {
+        Title: (() => <></>) as React.FC<TabTitleProps>,
+        Content: (() => <></>) as React.FC<TabContentProps>
+      })
+    }
+  );
