@@ -6,7 +6,7 @@ type Item = {
 }
 
 interface DropdownProps {
-  sizeDropDown?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
   isReadonly?: boolean;
   label?: string;
   id: string;
@@ -19,7 +19,7 @@ interface DropdownProps {
 
 export const Dropdown = ({
     visibleItems,
-    sizeDropDown = 'medium',
+    size = 'medium',
     isReadonly = false,
     selected = [],
     multiple = false,
@@ -31,7 +31,7 @@ export const Dropdown = ({
   const [selectedOptions, setSelectedOptions] = useState<Item[]>(selected ? selected : []);
 
   let formControlStyle: string = 'form-control';
-  switch (sizeDropDown) {
+  switch (size) {
     case 'small':
       formControlStyle = formControlStyle.concat(' form-control-sm')
       break;
