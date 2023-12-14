@@ -24,6 +24,10 @@ tabDisplays.Tab.Content.displayName = "ResponsiveTabs.Tab.Content";
 
 export const Default : Story = {
   args: {
+    cardStyle: {
+      background: 'white',
+      fontSize: 'small'
+    },
     children: [
       <ResponsiveTabs.Tab id={"1"}>
         <ResponsiveTabs.Tab.Title>

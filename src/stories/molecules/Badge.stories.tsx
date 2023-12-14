@@ -17,9 +17,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
     args: {
         title: 'Test default',
-        border: 'none',
         image: 'https://randomuser.me/api/portraits/men/3.jpg',
         icon: "#arrow-right",
-        fontWeight: 'normal'
     },
 };

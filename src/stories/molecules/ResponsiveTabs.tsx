@@ -1,15 +1,19 @@
 import React, { Children, useState } from 'react';
 import './responsiveTabs.css';
+import type * as CSS from 'csstype';
+
+interface Style extends CSS.Properties, CSS.PropertiesHyphen {}
 
 export interface ResponsiveTabsProps {
-  children?: React.ReactNode
+  children?: React.ReactNode,
+  cardStyle?: Style
 }
 
 type TabTitleProps = { children: React.ReactNode };
 type TabContentProps = { children: React.ReactNode };
 type TabProps = { id: string, children: React.ReactNode };
 
-const ResponsiveTabsFC = ({ children }: ResponsiveTabsProps) => {
+const ResponsiveTabsFC = ({ children, cardStyle }: ResponsiveTabsProps) => {
   const tabArray = (Children.toArray(children || []).filter(
     (child : React.ReactElement) => child.type === ResponsiveTabs.Tab)) as React.ReactElement<TabProps>[];
   const [activeTab, setActiveTab] = useState(0); // State to track the active tab index
@@ -57,9 +61,9 @@ const ResponsiveTabsFC = ({ children }: ResponsiveTabsProps) => {
       <div className="flex-row justify-content-between box-container">
         {tabArray.map((child) => {
           return <div className='box card col-lg-4 d-flex align-items-stretch' id={c_id(child)}
-                      aria-labelledby={c_id(child).concat("-tab")} key={c_id(child)}>
+                      aria-labelledby={c_id(child).concat("-tab")} key={c_id(child)} style={cardStyle}>
             <div className="card-body">
-              <div  class="card-title">
+              <div className="card-title">
                 {c_title(child.props.children)}
               </div>
               <div className="card-text">

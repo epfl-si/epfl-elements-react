@@ -1,5 +1,8 @@
 import React from 'react';
 import {Button} from "./Button";
+import type * as CSS from 'csstype';
+
+interface Style extends CSS.Properties, CSS.PropertiesHyphen {}
 
 interface TeaserProps {
   rightIcon?: string;
@@ -9,6 +12,7 @@ interface TeaserProps {
   teaserText?: string;
   hrefTeaser?: string;
   hrefRightIcon?: string;
+  style?: Style;
 }
 
 /**
@@ -21,7 +25,8 @@ export const Teaser = ({
   actifText,
   title,
   hrefTeaser,
-  hrefRightIcon
+  hrefRightIcon,
+  style
 }: TeaserProps) => {
 
   let textStyle = 'text-wrapper-enabled';
@@ -40,7 +45,7 @@ export const Teaser = ({
       </a> : <></>}
       <div className="avatar-teaser-body">
         <div className="d-flex flex-row justify-content-between">
-          {title ? <p className={textStyle}>{title}</p> : <></>}
+          {title ? <p className={textStyle} style={style}>{title}</p> : <></>}
           {rightIcon ? <div className="icon-right">
             <a href={hrefRightIcon}>
               <Button size="icon"
