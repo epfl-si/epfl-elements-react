@@ -36,7 +36,7 @@ export const Button = ({
   }
 
   if (size === 'icon') {
-    return <svg key="icon" className="icon" aria-hidden="true" style={{ cursor: 'pointer' }}
+    return <svg key="icon" className="icon" aria-hidden="true" style={{ cursor: 'pointer', width: '25px', height: '25px' }}
                 onClick={(e) => { if (onClick) onClick(e) }}>
       <use xlinkHref={`${featherIcons}${iconName}`}/>
     </svg>
