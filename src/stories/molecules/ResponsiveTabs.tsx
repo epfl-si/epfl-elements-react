@@ -1,5 +1,5 @@
 import React, { Children, useState } from 'react';
-import './responsiveTabs.css';
+import './responsiveTabs.scss';
 import type * as CSS from 'csstype';
 
 interface Style extends CSS.Properties, CSS.PropertiesHyphen {}
