@@ -1,6 +1,6 @@
 {
   "name": "@epfl/epfl-elements-react",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "type": "module",
   "files": [
     "dist"
@@ -8,12 +8,28 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "scripts": {
-    "build": "tsup src/index.ts --dts --legacy-output",
+    "build": "tsup src/index.ts",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "prepare": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "dts": true,
+    "legacyOutput": true,
+    "splitting": false,
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "external": [
+      "react"
+    ],
+    "injectStyle": true
   },
   "dependencies": {
     "@epfl/epfl-elements-styles": "^2.0.0",
