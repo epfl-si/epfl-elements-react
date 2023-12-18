@@ -1,6 +1,6 @@
 {
   "name": "@epfl/epfl-elements-react",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "type": "module",
   "files": [
     "dist"
@@ -14,6 +14,21 @@
     "prepare": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "dts": true,
+    "splitting": false,
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "external": [
+      "react"
+    ],
+    "injectStyle": true
   },
   "dependencies": {
     "@epfl/epfl-elements-styles": "^2.0.0",
