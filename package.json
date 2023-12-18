@@ -8,7 +8,7 @@
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "scripts": {
-    "build": "tsup src/index.ts --dts --legacy-output",
+    "build": "tsup src/index.ts",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0 --fix",
     "prepare": "npm run build",
@@ -20,6 +20,7 @@
       "src/index.ts"
     ],
     "dts": true,
+    "legacyOutput": true,
     "splitting": false,
     "format": [
       "cjs",
