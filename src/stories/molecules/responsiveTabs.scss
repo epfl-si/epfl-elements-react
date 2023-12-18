@@ -1,3 +1,5 @@
+@import '/scss/bootstrap.scss';
+
 .responsive-tabs-div {
     width: 100%;
     verticalAlign: top;
@@ -26,7 +28,7 @@
  }
 
 
-@media (min-width: 768px) {
+@include media-breakpoint-up(md) {
     .tabs {
         display: none;
     }
@@ -40,7 +42,7 @@
 }
 
 
-@media (max-width: 768px) {
+@include media-breakpoint-down(md) {
     .tabs {
         display: flex;
     }
