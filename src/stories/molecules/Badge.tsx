@@ -7,6 +7,7 @@ interface Style extends CSS.Properties, CSS.PropertiesHyphen {}
 
 interface BadgeProps {
   title?: string;
+  bedge: string;
   image?: string;
   icon?: string;
   cardStyle?: Style;
@@ -19,6 +20,7 @@ interface BadgeProps {
  */
 export const Badge = ({
     title,
+    bedge,
     icon,
     image,
     cardStyle = {},
@@ -29,11 +31,11 @@ export const Badge = ({
   return (
     <div className="card" style={cardStyle}
          onClick={(e) => { if (onClick) onClick(e) }}>
-      <div className="d-flex flex-row justify-content-between clickable-center" >
+      <div className="d-flex flex-row justify-content-between badge-clickable badge-center" >
         <img src={image} className="image"/>
         <span style={textStyle}>{title}</span>
         <div className="d-flex justify-content-center">
-          <span className="badge">9</span>
+          <span className="badge">{bedge}</span>
           {icon ? <Button size="icon"
                              iconName={icon}/> : <></>}</div>
       </div>
