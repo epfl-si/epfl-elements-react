@@ -50,15 +50,13 @@ export const Dropdown = ({
   }
 
   const handleSelectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValues: Item[] = Array.from(e.target.selectedOptions, (option) =>
+    if (!onChange) return;
+
+    const selectedValues = Array.from(e.target.selectedOptions, (option) =>
       suggestions.find((item) => item.value === option.value)
     ) as Item[];
-
     setSelectedOptions(selectedValues);
-
-    if (onChange) {
-      onChange(selectedValues);
-    }
+    onChange(selectedValues);
   };
 
   return (
