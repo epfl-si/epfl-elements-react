@@ -44,25 +44,9 @@ export const Multiple: Story = {
 
 
 export const single: Story = {
+  ...Multiple,
   args: {
-    suggestions: [
-      {
-        value: '1',
-        label: 'label 1'
-      },
-      {
-        value: '2',
-        label: 'label 2'
-      },
-      {
-        value: '3',
-        label: 'label 3'
-      }
-    ],
-    itemValue: {
-      value: '1',
-      label: 'label 1'
-    },
+    ...Multiple.args,
     multiple: false
   }
 };

@@ -29,20 +29,17 @@ export const Default: Story = {
 };
 
 export const Required: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
+    ...Default.args,
     isRequired: true,
-    items: [{
-      label: 'label 1',
-      value: 'value 1',
-      id: 'test_primary'
-    }],
   }
 };
 
 export const Checked: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
+    ...Default.args,
     items: [{
       label: 'label 1',
       value: 'value 1',
@@ -53,20 +50,17 @@ export const Checked: Story = {
 };
 
 export const Readonly: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
+    ...Default.args,
     isReadonly: true,
-    items: [{
-      label: 'label 1',
-      value: 'value 1',
-      id: 'test_primary'
-    }],
   }
 };
 
 export const NoLabel: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
+    ...Default.args,
     items: [{
       value: 'value 1',
       id: 'test_primary'
@@ -75,8 +69,9 @@ export const NoLabel: Story = {
 };
 
 export const inLine: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
+    ...Default.args,
     inLine: true,
     items: [{
       label: 'label 1',

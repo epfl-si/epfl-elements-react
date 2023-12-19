@@ -57,46 +57,18 @@ export const NoLabel: Story = {
 };
 
 export const Multiple: Story = {
+  ...Default,
   args: {
-    label: 'Click me',
-    id: 'dropdown',
+    ...Default.args,
     multiple: true,
-    visibleItems: 4,
-    suggestions: [
-      {
-        value: '1',
-        label: 'label 1'
-      },
-      {
-        value: '2',
-        label: 'label 2'
-      },
-      {
-        value: '3',
-        label: 'label 3'
-      }
-    ]
+    visibleItems: 4
   }
 };
 
 export const ReadOnly: Story = {
+  ...Default,
   args: {
+    ...Default.args,
     isReadonly: true,
-    label: 'Click me',
-    id: 'dropdown',
-    suggestions: [
-      {
-        value: '1',
-        label: 'label 1'
-      },
-      {
-        value: '2',
-        label: 'label 2'
-      },
-      {
-        value: '3',
-        label: 'label 3'
-      }
-    ]
   }
 };

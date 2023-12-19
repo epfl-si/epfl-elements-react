@@ -27,14 +27,10 @@ export const Default: Story = {
 };
 
 export const Required: Story = {
+  ...Default,
   args: {
+    ...Default.args,
     isRequired: true,
-    items: [{
-      label: 'label 1',
-      value: 'value 1',
-      id: 'test_primary'
-    }],
-    name: 'test',
   }
 };
 
@@ -51,14 +47,10 @@ export const Checked: Story = {
 };
 
 export const Readonly: Story = {
+  ...Default,
   args: {
+    ...Default.args,
     isReadonly: true,
-    items: [{
-      label: 'label 1',
-      value: 'value 1',
-      id: 'test_primary',
-    }],
-    name: 'test',
   }
 };
 
@@ -89,22 +81,9 @@ export const Miltiple: Story = {
 };
 
 export const inLine: Story = {
+  ...Miltiple,
   args: {
-    name: 'test_Name',
+    ...Miltiple.args,
     inLine: true,
-    items: [{
-      label: 'label 1',
-      value: 'value 1',
-      id: 'test_primary 1',
-      isChecked : true
-    },{
-      label: 'label 2',
-      value: 'value 2',
-      id: 'test_primary 2'
-    },{
-      label: 'label 3',
-      value: 'value 3',
-      id: 'test_primary 3'
-    }],
   }
 };

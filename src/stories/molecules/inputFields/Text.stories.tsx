@@ -24,78 +24,73 @@ export const Default: Story = {
 };
 
 export const Required: Story = {
+  ...Default,
   args: {
+    ...Default.args,
     isRequired: true,
-    name: 'test_Name',
-    id: 'test_primary',
-    type: 'text'
   }
 };
 
 export const Readonly: Story = {
+  ...Default,
   args: {
+    ...Default.args,
     isReadonly: true,
-    name: 'test_Name',
-    id: 'test_primary',
-    type: 'text'
   }
 };
 
 export const WithLabel: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
+    ...Default.args,
     label: 'Test label',
-    type: 'text'
   }
 };
 
 export const WithHelp: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
+    ...Default.args,
     help: 'Test label',
-    type: 'text'
   }
 };
 
 export const WithPlaceholder: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
+    ...Default.args,
     placeholder: 'Test label',
-    type: 'text'
   }
 };
 
 export const Password: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
+    ...Default.args,
     type: 'password'
   }
 };
 
 export const Email: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
+    ...Default.args,
     type: 'email'
   }
 };
 
 export const Telephone: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
+    ...Default.args,
     type: 'tel'
   }
 };
 
 export const Url: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
+    ...Default.args,
     type: 'url'
   }
 };

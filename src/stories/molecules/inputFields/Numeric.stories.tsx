@@ -23,41 +23,41 @@ export const Default: Story = {
 };
 
 export const Required: Story = {
+  ...Default,
   args: {
+    ...Default.args,
     isRequired: true,
-    name: 'test_Name',
-    id: 'test_primary'
   }
 };
 
 export const Readonly: Story = {
+  ...Default,
   args: {
+    ...Default.args,
     isReadonly: true,
-    name: 'test_Name',
-    id: 'test_primary'
   }
 };
 
 export const WithLabel: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
+    ...Default.args,
     label: 'Test label'
   }
 };
 
 export const WithHelp: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
+    ...Default.args,
     help: 'Test label'
   }
 };
 
 export const WithPlaceholder: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
+    ...Default.args,
     placeholder: 'Test label'
   }
 };
