@@ -10,8 +10,7 @@ interface TeaserProps {
   actifText?: boolean;
   title?: string;
   teaserText?: string;
-  hrefTeaser?: string;
-  hrefRightIcon?: string;
+  onClick?: (e: React.MouseEvent) => void;
   style?: Style;
 }
 
@@ -24,8 +23,7 @@ export const Teaser = ({
   teaserText,
   actifText,
   title,
-  hrefTeaser,
-  hrefRightIcon,
+  onClick,
   style
 }: TeaserProps) => {
 
@@ -34,12 +32,13 @@ export const Teaser = ({
     textStyle = 'text-wrapper-disabled';
   }
 
-  return <div className="avatar-teaser">
+  return <div className="avatar-teaser" style={{cursor: "pointer"}}
+              onClick={(e) => { if (onClick) onClick(e) }}>
       {leftIcon ? <a className="avatar-teaser-img">
         <img src={leftIcon} />
       </a> : <></>}
       {teaserText ? <a className="avatar-teaser-img">
-        <a className="avatar-teaser-img-placeholder" href={hrefTeaser}>
+        <a className="avatar-teaser-img-placeholder">
           {teaserText}
         </a>
       </a> : <></>}
@@ -47,10 +46,7 @@ export const Teaser = ({
         <div className="d-flex flex-row justify-content-between">
           {title ? <p className={textStyle} style={style}>{title}</p> : <></>}
           {rightIcon ? <div className="icon-right">
-            <a href={hrefRightIcon}>
-              <Button size="icon"
-                      iconName={rightIcon}/>
-            </a>
+            <Button size="icon" iconName={rightIcon}/>
           </div> : <></>}
         </div>
       </div>
