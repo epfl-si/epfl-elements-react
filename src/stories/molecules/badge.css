@@ -21,18 +21,6 @@
     justify-content: center;
 }
 
-.card-dashed {
-    border: 1px dashed #000000;
-}
-
-.card-solid {
-    border: 1px solid #000000;
-}
-
-.card-dotted {
-    border: 1px dotted #000000;
-}
-
 .card {
     background-color: #f3f3f3;
     border-radius: 10px;
@@ -46,17 +34,4 @@
 }
 .badge-center {
     align-items: center;
-}
-
-@media (min-width: 768px) {
-    .cards {
-        display: flex;
-    }
-}
-
-
-@media (max-width: 768px) {
-    .cards {
-        display: none;
-    }
 }
