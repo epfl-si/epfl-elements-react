@@ -20,8 +20,10 @@ interface AutocompleteProps {
 
 /**
  * An autocomplete list.
- * If single selection: the selected element is shown directly in the input field. The "itemValue" could be the
- * initialization of this field.
+ *
+ * If single selection: the selected element is directly shown in the input field.
+ * The "itemValue", if present, is the initialization value.
+ *
  * For multiple selections: selected elements are shown above the input list and it is possible to delete them.
  * The "selected" prop contains all selected items.
  */

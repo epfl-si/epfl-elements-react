@@ -19,7 +19,7 @@ interface TextProps {
 }
 
 /**
- * An text field.
+ * A text field.
  * It could be a simple text, a telephone number, an email address, a password, an url
  */
 export const Text = ({

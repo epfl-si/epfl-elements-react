@@ -1,3 +1,4 @@
+/*Works around a clash on the `tag` class; see https://github.com/epfl-si/elements/pull/702*/
 .token.tag {
     display: contents;
 }

@@ -17,7 +17,7 @@ interface NumericProps {
 }
 
 /**
- * An numeric field.
+ * A numeric field.
  */
 export const Numeric = ({
   size = 'medium',
