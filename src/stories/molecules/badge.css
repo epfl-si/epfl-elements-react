@@ -41,9 +41,11 @@
     flex-direction: row;
 }
 
-.clickable-center {
-    align-items: center;
+.badge-clickable {
     cursor: pointer;
+}
+.badge-center {
+    align-items: center;
 }
 
 @media (min-width: 768px) {
