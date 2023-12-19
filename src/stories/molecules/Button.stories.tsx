@@ -39,38 +39,26 @@ export const Primary: Story = {
 };
 
 export const Secondary: Story = {
+  ...Primary,
   args: {
-    primary: false,
-    children: [
-      <svg key="icon" className="icon" aria-hidden="true">
-        <use xlinkHref={`${featherIcons}#save`} />
-      </svg>,
-      <span key="label" style={{ marginLeft: '5px' }}>Secondary</span>,
-    ]
-  },
+    ...Primary.args,
+    primary: false
+  }
 };
 
 export const Large: Story = {
+  ...Primary,
   args: {
+    ...Primary.args,
     size: 'large',
-    children: [
-      <svg key="icon" className="icon" aria-hidden="true">
-        <use xlinkHref={`${featherIcons}#save`} />
-      </svg>,
-      <span key="label" style={{ marginLeft: '5px' }}>Large</span>,
-    ]
   },
 };
 
 export const Small: Story = {
+  ...Primary,
   args: {
+    ...Primary.args,
     size: 'small',
-    children: [
-      <svg key="icon" className="icon" aria-hidden="true">
-        <use xlinkHref={`${featherIcons}#save`} />
-      </svg>,
-      <span key="label" style={{ marginLeft: '5px' }}>Small</span>,
-    ]
   },
 };
 
