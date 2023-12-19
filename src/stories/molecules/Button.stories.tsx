@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-
+import React from 'react';
 import { Button } from './Button';
 import featherIcons from 'epfl-elements/dist/icons/feather-sprite.svg';
 
