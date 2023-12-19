@@ -24,16 +24,6 @@ export const Button = ({
   onClick,
   ...props
   }: ButtonProps) => {
-  let mode = primary ? 'storybook-button btn btn-primary' : 'storybook-button btn btn-secondary';
-
-  switch (size) {
-    case 'small':
-      mode = mode.concat(' btn-sm');
-      break;
-    case 'large':
-      mode = mode.concat(' btn-lg');
-      break;
-  }
 
   if (size === 'icon') {
     return <svg key="icon" className="icon" aria-hidden="true" style={{ cursor: 'pointer', width: '25px', height: '25px' }}
@@ -41,6 +31,17 @@ export const Button = ({
       <use xlinkHref={`${featherIcons}${iconName}`}/>
     </svg>
   } else {
+    let mode = primary ? 'button-box btn btn-primary' : 'button-box btn btn-secondary';
+
+    switch (size) {
+      case 'small':
+        mode = mode.concat(' btn-sm');
+        break;
+      case 'large':
+        mode = mode.concat(' btn-lg');
+        break;
+    }
+
     return <button
       type="button"
       className={mode}
