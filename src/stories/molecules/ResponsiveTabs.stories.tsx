@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ResponsiveTabs, ResponsiveTabsProps } from './ResponsiveTabs';
+import { ResponsiveTabs } from './ResponsiveTabs';
 import React from "react";
 
-const meta: Meta<React.FC<ResponsiveTabsProps>> = {
+const meta: Meta<typeof ResponsiveTabs> = {
   title: 'Molecules/ResponsiveTabs',
   component: ResponsiveTabs,
   parameters: {
