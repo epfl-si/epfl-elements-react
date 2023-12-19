@@ -19,7 +19,7 @@ export const Default: Story = {
     args: {
         title: 'Test default',
         rightIcon: '#arrow-right',
-        leftIcon: 'https://randomuser.me/api/portraits/men/3.jpg',
+        leftIcon: 'https://randomuser.me/api/portraits/men/1.jpg',
         actifText: true,
         teaserText: '5'
     },
@@ -28,7 +28,7 @@ export const Default: Story = {
 export const ActiveWithoutRightIcon: Story = {
     args: {
         title: 'Test default',
-        leftIcon: 'https://randomuser.me/api/portraits/men/3.jpg',
+        leftIcon: 'https://randomuser.me/api/portraits/men/1.jpg',
         actifText: true,
         teaserText: '5'
     },
@@ -38,7 +38,7 @@ export const Disabled: Story = {
     args: {
         title: 'Test default',
         rightIcon: '#plus-square',
-        leftIcon: 'https://randomuser.me/api/portraits/men/3.jpg',
+        leftIcon: 'https://randomuser.me/api/portraits/men/1.jpg',
         actifText: false,
     },
 };
@@ -46,36 +46,15 @@ export const Disabled: Story = {
 export const WithoutRightButton: Story = {
     args: {
         title: 'Test default',
-        leftIcon: 'https://randomuser.me/api/portraits/men/3.jpg',
+        leftIcon: 'https://randomuser.me/api/portraits/men/1.jpg',
         actifText: false,
         teaserText: '+'
     },
 };
 
-export const HrefTeaser: Story = {
-    args: {
-        title: 'Test default',
-        leftIcon: 'https://randomuser.me/api/portraits/men/3.jpg',
-        actifText: true,
-        teaserText: '5',
-        hrefTeaser: "https://www.epfl.ch/en/"
-    },
-};
-
-export const HrefRightButton: Story = {
-    args: {
-        title: 'Test default',
-        rightIcon: '#plus-square',
-        leftIcon: 'https://randomuser.me/api/portraits/men/3.jpg',
-        actifText: false,
-        hrefRightIcon: "https://www.epfl.ch/en/"
-    },
-};
-
 export const WithoutText: Story = {
     args: {
-        leftIcon: 'https://randomuser.me/api/portraits/men/3.jpg',
+        leftIcon: 'https://randomuser.me/api/portraits/men/1.jpg',
         teaserText: '5',
-        hrefTeaser: "https://www.epfl.ch/en/"
     },
 };
