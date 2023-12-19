@@ -27,7 +27,7 @@ interface AutocompleteProps {
  * For multiple selections: selected elements are shown above the input list and it is possible to delete them.
  * The "selected" prop contains all selected items.
  */
-export const Autocomplete: React.FC<AutocompleteProps & FormControlProps> = ({
+export const Autocomplete = ({
    suggestions,
    selected = [],
    multiple = false,
