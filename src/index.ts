@@ -48,7 +48,7 @@ export { Header } from './components/Header'
 export { Tabset } from './components/Tabset'
 
 // Tabset Helper
-export { updateSingleTabContents } from './components/Tabset/helpers'
+export { tabUpdateContents } from './components/Tabset/helpers'
 
 // Container
 export { Base } from './components/Base'
