@@ -2,6 +2,7 @@
   "name": "@epfl/epfl-elements-react",
   "version": "2.0.0",
   "type": "module",
+  "description": "React Storybook UI Components library based on the EPFL Elements specification that you can install and use on your own React projects.",
   "files": [
     "dist"
   ],
