@@ -6,5 +6,5 @@
 
 .button-text {
   display: flex;
-  alignItems: center;
+  align-items: center;
 }
