@@ -29,9 +29,9 @@ export const Badge = ({
   }: BadgeProps) => {
 
   return (
-    <div className="card" style={cardStyle}
+    <div className="card badge-clickable" style={cardStyle}
          onClick={(e) => { if (onClick) onClick(e) }}>
-      <div className="d-flex flex-row justify-content-between badge-clickable badge-center" >
+      <div className="d-flex flex-row justify-content-between badge-center" >
         <img src={image} className="image"/>
         <span style={textStyle}>{title}</span>
         <div className="d-flex justify-content-center">
