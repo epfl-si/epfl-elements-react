@@ -4,7 +4,7 @@ import './card.css'
 
 interface Style extends CSS.Properties, CSS.PropertiesHyphen {}
 
-interface CompactItemListProps {
+interface CardProps {
   title?: string;
   children?: React.ReactNode;
   icon?: string;
@@ -23,7 +23,7 @@ export const Card = ({
   onClickIcon,
   onClickItem,
   style,
-}: CompactItemListProps) => {
+}: CardProps) => {
 
   let leftDivStyle = "flex-fill";
   if(icon) {
