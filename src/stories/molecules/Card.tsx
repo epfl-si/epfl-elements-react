@@ -11,6 +11,7 @@ interface CardProps {
   onClickIcon?: () => void;
   onClickItem?: () => void;
   style?: Style;
+  className?: string;
 }
 
 /**
@@ -23,6 +24,7 @@ export const Card = ({
   onClickIcon,
   onClickItem,
   style,
+  className
 }: CardProps) => {
 
   let leftDivStyle = "flex-fill";
@@ -31,7 +33,7 @@ export const Card = ({
   }
 
   return (
-      <div className="card" style={style}>
+      <div className={"card ".concat(className ? className : '')} style={style} key={title}>
           <div className={leftDivStyle} onClick={onClickItem}>
             {title ? <h5 className="card-text">{title}</h5> : (<></>)}
             {children}
