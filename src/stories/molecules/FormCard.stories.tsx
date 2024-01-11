@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Card } from './Card';
+import { FormCard } from './FormCard.tsx';
 import React from "react";
 
 const meta = {
-    title: 'Molecules/Card',
-    component: Card,
+    title: 'Molecules/FormCard',
+    component: FormCard,
     parameters: {
         layout: 'centered',
     },
     tags: ['autodocs'],
-} satisfies Meta<typeof Card>;
+} satisfies Meta<typeof FormCard>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
