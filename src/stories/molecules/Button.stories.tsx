@@ -23,18 +23,8 @@ type Story = StoryObj<typeof meta>;
 export const Primary: Story = {
   args: {
     primary: true,
-    label: 'Click me'
-  },
-  render(args) {
-    const label = args.label;
-    delete args.label;   // Otherwise, Storybook will show the nonexisting
-    // prop in the “Show code” area.
-    return <Button {...args}>
-      <svg key="icon" className="icon" aria-hidden="true">
-        <use xlinkHref={`${featherIcons}#save`} />
-      </svg>
-      <span key="label" style={{ marginLeft: '5px' }}>{label}</span>
-    </Button>;
+    label: 'Click me',
+    iconName: `${featherIcons}#save`
   }
 };
 
@@ -67,4 +57,20 @@ export const Icon: Story = {
     size: 'icon',
     iconName: '#save'
   },
+};
+
+export const WithArguments: Story = {
+  args: {
+    primary: true,
+    label: 'Click me',
+    iconName: `${featherIcons}#save`
+  },
+  render(args) {
+    // prop in the “Show code” area.
+    return <Button {...args}>
+      <div>
+        <span key="label" style={{marginLeft: '5px'}}>Test Button</span>
+      </div>
+    </Button>;
+  }
 };

@@ -9,6 +9,7 @@ interface ButtonProps {
   onClick?: (e: React.MouseEvent) => void;
   children?: React.ReactNode;
   iconName?: string;
+  label?: string;
 }
 
 /**
@@ -21,6 +22,7 @@ export const Button = ({
   isDisabled = false,
   children,
   iconName,
+  label,
   onClick,
   ...props
   }: ButtonProps) => {
@@ -45,11 +47,27 @@ export const Button = ({
     return <button
       type="button"
       className={mode}
-      onClick={(e) => { if (onClick) onClick(e) }}
+      onClick={(e) => {
+        if ( onClick ) onClick(e)
+      }}
       disabled={isDisabled ? isDisabled : false}
       {...props}
     >
-      <div className="text-center button-text">
+      <div>
+        <svg
+          aria-hidden="true"
+          className="icon"
+        >
+          <use xlinkHref={iconName}/>
+        </svg>
+        <span
+          style={{
+            marginLeft: '5px'
+          }}
+        >
+          {label}
+        </span>
+        <br />
         {children}
       </div>
     </button>
