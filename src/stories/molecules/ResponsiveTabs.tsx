@@ -35,7 +35,7 @@ const ResponsiveTabsFC = ({ children, cardStyle }: ResponsiveTabsProps) => {
   }
 
   return (
-    <div className="responsive-tabs-div">
+    <div className="responsive-tabs">
       <ul className="nav nav-tabs tabs" role="tablist">
         {tabArray.map((child, index) => {
           return <li className="nav-item">
@@ -63,7 +63,7 @@ const ResponsiveTabsFC = ({ children, cardStyle }: ResponsiveTabsProps) => {
           return <div className='box card col-lg-4 d-flex align-items-stretch' id={c_id(child)}
                       aria-labelledby={c_id(child).concat("-tab")} key={c_id(child)} style={cardStyle}>
             <div className="card-body">
-              <div className="card-title">
+              <div className="card-title" >
                 {c_title(child.props.children)}
               </div>
               <div className="card-text">

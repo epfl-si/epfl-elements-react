@@ -1,16 +1,16 @@
 @import '/scss/bootstrap.scss';
 
-.responsive-tabs-div {
+.responsive-tabs {
     width: 100%;
-    verticalAlign: top;
+    vertical-align: top;
     display: inline;
 }
 
-.nav-link {
+.responsive-tabs .nav-link {
     height: 100%;
 }
 
-.box {
+.responsive-tabs .box {
     background: linear-gradient(180deg, rgb(255, 255, 255) 0%, rgba(255, 255, 255, 0) 0.01%);
     border: 1px solid #c4c4c4;
     border-radius: 10px;
@@ -18,24 +18,23 @@
 }
 
 
- .card-body {
+ .responsive-tabs .card-body {
      padding: 1rem;
  }
 
- .card-title {
-     height: 30%;
+ .responsive-tabs .card-title {
      overflow: hidden;
  }
 
 
 @include media-breakpoint-up(md) {
-    .tabs {
+    .responsive-tabs .tabs {
         display: none;
     }
-    .box {
-        display: unset;
+    .responsive-tabs .box {
+        display: block;
     }
-    .box-container{
+    .responsive-tabs .box-container {
         display: flex;
         flex-direction: row;
     }
@@ -43,13 +42,13 @@
 
 
 @include media-breakpoint-down(md) {
-    .tabs {
+    .responsive-tabs .tabs {
         display: flex;
     }
-    .box {
+    .responsive-tabs .box {
         display: none;
     }
-    .box-container{
+    .responsive-tabs .box-container {
         display: none;
     }
 }
