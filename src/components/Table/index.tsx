@@ -75,7 +75,7 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
     if (filtered.length > 0) {
       const tags = (row[filtered[0]] || '').split(tagColumns.separator)
       return <div>
-        {tags.map((tag: string | undefined, i: number) => <Tag id={i} label={tag} />)}
+        {tags.map((tag: string | undefined, i: number) => <Tag id={i} key={i} label={tag} />)}
       </div>
     }
   }
