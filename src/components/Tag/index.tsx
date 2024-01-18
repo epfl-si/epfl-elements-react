@@ -27,8 +27,8 @@ export function Tag ({ id, label, href, className, removable, removeCallback }: 
   }
 
   const getTag = () =>
-    <a id={String(id)} href={href || 'javascript:void(0)'} className={classNameToUse}>{label}
-    {removable && <a href="javascript:void(0)" onClick={() => removeTag()} className="remove" tabIndex={-1} title="Remove">×</a>}
+    <a id={String(id)} href={href || `#${String(id)}`} className={classNameToUse}>{label}
+    {removable && <a href={`#${String(id)}`} onClick={() => removeTag()} className="remove" tabIndex={-1} title="Remove">×</a>}
     </a>
 
   return (
