@@ -86,7 +86,7 @@ export const Autocomplete = ({
   };
 
   return (
-    <div ref={inputRef}>
+    <div ref={inputRef} className="autocomplete">
       <div style={{ position: 'relative' }}>
         <Form.Control
           value={inputValue}
