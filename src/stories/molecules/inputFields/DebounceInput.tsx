@@ -33,7 +33,7 @@ export const DebounceInput = ({
         onChange?.(value);
     };
 
-    return debounce(func, 1000);
+    return debounce(func, 500);
   }, [onChange]);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
