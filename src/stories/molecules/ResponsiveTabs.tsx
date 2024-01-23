@@ -52,7 +52,7 @@ const ResponsiveTabsFC = ({ children, cardStyle }: ResponsiveTabsProps) => {
       <div className="tab-content p-3 tabs">
         {tabArray.map((child, index) => {
           return <div className={`tab-pane fade ${index === activeTab ? 'show active' : ''}`}
-                      id={c_id(child)} role="tabpanel"
+                      id={c_id(child)} role="tabpanel" style={{width: '100%'}}
                       aria-labelledby={c_id(child).concat("-tab")} key={c_id(child)}>
             {c_content(child.props.children)}
           </div>
