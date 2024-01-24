@@ -1,4 +1,7 @@
 import React from 'react';
+import type * as CSS from "csstype";
+
+interface Style extends CSS.Properties, CSS.PropertiesHyphen {}
 
 interface TextProps {
   size?: 'small' | 'medium' | 'large';
@@ -16,6 +19,7 @@ interface TextProps {
   pattern?: string;
   validationErrorMessage?: string;
   onChange?: (newValue: string) => void;
+  style?: Style;
 }
 
 /**
@@ -37,6 +41,7 @@ export const Text = ({
                           minlength,
                           maxlength,
                           pattern,
+                          style = {},
                           onChange
                         }: TextProps) => {
 
@@ -53,7 +58,7 @@ export const Text = ({
   const requiredStyle = isRequired ? 'form-group required' : 'form-group';
 
   return (
-    <div className={requiredStyle}>
+    <div className={requiredStyle} style={style}>
       {label ? <label className='control-label' htmlFor={id}>{label}</label> : <></>}
       <div className="input-group has-validation">
         <input
@@ -72,9 +77,9 @@ export const Text = ({
             if (onChange) onChange(event.target.value);
           }}
         />
-        <div className="invalid-feedback">
+        {validationErrorMessage ? <div className="invalid-feedback">
           {validationErrorMessage}
-        </div>
+        </div> : <></>}
       </div>
       {help ? <small className="form-text text-muted">{help}</small> : <></>}
     </div>
