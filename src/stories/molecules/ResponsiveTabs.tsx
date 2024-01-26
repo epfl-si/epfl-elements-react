@@ -36,7 +36,7 @@ const ResponsiveTabsFC = ({ children, cardStyle }: ResponsiveTabsProps) => {
 
   return (
     <div className="responsive-tabs">
-      <ul className="nav nav-tabs tabs" role="tablist">
+      <ul className="nav nav-tabs-light align-items-center tabs" role="tablist">
         {tabArray.map((child, index) => {
           return <li className="nav-item">
             <a className={`nav-link ${index === activeTab ? 'active' : ''}`} id={c_id(child).concat("-tab")}

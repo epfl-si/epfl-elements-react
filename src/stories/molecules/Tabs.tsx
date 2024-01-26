@@ -32,10 +32,10 @@ const TabsFC = ({children}: TabsProps) => {
 
   return (
     <div className="tabs-div">
-      <ul className="nav nav-tabs nav-fill" role="tablist">
+      <ul className="nav nav-tabs-light nav-fill" role="tablist">
         {tabArray.map((child, index) => (
           <li className="nav-item" key={c_id(child)}>
-            <a className={`text-center nav-link ${index === activeTab ? 'active' : ''}`} id={c_id(child).concat("-tab")} data-toggle="tab" href={"#".concat(c_id(child))} role="tab" aria-controls={c_id(child)}
+            <a className={`text-center nav-link text-muted ${index === activeTab ? 'active' : ''}`} id={c_id(child).concat("-tab")} data-toggle="tab" href={"#".concat(c_id(child))} role="tab" aria-controls={c_id(child)}
                aria-selected="true" onClick={(event) => { event.preventDefault(); setActiveTab(index); } }>
               {c_title(child.props.children)}
             </a>
