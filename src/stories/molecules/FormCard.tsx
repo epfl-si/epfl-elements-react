@@ -12,7 +12,7 @@ interface FormCardProps {
   onClickItem?: () => void;
   style?: Style;
   className?: string;
-  key?: string;
+  key: string;
 }
 
 /**

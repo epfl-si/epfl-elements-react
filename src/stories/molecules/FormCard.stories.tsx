@@ -26,6 +26,7 @@ export const Default: Story = {
                 <br />
                 <small className="text-muted">Prof: Lorezo Ciccio</small>
             </div>
-        ]
+        ],
+        key: 'test'
     },
 };
