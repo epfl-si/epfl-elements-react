@@ -38,7 +38,7 @@ const ResponsiveTabsFC = ({ children, cardStyle }: ResponsiveTabsProps) => {
     <div className="responsive-tabs">
       <ul className="nav nav-tabs-light align-items-center tabs" role="tablist">
         {tabArray.map((child, index) => {
-          return <li className="nav-item">
+          return <li className="nav-item" key={c_id(child).concat("-li")}>
             <a className={`nav-link ${index === activeTab ? 'active' : ''}`} id={c_id(child).concat("-tab")}
                data-toggle="tab" href={"#".concat(c_id(child))} role="tab"
                aria-controls={c_id(child)}

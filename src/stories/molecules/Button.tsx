@@ -14,6 +14,7 @@ interface ButtonProps {
   iconName?: string;
   label?: string;
   style?: Style;
+  id?: string;
 }
 
 /**
@@ -29,12 +30,16 @@ export const Button = ({
   label,
   onClick,
   style = {},
+  id,
   ...props
   }: ButtonProps) => {
 
   if (size === 'icon') {
-    return <div style={style}><svg key="icon" className="icon" aria-hidden="true" style={{ cursor: 'pointer', width: '25px', height: '25px' }}
-                onClick={(e) => { if (onClick) onClick(e) }}>
+    return <div style={style}>
+      <svg key="icon" className="icon" aria-hidden="true"
+           id={id}
+           style={{ cursor: 'pointer', width: '25px', height: '25px' }}
+           onClick={(e) => { if (onClick) onClick(e) }}>
       <use xlinkHref={`${featherIcons}${iconName}`}/>
     </svg></div>
   } else {
@@ -50,6 +55,7 @@ export const Button = ({
     }
 
     return <button
+      id={id}
       type="button"
       className={mode} style={style}
       onClick={(e) => {

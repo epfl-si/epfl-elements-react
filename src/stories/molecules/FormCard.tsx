@@ -12,7 +12,7 @@ interface FormCardProps {
   onClickItem?: () => void;
   style?: Style;
   className?: string;
-  key: string;
+  keyValue: string;
 }
 
 /**
@@ -26,7 +26,7 @@ export const FormCard = ({
   onClickItem,
   style,
   className,
-  key
+  keyValue
 }: FormCardProps) => {
 
   let leftDivStyle = "flex-fill";
@@ -35,7 +35,7 @@ export const FormCard = ({
   }
 
   return (
-      <div className={"form-card ".concat(className ? className : '')} style={style} key={key}>
+      <div className={"form-card ".concat(className ? className : '')} style={style} key={keyValue}>
           <div className={leftDivStyle} onClick={onClickItem}>
             {title ? <h5 className="card-text">{title}</h5> : (<></>)}
             {children}
@@ -43,7 +43,9 @@ export const FormCard = ({
           {icon ? <div className="form-flex-item-icon">
             <Button size="icon"
                           iconName={icon}
-                          onClick={onClickIcon}/>
+                          onClick={onClickIcon}
+            key={keyValue.concat("button")}
+            id={keyValue.concat("button")}/>
           </div> : <></>}
       </div>
   );
