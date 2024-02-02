@@ -2,12 +2,17 @@ import React, {useMemo, useRef, useState} from 'react';
 import { FormControlProps, Form } from 'react-bootstrap';
 import './autocomplete.css';
 import {debounce} from "p-debounce-throttle";
+import type * as CSS from "csstype";
+
+interface Style extends CSS.Properties, CSS.PropertiesHyphen {}
 
 interface DebounceInputProps {
   input?: string;
   placeholder?: string;
   isReadonly?: boolean;
   onChange?: (inputValue: string) => void;
+  style?: Style;
+  className?: string;
 }
 
 /**
@@ -23,6 +28,8 @@ export const DebounceInput = ({
    input = '',
    placeholder = '',
    isReadonly = false,
+   style = {},
+   className,
    onChange
   }: DebounceInputProps & FormControlProps) => {
   const [inputValue, setInputValue] = useState(input);
@@ -43,7 +50,7 @@ export const DebounceInput = ({
   };
 
   return (
-    <div ref={inputRef}>
+    <div ref={inputRef} style={style} className={className}>
       <div style={{ position: 'relative' }}>
         <Form.Control
           value={inputValue}
