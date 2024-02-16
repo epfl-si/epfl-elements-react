@@ -3,7 +3,17 @@ input[type='checkbox']{
 }
 
 .checkbox-label {
+    font-size: 0.7em;
+    white-space: nowrap;
+}
+
+.checkbox-label-md {
     font-size: 0.8em;
+    white-space: nowrap;
+}
+
+.checkbox-label-bg {
+    font-size: 1em;
     white-space: nowrap;
 }
 

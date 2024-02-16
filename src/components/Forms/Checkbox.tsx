@@ -5,10 +5,11 @@ type Callback = (e: React.ChangeEvent<HTMLInputElement>) => void;
 type CheckboxProps = {
   label?: string;
   onCheckboxChange?: Callback;
-  isSelected?: boolean
+  isSelected?: boolean,
+  checkboxLabelClass?: string
 }
 
-export function Checkbox ({ label, isSelected, onCheckboxChange }: CheckboxProps) {
+export function Checkbox ({ label, isSelected, checkboxLabelClass, onCheckboxChange }: CheckboxProps) {
 
   return (
     <div className='form-check'>
@@ -20,7 +21,7 @@ export function Checkbox ({ label, isSelected, onCheckboxChange }: CheckboxProps
           onChange={e => onCheckboxChange(e)}
           className='form-check-input'
         />
-        <span className='checkbox-label'>{label}</span>
+        <span className={checkboxLabelClass || 'checkbox-label'}>{label}</span>
       </label>
     </div>
   )
