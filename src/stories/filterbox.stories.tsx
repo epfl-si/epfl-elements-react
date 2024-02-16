@@ -28,6 +28,25 @@ CustomLabels.args = {
   updateFn: (x: Callback) => console.log(x) 
 }
 
+export const MediumCheckboxLabels: Story = {}
+MediumCheckboxLabels.args = {
+  data: countries,
+  filterFields: ['continent', 'iso', 'currencycode'],
+  filterLabels: ['Continent', 'ISO2 Code', 'Currency'],
+  updateFn: (x: Callback) => console.log(x),
+  checkboxLabelClass: 'checkbox-label-md'
+}
+
+export const BigCheckboxLabels: Story = {}
+BigCheckboxLabels.args = {
+  data: countries,
+  filterFields: ['continent', 'iso', 'currencycode'],
+  filterLabels: ['Continent', 'ISO2 Code', 'Currency'],
+  updateFn: (x: Callback) => console.log(x),
+  checkboxLabelClass: 'checkbox-label-bg'
+}
+
+
 export const DisabledOptions: Story = {}
 DisabledOptions.args = {
   data: countries,

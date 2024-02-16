@@ -11,7 +11,8 @@ type FilterBoxProps = {
   filterFields?: Array<string>;
   filterLabels?: Array<string>;
   disabledOptions?: object;
-  searchbox?: any
+  searchbox?: any;
+  checkboxLabelClass?: string;
 }
 
 // Reusih lodash filter
@@ -37,7 +38,8 @@ export function FilterBox ({
   filterLabels = [],
   disabledOptions = {},
   searchbox,
-  updateFn
+  updateFn,
+  checkboxLabelClass
 }: FilterBoxProps) {
   const [boxfilters, setboxFilters] = useState({})
   const [filteredCopy, setFilteredCopy] = useState<Array<any> | null>(null)
@@ -94,6 +96,7 @@ export function FilterBox ({
           })}
           options={getFilterOptions(field)}
           unchecked={disabledOptions[field]}
+          checkboxLabelClass={checkboxLabelClass}
         />
       )}
 

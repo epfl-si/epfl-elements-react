@@ -10,10 +10,11 @@ type CheckboxGroupProps = {
   labels?: Array<string>;
   unchecked?:  Array<any>;
   wrapperClass?: string;
-  containerClass?: string
+  containerClass?: string;
+  checkboxLabelClass?: string
 }
 
-export function CheckboxGroup ({ onChangeFn, title, options, labels, unchecked = [], wrapperClass, containerClass }: CheckboxGroupProps) {
+export function CheckboxGroup ({ onChangeFn, title, options, labels, unchecked = [], wrapperClass, containerClass, checkboxLabelClass }: CheckboxGroupProps) {
   const [allState, setAllState] = useState(true)
   const [groupState, setGroupState] = useState((options || []).reduce(
     (options, option) => ({
@@ -79,13 +80,14 @@ export function CheckboxGroup ({ onChangeFn, title, options, labels, unchecked =
         <span style={{ fontSize: '0.8em', fontWeight: 'bold' }}>{title}</span>
       </div>
       <div className={containerClass || 'checkbox-container'}>
-        <Checkbox label='All' isSelected={allState} onCheckboxChange={handleToggleAll} />
+        <Checkbox label='All' isSelected={allState} onCheckboxChange={handleToggleAll} checkboxLabelClass={checkboxLabelClass} />
         {options && options.map((option, i) =>
           <Checkbox
             key={`option-${i}`}
             isSelected={allState ? true : groupState[option]}
             onCheckboxChange={handleCheckboxChange}
             label={getOptionLabel(option, i)}
+            checkboxLabelClass={checkboxLabelClass}
           />
         )}
       </div>
