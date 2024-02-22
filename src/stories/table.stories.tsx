@@ -223,3 +223,17 @@ export const reallyLongColumnName: Story = {
   }
 }
 
+export const ColumnsWithRawHTML: Story = {}
+ColumnsWithRawHTML.args = {
+  title: 'Test Table',
+  showRowTotals: true,
+  columnsWithRawHtml: ['anchor'],
+  data: [
+    { link: 'https://www.epfl.ch/about/', anchor: 'About with <b>Bold</b>' },
+    { link: 'https://www.epfl.ch/education', anchor: 'Education with <i>Italics</i>' },
+    { link: 'https://www.epfl.ch/research', anchor: 'Research with <br /><br /> new line' },
+    { link: 'https://www.epfl.ch/innovation/', anchor: 'Innovation with list: <ul><li>item1</li><li>item2</li></ul>' },
+    { link: 'https://www.epfl.ch/schools/', anchor: 'Schools' },
+    { link: 'https://www.epfl.ch/campus/', anchor: 'Campus' }
+  ]
+}
