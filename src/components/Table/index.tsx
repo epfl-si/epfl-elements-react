@@ -21,12 +21,13 @@ type TableProps = {
   hyperLinks?: Array<any>;
   title?: string;
   showRowTotals?: boolean;
+  columnsWithRawHtml?: Array<any>;
   height?: number | string;
   width?: number | string;
   orderCallbackFn?: Callback;
 }
 
-export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagColumns, showRowTotals, width, height, orderCallbackFn }: TableProps) {
+export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagColumns, showRowTotals, columnsWithRawHtml, width, height, orderCallbackFn }: TableProps) {
   const [cols, setCols] = useState<Array<string>>()
   const [rows, setRows] = useState<Array<string>>()
   const [asc, setAsc] = useState(false)
@@ -92,6 +93,9 @@ export function Table ({ data, title, columns, columnsLabels, hyperLinks, tagCol
       if (tagValue) {
         return tagValue
       }
+    }
+    if (columnsWithRawHtml && columnsWithRawHtml.includes(col)) {
+      return <span dangerouslySetInnerHTML={{ __html: row[col]}}></span>
     }
     return row[col]
   }
