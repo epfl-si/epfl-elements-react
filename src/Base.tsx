@@ -61,14 +61,7 @@ Base.Drawer = () => null
 Base.User = () => null
 Base.Breadcrumbs = () => null
 
-const defaultTopMenu = [
-  { link: 'https://www.epfl.ch/about/', anchor: 'About' },
-  { link: 'https://www.epfl.ch/education', anchor: 'Education' },
-  { link: 'https://www.epfl.ch/research', anchor: 'Research' },
-  { link: 'https://www.epfl.ch/innovation/', anchor: 'Innovation' },
-  { link: 'https://www.epfl.ch/schools/', anchor: 'Schools', active: true },
-  { link: 'https://www.epfl.ch/campus/', anchor: 'Campus' }
-]
+const defaultTopMenu = [] //{ link: 'https://www.epfl.ch/about/', anchor: 'About' },
 
 const getMenuItem = (item, i) =>
   <li
