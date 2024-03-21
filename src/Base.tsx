@@ -1,4 +1,4 @@
-import React, {ReactElement, useState} from 'react'
+import React, {ReactElement, useEffect, useRef, useState} from 'react'
 import { Logo } from './Logo.tsx'
 import { Drawer } from './Drawer.tsx'
 import { Breadcrumbs } from './Breadcrumbs.tsx'
@@ -28,6 +28,22 @@ export const Base = ({ children } : Children) => {
   const breadcrumbs = pickChildrenOfFirst(children, (el) => classify(el) === Base.Breadcrumbs)
   const rest =  filterChildren(children, (el) => classify(el) === "other")
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
+  const asideMenuRef = useRef<HTMLDivElement>(null);
+  const buttonMenuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (asideMenuRef.current && !asideMenuRef.current.contains(event.target as Node) && buttonMenuRef.current && !buttonMenuRef.current.contains(event.target as Node)) {
+        toggleMenu();
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [asideMenuRef]);
+
 
   const toggleMenu = () => {
     setIsOpenMenu(open => !open);
@@ -45,13 +61,13 @@ export const Base = ({ children } : Children) => {
     <div className='main-container'>
       <div style={{display: "flex", flexDirection: "row"}}>
         { breadcrumbs ? <Breadcrumbs>{breadcrumbs}</Breadcrumbs> : <></> }
-        <div className="responsiveAsideMenu_burger">
+        <div className="responsiveAsideMenu_burger" ref={buttonMenuRef} >
           <Button size="icon" iconName={"#menu"} onClick={toggleMenu}/>
         </div>
       </div>
       <div className='nav-toggle-layout nav-aside-layout' style={{display: 'flex', flexDirection: 'row'}}>
         {(! asideMenu) ? <></> :
-          <div className={`responsiveAsideMenu ${isOpenMenu ? 'is-open' : ''}`}>
+          <div className={`responsiveAsideMenu ${isOpenMenu ? 'is-open' : ''}`} ref={asideMenuRef} >
             <aside className={`nav-aside-wrapper`}>
               <nav id='nav-aside' className='nav-aside' role='navigation' aria-describedby='nav-aside-title' onClick={toggleMenu}>
                 {asideMenu}
