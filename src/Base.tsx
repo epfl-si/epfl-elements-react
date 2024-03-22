@@ -29,12 +29,12 @@ export const Base = ({ children } : Children) => {
   const rest =  filterChildren(children, (el) => classify(el) === "other")
   const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
   const asideMenuRef = useRef<HTMLDivElement>(null);
-  const buttonMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (asideMenuRef.current && !asideMenuRef.current.contains(event.target as Node) && buttonMenuRef.current && !buttonMenuRef.current.contains(event.target as Node)) {
-        toggleMenu();
+      if (asideMenuRef.current && !asideMenuRef.current.contains(event.target as Node)
+      ) {
+        setIsOpenMenu(false);
       }
     }
 
@@ -43,11 +43,6 @@ export const Base = ({ children } : Children) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [asideMenuRef]);
-
-
-  const toggleMenu = () => {
-    setIsOpenMenu(open => !open);
-  }
 
   return <>
     <header role='banner' className='header'>
@@ -61,15 +56,16 @@ export const Base = ({ children } : Children) => {
     <div className='main-container'>
       <div style={{display: "flex", flexDirection: "row"}}>
         { breadcrumbs ? <Breadcrumbs>{breadcrumbs}</Breadcrumbs> : <></> }
-        <div className="responsiveAsideMenu_burger" ref={buttonMenuRef} >
-          <Button size="icon" iconName={"#menu"} onClick={toggleMenu}/>
+        <div className="responsiveAsideMenu_burger">
+          <Button size="icon" iconName={"#menu"} onClick={() => setIsOpenMenu(true)}/>
         </div>
       </div>
       <div className='nav-toggle-layout nav-aside-layout' style={{display: 'flex', flexDirection: 'row'}}>
         {(! asideMenu) ? <></> :
           <div className={`responsiveAsideMenu ${isOpenMenu ? 'is-open' : ''}`} ref={asideMenuRef} >
             <aside className={`nav-aside-wrapper`}>
-              <nav id='nav-aside' className='nav-aside' role='navigation' aria-describedby='nav-aside-title' onClick={toggleMenu}>
+              <nav id='nav-aside' className='nav-aside' role='navigation' aria-describedby='nav-aside-title'
+                   onClick={() => setIsOpenMenu(false)}>
                 {asideMenu}
               </nav>
             </aside>
