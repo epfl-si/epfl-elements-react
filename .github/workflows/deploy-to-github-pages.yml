@@ -21,7 +21,7 @@ jobs:
         run: npm install
 
       - name: Build Storybook
-        run: npm run build-storybook
+        run: npm run build
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
