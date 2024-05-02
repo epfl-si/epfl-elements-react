@@ -2,7 +2,9 @@ import type { Preview } from "@storybook/react";
 
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-    
+
+import '../src/overrides/index.css';
+
 export const decorators = [
   (Story: any) => (
     <MemoryRouter initialEntries={['/']}>
