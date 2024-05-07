@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 interface DropdownInnerProps {
   option: string;
@@ -8,20 +8,37 @@ interface DropdownInnerProps {
 type DropdownProps = {
   label?: string;
   options?: Array<DropdownInnerProps>;
-  onChangeFn?: any
+  onChangeFn?: any;
+  placeholder?: string;
 }
 
-
-export function Dropdown ({ label, options, onChangeFn }: DropdownProps) {
+export function Dropdown ({ label, options, onChangeFn, placeholder }: DropdownProps) {
   const [showDropdown, setShowDropdown] = useState(false)
+  const [activeOption, setActiveOption] = useState(options.filter(x => x.active)[0]?.option || '')
+
+  const dropdownRef = useRef(null);
 
   function localOnChange (e: any) {
-    setShowDropdown(false)
-    onChangeFn(e)
+    const selectedOption = e.target.innerText
+    setActiveOption(selectedOption)
+    setShowDropdown(false);
+    onChangeFn(selectedOption);
+    e.preventDefault();
   }
 
+  const handleClickOutside = (event: MouseEvent) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      setShowDropdown(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showDropdown]);
+
   return (
-    <div className='dropdown'>
+    <div className='dropdown' ref={dropdownRef}>
       <button
         className='btn btn-sm btn-secondary dropdown-toggle'
         type='button' id='dropdownMenuButton'
@@ -30,7 +47,7 @@ export function Dropdown ({ label, options, onChangeFn }: DropdownProps) {
         aria-haspopup='true'
         aria-expanded='false'
       >
-        {label} {(options || []).filter(x => x.active)[0].option}
+        {label} {activeOption ? activeOption : placeholder || 'Select an option'}
       </button>
       <div
         className='dropdown-menu'
@@ -44,7 +61,7 @@ export function Dropdown ({ label, options, onChangeFn }: DropdownProps) {
             style={{
               fontSize: '0.92em'
             }}
-            onClick={() => localOnChange(item.option)}
+            onClick={localOnChange}
             href='#'
           >
             {item.option}
