@@ -1,0 +1,10 @@
+import{j as e}from"./jsx-runtime-ffb262ed.js";import{r as i}from"./index-76fb7be0.js";/* empty css                     */import"./_commonjsHelpers-de833af9.js";function u({minInput:r,maxInput:s,defaultValue:o,setInput:f,label:V,labelValue:x}){const m=(a,n,l)=>`${(a-n)*100/(l-n)}% 100%`,[p,I]=i.useState(o),[b,y]=i.useState(m(o,r,s)),S=a=>{const n=Number(a.target.value),l=Number(a.target.max),R=Number(a.target.min),_=m(n,R,l);I(n),y(_)},h=()=>e.jsxs("div",{className:"form-group custom-control",children:[e.jsx("label",{htmlFor:"rangeInput",children:V}),e.jsx("input",{type:"range",name:"range",className:"form-control-range custom-range",min:r,max:s,value:p,step:f,style:{backgroundSize:b},id:"rangeInput",onInput:S}),e.jsxs("span",{className:"output",children:[x,e.jsx("strong",{children:e.jsx("output",{htmlFor:"rangeInput",id:"rangeOutput","aria-hidden":"true",children:p})})]})]});return e.jsx(e.Fragment,{children:h()})}try{u.displayName="Range",u.__docgenInfo={description:"",displayName:"Range",props:{minInput:{defaultValue:null,description:"",name:"minInput",required:!1,type:{name:"number"}},maxInput:{defaultValue:null,description:"",name:"maxInput",required:!1,type:{name:"number"}},defaultValue:{defaultValue:null,description:"",name:"defaultValue",required:!1,type:{name:"number"}},setInput:{defaultValue:null,description:"",name:"setInput",required:!0,type:{name:"number"}},label:{defaultValue:null,description:"",name:"label",required:!1,type:{name:"string"}},labelValue:{defaultValue:null,description:"",name:"labelValue",required:!1,type:{name:"string"}}}}}catch{}const E={title:"Atoms/Range",component:u,tags:["docsPage"]},t={args:{minInput:1,maxInput:10,defaultValue:3,setInput:1,label:"Range Slider : ",labelValue:"Value : "}};var c,d,g;t.parameters={...t.parameters,docs:{...(c=t.parameters)==null?void 0:c.docs,source:{originalSource:`{
+  args: {
+    minInput: 1,
+    maxInput: 10,
+    defaultValue: 3,
+    setInput: 1,
+    label: 'Range Slider : ',
+    labelValue: 'Value : '
+  }
+}`,...(g=(d=t.parameters)==null?void 0:d.docs)==null?void 0:g.source}}};const F=["Default"];export{t as Default,F as __namedExportsOrder,E as default};
