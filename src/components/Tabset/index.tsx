@@ -4,7 +4,7 @@ type TabsetProps = {
   tabs: any
 }
 
-import '@epfl/epfl-elements-styles/dist/css/combined.css'
+import 'epfl-elements/dist/css/elements.min.css'
 
 export function Tabset ({ tabs }: TabsetProps) {
   const getTabsIds = (tabsObj: any) => Object.keys(tabsObj)

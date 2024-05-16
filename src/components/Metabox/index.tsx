@@ -1,5 +1,5 @@
 import './index.css'
-import '@epfl/epfl-elements-styles/dist/css/combined.css'
+import 'epfl-elements/dist/css/elements.min.css'
 
 type Callback = () => void;
 

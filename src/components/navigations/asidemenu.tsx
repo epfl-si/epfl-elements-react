@@ -1,7 +1,7 @@
 import { Loader } from '../Loader'
 import { Link } from 'react-router-dom'
 
-import '@epfl/epfl-elements-styles/dist/css/combined.css'
+import 'epfl-elements/dist/css/elements.min.css'
 
 export type AsindeMenuSingleItemProps = {
   link?: string;

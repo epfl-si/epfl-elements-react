@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import '@epfl/epfl-elements-styles/dist/css/combined.css'
+import 'epfl-elements/dist/css/elements.min.css'
 
 import './index.css'
 

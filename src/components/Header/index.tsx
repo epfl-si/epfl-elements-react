@@ -3,7 +3,7 @@ import { Drawer } from '../Drawer/'
 import { Logo } from '../Logo/'
 import { Topmenu } from '../navigations/topmenu'
 
-import '@epfl/epfl-elements-styles/dist/css/combined.css'
+import 'epfl-elements/dist/css/elements.min.css'
 import { DrawerInnerProps } from '../Drawer/'
 
 type HeaderProps = {

@@ -1,5 +1,7 @@
 // Import the EPFL elements at the top. 
-import '@epfl/epfl-elements-styles/dist/css/combined.css'
+import 'epfl-elements/dist/css/elements.min.css'
+import 'epfl-elements/dist/css/reader.min.css'
+import 'epfl-elements/dist/css/vendors.min.css'
 
 export { Alert } from './components/Alert'
 export { Carousel } from './components/Carousel'
