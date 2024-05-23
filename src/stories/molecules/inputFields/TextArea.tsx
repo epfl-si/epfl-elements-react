@@ -58,6 +58,7 @@ export const TextArea = ({
         <textarea
           className={formControlStyle}
           id={id}
+          key={id}
           name={name}
           minLength={minlength}
           maxLength={maxlength}
