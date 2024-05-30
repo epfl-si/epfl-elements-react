@@ -1,1 +1,0 @@
-import{j as o}from"./jsx-runtime-ffb262ed.js";import{M as t}from"./index-1c685bd7.js";import"./index-76fb7be0.js";import"./_commonjsHelpers-de833af9.js";const c=[r=>o.jsx(t,{initialEntries:["/"],children:o.jsx(r,{})})],n={parameters:{actions:{argTypesRegex:"^on[A-Z].*"},controls:{matchers:{color:/(background|color)$/i,date:/Date$/}}}};export{c as decorators,n as default};
