@@ -1,3 +1,6 @@
+# v2.3.6
+- Order StoryBook folders as in EPFL Elements
+
 # v2.3.5
 - Add CODE_OF_CONDUCT
 - Add SECURITY.md

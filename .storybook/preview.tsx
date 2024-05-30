@@ -13,7 +13,6 @@ export const decorators = [
   ),
 ];
 
-
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
@@ -21,6 +20,13 @@ const preview: Preview = {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
+      },
+    },
+    options: {
+      storySort: {
+          method: 'alphabetical',
+          order: ['Documentation', 'Atoms', 'Molecules', 'Organisms', 'Content-Types', 'Pages'],
+          locales: 'en-US',
       },
     },
   },
