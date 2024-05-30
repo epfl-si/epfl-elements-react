@@ -1,39 +1,43 @@
 import React from 'react';
 
-interface NumericProps {
+interface TextAreaProps {
   size?: 'small' | 'medium' | 'large';
   isReadonly?: boolean;
-  val?: number;
+  value?: string;
   placeholder?: string;
-  min?: number;
-  max?: number;
   label?: string;
   isRequired?: boolean;
   id: string;
   name: string;
   help?: string;
+  minlength?: number;
+  maxlength?: number;
+  rows?: number;
+  cols?: number;
   validationErrorMessage?: string;
-  onChange?: (newValue: number) => void;
+  onChange?: (newValue: string) => void;
 }
 
 /**
- * A numeric field.
+ * An textarea field.
  */
-export const Numeric = ({
-  size = 'medium',
-  isReadonly = false,
-  val,
-  placeholder,
-  min,
-  max,
-  label,
-  isRequired = false,
-  id,
-  name,
-  help,
-  validationErrorMessage,
-  onChange
-  }: NumericProps) => {
+export const TextArea = ({
+                       size = 'medium',
+                       isReadonly = false,
+                       value,
+                       placeholder,
+                       label,
+                       isRequired = false,
+                       id,
+                       name,
+                       help,
+                       validationErrorMessage,
+                       rows,
+                       cols,
+                       minlength,
+                       maxlength,
+                       onChange
+                     }: TextAreaProps) => {
 
   let formControlStyle: string = 'form-control';
   switch (size) {
@@ -51,19 +55,22 @@ export const Numeric = ({
     <div className={requiredStyle}>
       {label ? <label className='control-label' htmlFor={id}>{label}</label> : <></>}
       <div className="input-group has-validation">
-        <input
+        <textarea
           className={formControlStyle}
-          type="number"
           id={id}
+          key={id}
           name={name}
-          min={min}
-          max={max}
+          minLength={minlength}
+          maxLength={maxlength}
           placeholder={placeholder}
-          value={val}
+          value={value}
           readOnly={isReadonly}
           required={isRequired}
+          rows={rows}
+          cols={cols}
+          style={{resize: 'both'}}
           onChange={(event) => {
-            if (onChange) onChange(parseInt(event.target.value, 10));
+            if (onChange) onChange(event.target.value);
           }}
         />
         <div className="invalid-feedback">
@@ -72,5 +79,5 @@ export const Numeric = ({
       </div>
       {help ? <small className="form-text text-muted">{help}</small> : <></>}
     </div>
-    )
+  )
 };

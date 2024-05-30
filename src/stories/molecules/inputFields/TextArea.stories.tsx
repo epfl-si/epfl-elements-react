@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Numeric } from './Numeric';
+import { TextArea } from './TextArea';
 import React from "react";
 
-const meta: Meta<typeof Numeric> = {
-  title: 'Molecules/Inputs/Numeric',
-  component: Numeric,
+const meta: Meta<typeof TextArea> = {
+  title: 'Molecules/Inputs/TextArea',
+  component: TextArea,
   parameters: {
     layout: 'centered',
   },
@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     name: 'test_Name',
-    id: 'test_primary'
+    id: 'test_primary',
   }
 };
 
@@ -42,7 +42,7 @@ export const WithLabel: Story = {
   ...Default,
   args: {
     ...Default.args,
-    label: 'Test label'
+    label: 'Test label',
   }
 };
 
@@ -50,7 +50,7 @@ export const WithHelp: Story = {
   ...Default,
   args: {
     ...Default.args,
-    help: 'Test label'
+    help: 'Test label',
   }
 };
 
@@ -58,6 +58,6 @@ export const WithPlaceholder: Story = {
   ...Default,
   args: {
     ...Default.args,
-    placeholder: 'Test label'
+    placeholder: 'Test label',
   }
 };

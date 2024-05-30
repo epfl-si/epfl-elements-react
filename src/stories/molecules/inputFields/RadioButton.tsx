@@ -1,60 +1,54 @@
 import React from 'react';
-import '../../assets/custumStyles.css';
+
+type Item = {
+  label?: string;
+  value: string;
+  id: string;
+  isChecked?: boolean;
+};
 
 interface RadioButtonProps {
   isReadonly?: boolean;
-  isChecked?: boolean;
-  label_s?: string;
   isRequired?: boolean;
-  id: string;
   name: string;
-  validationErrorMessage?: string;
   inLine?: boolean;
-  onChange?: () => void;
+  items: Item[];
+  onChange?: (e: React.ChangeEvent, newVal: string) => void;
 }
 
+/**
+ * A radio button element.
+ * The "items" array contains all the checkboxes details (label, value, id, isChecked).
+ */
 export const RadioButton = ({
   isReadonly = false,
-  isChecked,
-  label_s,
   isRequired = false,
-  id,
   name,
-  validationErrorMessage,
   inLine = false,
+  items,
   onChange
 }: RadioButtonProps) => {
 
   const inLineStyle = inLine ? 'form-check form-check-inline' : 'form-check';
 
-  let result: React.ReactNode[] = [];
-  if (label_s) {
-    const labels = label_s.split(';');
-    labels.forEach(s => {
-      result.push(
-            <div className="form-check"><input
-              className="form-check-input"
-              type="radio"
-              id={id}
-              name={name}
-              checked={isChecked}
-              disabled={isReadonly}
-              required={isRequired}
-              value={s}
-            />
-            <label className='form-check-label' htmlFor={id}>{s}</label></div>);
-    });
-  } else {
-    result.push(
-          <input
-            className="form-check-input"
-            type="radio"
-            id={id}
-            name={name}
-            checked={isChecked}
-            disabled={isReadonly}
-            required={isRequired}
-          />);
-  }
-  return <div className={inLineStyle}>{result}</div>;
+  const radios: React.ReactNode[] = [];
+  items.map(i => {
+    radios.push(
+      <div className="form-check">
+        <input
+          className="form-check-input"
+          type="radio"
+          id={i.id}
+          name={name}
+          checked={i.isChecked}
+          disabled={isReadonly}
+          required={isRequired}
+          value={i.value}
+          onChange={(e) => { if (onChange) onChange(e, i.value) }}
+        />
+        <label className='form-check-label' htmlFor={i.id}>{i.label}</label>
+      </div>)
+  })
+
+  return <div className={inLineStyle}>{radios}</div>;
 };

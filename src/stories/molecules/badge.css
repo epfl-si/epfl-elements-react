@@ -1,0 +1,37 @@
+:root {
+    --badge-background: #eaeaea;
+    --badge-box-shadow: 0px 4px 4px #00000040;
+}
+
+.image {
+    width: 50px;
+    marginRight: 5px;
+}
+
+.badge {
+    margin-left: 20px;
+    margin-right: 10px;
+    background-color: var(--badge-background);
+    border-radius: 50%;
+    box-shadow: var(--badge-box-shadow);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.badge-clickable {
+    cursor: pointer;
+}
+.badge-center {
+    align-items: center;
+}

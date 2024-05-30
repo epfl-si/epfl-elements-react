@@ -1,0 +1,32 @@
+.form-card.form-card-dashed {
+    border: 1px dashed #000000;
+}
+
+.form-card.form-card-solid {
+    border: 1px solid #000000;
+}
+
+.form-card.form-card-dotted {
+    border: 1px dotted #000000;
+}
+
+.form-card {
+    background-color: #fafafa;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.form-flex-item-body {
+    flex: 90%;
+}
+
+.form-flex-item-icon {
+    flex: 10%;
+}
+
+.form-text-through {
+    text-decoration: line-through;
+}
