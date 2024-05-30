@@ -1,3 +1,6 @@
+# v2.3.4
+- dependencies: epfl-elements ^4.7.0
+
 # v2.3.3
 - Rewrite README.md, add LICENSE.md, CONTRIBUTING.md and USER_STORIES.md
 
