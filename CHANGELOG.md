@@ -1,3 +1,9 @@
+# v2.3.5
+- Add CODE_OF_CONDUCT
+- Add SECURITY.md
+- Update JamesIves/github-pages-deploy-action@v4 options
+- Change library's `package.json` content
+
 # v2.3.4
 - dependencies: epfl-elements ^4.7.0
 

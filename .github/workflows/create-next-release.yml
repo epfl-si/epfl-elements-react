@@ -73,9 +73,8 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: storybook-static
+          branch: gh-pages
+          folder: storybook-static
 
       # Build the epfl-elements-react library (npm run build)
       - name: Build the epfl-elements-react library
@@ -83,7 +82,7 @@ jobs:
 
       # Create the package.json that is needed to create a package
       - name: Create the package.json
-        run: jq -n --arg version v${{ env.EER_VERSION }} '{"name":"epfl-elements-react","version":$version,"description":"EPFL Elements React Library","main":"index.js","repository":"github:epfl-si/epfl-elements-react","keywords":["epfl-elements-react"],"author":"EPFL ISAS-FSD","contributors":["Amine672 (https://github.com/Amine672)","Azecko (https://github.com/Azecko)","domq (https://github.com/domq)","GoldenCorgo (https://github.com/GoldenCorgo)","ponsfrilus (https://github.com/ponsfrilus)","rosamaggi (https://github.com/rosamaggi)","webdacjs (https://github.com/webdacjs)"],"license":"MIT","types":"./index.d.ts","dependencies":{"epfl-elements":"^4.7.0"},"bugs":{"url":"https://github.com/epfl-si/epfl-elements-react/issues"},"homepage":"https://github.com/epfl-si/epfl-elements-react#readme"}' > dist/package.json
+        run: jq -n --arg version v${{ env.EER_VERSION }} '{"name":"epfl-elements-react","version":$version,"description":"EPFL Elements React Library","main":"index.js","repository":"github:epfl-si/epfl-elements-react","keywords":["epfl","epfl-elements-react"],"author":"EPFL ISAS-FSD <fsd-dev@groupes.epfl.ch> (https://www.epfl.ch)","contributors":["Amine672 (https://github.com/Amine672)","Azecko (https://github.com/Azecko)","domq (https://github.com/domq)","GoldenCorgo (https://github.com/GoldenCorgo)","ponsfrilus (https://github.com/ponsfrilus)","rosamaggi (https://github.com/rosamaggi)","webdacjs (https://github.com/webdacjs)"],"license":"MIT","types":"./index.d.ts","dependencies":{"epfl-elements":"^4.7.0"},"bugs":{"url":"https://github.com/epfl-si/epfl-elements-react/issues"},"homepage":"https://github.com/epfl-si/epfl-elements-react#readme"}' > dist/package.json
 
       # Create the epfl-elements-react package
       - name: Create the epfl-elements-react package
