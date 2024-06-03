@@ -7,28 +7,28 @@
             "iconclass": "icon-facebook"
         },
         {
-            "name": "Twitter",
-            "link": "https://twitter.com/epfl'",
-            "anchor": "Follow us on Twitter.",
-            "iconclass": "icon-twitter"
-        },
-        {
             "name": "Instagram",
             "link": "https://instagram.com/epflcampus",
             "anchor": "Follow us on Instagram.",
             "iconclass": "icon-instagram"
         },
         {
+            "name": "LinkedIn",
+            "link": "https://www.linkedin.com/school/epfl/",
+            "anchor": "Follow us on LinkedIn.",
+            "iconclass": "icon-linkedin"
+        },
+        {
+            "name": "X",
+            "link": "https://x.com/epfl_en",
+            "anchor": "Follow us on X.",
+            "iconclass": "icon-x"
+        },
+        {
             "name": "Youtube",
             "link": "https://www.youtube.com/user/epflnews",
             "anchor": "Follow us on Youtube.",
             "iconclass": "icon-youtube"
-        },
-        {
-            "name": "LinkedIn",
-            "link": "https://www.youtube.com/user/epflnews",
-            "anchor": "Follow us on LinkedIn.",
-            "iconclass": "icon-linkedin"
         }
     ]
 }

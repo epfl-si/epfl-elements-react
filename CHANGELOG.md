@@ -1,3 +1,6 @@
+# v2.3.7
+- Fix twitter URL and replace it to x.com
+
 # v2.3.6
 - Order StoryBook folders as in EPFL Elements
 
