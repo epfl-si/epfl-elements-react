@@ -3,53 +3,87 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Checkbox } from './Checkbox';
 import React from "react";
 
-const meta = {
+const meta: Meta<typeof Checkbox> = {
   title: 'Molecules/Inputs/Checkbox',
   component: Checkbox,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Checkbox>;
+};
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    name: 'test_Name',
-    id: 'test_primary'
+    items: [{
+      label: 'label 1',
+      value: 'value 1',
+      id: 'test_primary'
+    }],
+    name: 'test',
   }
 };
 
 export const Required: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
-    isRequired: true
+    ...Default.args,
+    isRequired: true,
   }
 };
 
 export const Checked: Story = {
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
-    isChecked: true
+    items: [{
+      label: 'label 1',
+      value: 'value 1',
+      id: 'test_primary',
+      isChecked: true
+    }],
+    name: 'test',
   }
 };
 
 export const Readonly: Story = {
+  ...Default,
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
-    isReadonly: true
+    ...Default.args,
+    isReadonly: true,
   }
 };
 
-export const Label: Story = {
+export const NoLabel: Story = {
   args: {
-    name: 'test_Name',
-    id: 'test_primary',
-    label: 'Test Help'
+    items: [{
+      value: 'value 1',
+      id: 'test_primary',
+    }],
+    name: 'test',
+  }
+};
+
+export const Miltiple: Story = {
+  args: {
+    items: [{
+      label: 'label 1',
+      value: 'value 1',
+      id: 'test_primary',
+      isChecked : true
+    },{
+      label: 'label 2',
+      value: 'value 2',
+      id: 'test_primary',
+    }],
+    name: 'test',
+  }
+};
+
+export const inLine: Story = {
+  ...Miltiple,
+  args: {
+    ...Miltiple.args,
+    inLine: true,
   }
 };
